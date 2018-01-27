@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoResults component test 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-xs-12"
+  >
+    <div
+      className="row"
+      id="browse"
+    >
+      <div
+        className="spinner"
+      >
+        <h3
+          className="no-results"
+        >
+          Sorry, there are no results for your search.
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+`;

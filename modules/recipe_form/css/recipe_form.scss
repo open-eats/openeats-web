@@ -1,0 +1,99 @@
+
+.recipe-form {
+  margin-top: 20px;
+  .box {
+    border: solid 1px #ddd;
+  }
+  .add-ing {
+    float: right;
+    margin-right: 15px;
+  }
+  label {
+    font-weight: normal;
+  }
+  img {
+    width: 100%;
+  }
+  input[type='file'] {
+    margin-top: 10px;
+  }
+  .help-inline {
+    color: #a94442;
+  }
+  .btn {
+    float: right;
+    margin-left: 5px;
+  }
+  .live-editor {
+    margin-bottom: 15px;
+    .nav-tabs {
+      &.has-error {
+        border-color: #a94442;
+      }
+      > li {
+        float: right;
+        // Make the list-items overlay the bottom border
+        margin-bottom: -1px;
+
+        // Actual tabs (as links)
+        > span {
+          color: #337ab7;
+          margin-right: 2px;
+          line-height: 1.42857;
+          border: 1px solid transparent;
+          border-radius: 4px 4px 0 0;
+          position: relative;
+          display: block;
+          padding: 10px 15px;
+          cursor: pointer;
+          &:hover {
+            border-color: #ddd;
+            background-color: #eee;
+          }
+        }
+        &.left {
+          border: none;
+          float: left;
+          span {
+            padding-left: 0;
+            border: none !important;
+          }
+        }
+
+        // Active state, and its :hover to override normal :hover
+        &.active > span {
+          &,
+          &:hover,
+          &:focus {
+            color: #555555;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-bottom-color: transparent;
+            cursor: default;
+          }
+        }
+      }
+    }
+    .content {
+      border: 1px solid #ddd;
+      border-top: none;
+      &.has-error {
+        border-color: #a94442;
+      }
+      textarea {
+        border: none;
+        margin-bottom: -15px;
+      }
+      .recipe-details {
+        margin-top:  0;
+      }
+      .directions {
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+.underline {
+  border-bottom: solid 1px #CCCCCC;
+}

@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Sub Recipes 1`] = `
+<ul
+  className="ingredients"
+>
+  <li
+    className="ingredient"
+  >
+    <div
+      className={undefined}
+    >
+      <label
+        className="check-container"
+      >
+        <input
+          checked={false}
+          name={1}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="checkmark"
+        />
+      </label>
+    </div>
+    <span
+      className="quantity"
+    >
+      1
+       
+    </span>
+    <span
+      className="measurement"
+    >
+      dash
+       
+    </span>
+    <a
+      className="title"
+      href="/recipe/1"
+      onClick={[Function]}
+    >
+      black pepper
+    </a>
+  </li>
+  <li
+    className="ingredient"
+  >
+    <div
+      className={undefined}
+    >
+      <label
+        className="check-container"
+      >
+        <input
+          checked={false}
+          name={2}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="checkmark"
+        />
+      </label>
+    </div>
+    <span
+      className="quantity"
+    >
+      4
+       
+    </span>
+    <span
+      className="measurement"
+    >
+      tablespoons
+       
+    </span>
+    <a
+      className="title"
+      href="/recipe/2"
+      onClick={[Function]}
+    >
+      chili powder
+    </a>
+  </li>
+</ul>
+`;

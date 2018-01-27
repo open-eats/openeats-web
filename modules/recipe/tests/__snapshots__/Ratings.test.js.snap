@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`0 Star Rating test 1`] = `
+<p
+  className="rating-stars"
+>
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+</p>
+`;
+
+exports[`2 Star Rating test 1`] = `
+<p
+  className="rating-stars"
+>
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+</p>
+`;
+
+exports[`4 Star Rating test 1`] = `
+<p
+  className="rating-stars"
+>
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star-empty"
+  />
+</p>
+`;
+
+exports[`5 Star Rating test 1`] = `
+<p
+  className="rating-stars"
+>
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+  <span
+    className="glyphicon glyphicon-star"
+  />
+</p>
+`;

@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyLists component test 1`] = `
+<div
+  className="list-footer"
+>
+  <span
+    className="list-count"
+  >
+    6 items left
+  </span>
+  <ul
+    className="filters"
+  >
+    <li>
+      <a
+        className="selected"
+        href="#"
+        onClick={[Function]}
+      >
+        All
+      </a>
+    </li>
+     
+    <li>
+      <a
+        className=""
+        href="#"
+        onClick={[Function]}
+      >
+        Active
+      </a>
+    </li>
+     
+    <li>
+      <a
+        className=""
+        href="#"
+        onClick={[Function]}
+      >
+        Completed
+      </a>
+    </li>
+  </ul>
+  <button
+    className="clear-completed clear-button"
+    onClick={[Function]}
+  >
+    Clear completed
+  </button>
+</div>
+`;
+
+exports[`MyLists component test w/ active filter 1`] = `
+<div
+  className="list-footer"
+>
+  <span
+    className="list-count"
+  >
+    6 items left
+  </span>
+  <ul
+    className="filters"
+  >
+    <li>
+      <a
+        className=""
+        href="#"
+        onClick={[Function]}
+      >
+        All
+      </a>
+    </li>
+     
+    <li>
+      <a
+        className="selected"
+        href="#"
+        onClick={[Function]}
+      >
+        Active
+      </a>
+    </li>
+     
+    <li>
+      <a
+        className=""
+        href="#"
+        onClick={[Function]}
+      >
+        Completed
+      </a>
+    </li>
+  </ul>
+  <button
+    className="clear-completed clear-button"
+    onClick={[Function]}
+  >
+    Clear completed
+  </button>
+</div>
+`;
+
+exports[`MyLists component test w/ completed filter 1`] = `
+<div
+  className="list-footer"
+>
+  <span
+    className="list-count"
+  >
+    6 items left
+  </span>
+  <ul
+    className="filters"
+  >
+    <li>
+      <a
+        className=""
+        href="#"
+        onClick={[Function]}
+      >
+        All
+      </a>
+    </li>
+     
+    <li>
+      <a
+        className=""
+        href="#"
+        onClick={[Function]}
+      >
+        Active
+      </a>
+    </li>
+     
+    <li>
+      <a
+        className="selected"
+        href="#"
+        onClick={[Function]}
+      >
+        Completed
+      </a>
+    </li>
+  </ul>
+  <button
+    className="clear-completed clear-button"
+    onClick={[Function]}
+  >
+    Clear completed
+  </button>
+</div>
+`;

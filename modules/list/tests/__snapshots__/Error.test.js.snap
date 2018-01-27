@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyLists component test 1`] = `
+<div
+  className="list-error"
+>
+  <div
+    className="alert alert-danger"
+    role="alert"
+  >
+    <span
+      className="glyphicon glyphicon-exclamation-sign"
+    />
+     
+    <span>
+      Something went wrong!
+      : 
+    </span>
+    There is an error!
+  </div>
+</div>
+`;

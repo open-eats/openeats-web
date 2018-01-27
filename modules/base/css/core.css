@@ -1,0 +1,40 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+
+.navbar {
+  /* Margin bottom by footer height */
+  margin-bottom: 0px;
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+}
+
+.navbar-brand img {
+    height: 100%;
+}
+
+#content {
+  margin-bottom: 20px;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+code {
+  font-size: 80%;
+}

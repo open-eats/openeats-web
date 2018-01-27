@@ -1,0 +1,372 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ingredient Buttons Complete 1`] = `
+<div
+  className="ingredients-save"
+>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Check All
+    </button>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Clear
+    </button>
+    <div
+      className="dropdown btn-group"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-default"
+        disabled={false}
+        id="ing-save"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+      >
+        Add To
+         
+        <span
+          className="caret"
+        />
+      </button>
+      <ul
+        aria-labelledby="ing-save"
+        className="dropdown-menu"
+        role="menu"
+      >
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            title
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            tütle
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="glyphicon glyphicon-ok"
+  />
+</div>
+`;
+
+exports[`Ingredient Buttons Default 1`] = `
+<div
+  className="ingredients-save"
+>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Check All
+    </button>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Clear
+    </button>
+    <div
+      className="dropdown btn-group"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-default"
+        disabled={false}
+        id="ing-save"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+      >
+        Add To
+         
+        <span
+          className="caret"
+        />
+      </button>
+      <ul
+        aria-labelledby="ing-save"
+        className="dropdown-menu"
+        role="menu"
+      >
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            title
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            tütle
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+</div>
+`;
+
+exports[`Ingredient Buttons Error 1`] = `
+<div
+  className="ingredients-save"
+>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Check All
+    </button>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Clear
+    </button>
+    <div
+      className="dropdown btn-group"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-default"
+        disabled={false}
+        id="ing-save"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+      >
+        Add To
+         
+        <span
+          className="caret"
+        />
+      </button>
+      <ul
+        aria-labelledby="ing-save"
+        className="dropdown-menu"
+        role="menu"
+      >
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            title
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            tütle
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="glyphicon glyphicon-remove"
+  />
+</div>
+`;
+
+exports[`Ingredient Buttons Loading 1`] = `
+<div
+  className="ingredients-save"
+>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Check All
+    </button>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}
+    >
+      Clear
+    </button>
+    <div
+      className="dropdown btn-group"
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="dropdown-toggle btn btn-default"
+        disabled={false}
+        id="ing-save"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        type="button"
+      >
+        Add To
+         
+        <span
+          className="caret"
+        />
+      </button>
+      <ul
+        aria-labelledby="ing-save"
+        className="dropdown-menu"
+        role="menu"
+      >
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            title
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}
+        >
+          <a
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            tütle
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="sk-circle-wrapper sk-spinner recipe-list-spinner"
+  >
+    <div
+      className="sk-circle1 sk-circle"
+    />
+    <div
+      className="sk-circle2 sk-circle"
+    />
+    <div
+      className="sk-circle3 sk-circle"
+    />
+    <div
+      className="sk-circle4 sk-circle"
+    />
+    <div
+      className="sk-circle5 sk-circle"
+    />
+    <div
+      className="sk-circle6 sk-circle"
+    />
+    <div
+      className="sk-circle7 sk-circle"
+    />
+    <div
+      className="sk-circle8 sk-circle"
+    />
+    <div
+      className="sk-circle9 sk-circle"
+    />
+    <div
+      className="sk-circle10 sk-circle"
+    />
+    <div
+      className="sk-circle11 sk-circle"
+    />
+    <div
+      className="sk-circle12 sk-circle"
+    />
+  </div>
+</div>
+`;

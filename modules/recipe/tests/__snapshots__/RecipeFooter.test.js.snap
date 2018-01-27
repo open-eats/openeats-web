@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Footer with Edit Link 1`] = `
+<div
+  className="panel-footer"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-6"
+    >
+      <div>
+        Source
+        :
+        <a
+          href="google.com"
+        >
+          
+        </a>
+      </div>
+      <div>
+        Created by
+        : 
+      </div>
+      <div>
+        Last Updated
+        : 
+        2017-01-01
+      </div>
+    </div>
+    <div
+      className="col-xs-6 pull-right text-right"
+    >
+      <a
+        href="/recipe/edit/1"
+        onClick={[Function]}
+      >
+        <button
+          className="btn btn-primary btn-sm"
+        >
+          <span
+            className="glyphicon glyphicon-pencil"
+          />
+        </button>
+      </a>
+      <button
+        className="btn btn-danger btn-sm"
+        onClick={[Function]}
+      >
+        <span
+          className="glyphicon glyphicon-trash"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Footer without Edit Link 1`] = `
+<div
+  className="panel-footer"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-6"
+    >
+      <div>
+        Source
+        :
+        <a
+          href="google.com"
+        >
+          
+        </a>
+      </div>
+      <div>
+        Created by
+        : 
+      </div>
+      <div>
+        Last Updated
+        : 
+        2017-01-01
+      </div>
+    </div>
+    <div
+      className="col-xs-6 pull-right text-right"
+    />
+  </div>
+</div>
+`;

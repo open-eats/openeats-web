@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubRecipeBox component test 1`] = `
+<div
+  className="live-editor"
+>
+  <ul
+    className="nav nav-tabs"
+  >
+    <li
+      className="left active"
+    >
+      <span>
+         
+        <span
+          className="glyphicon glyphicon-info-sign"
+          onClick={null}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+        />
+      </span>
+    </li>
+    <li
+      className="active"
+    >
+      <span
+        onClick={[Function]}
+      >
+        Editor
+      </span>
+    </li>
+    <li
+      className=""
+    >
+      <span
+        onClick={[Function]}
+      >
+        Preview
+      </span>
+    </li>
+  </ul>
+  <div
+    className="content"
+  >
+    <div
+      className="form-group"
+    >
+      <div
+        className="rta "
+        style={undefined}
+      >
+        <textarea
+          className="rta__textarea form-control"
+          onChange={[Function]}
+          rows="4"
+          style={undefined}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="help-inline"
+  />
+</div>
+`;

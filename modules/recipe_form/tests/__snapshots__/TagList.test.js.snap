@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagList component test 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className="form-group null"
+  >
+    <input
+      className="form-control"
+      name={undefined}
+      onChange={[Function]}
+      placeholder={undefined}
+      type={undefined}
+      value=""
+    />
+  </div>
+</div>
+`;

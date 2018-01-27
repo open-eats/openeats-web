@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IngredientBox component test 1`] = `
+<div
+  className="live-editor"
+>
+  <ul
+    className="nav nav-tabs"
+  >
+    <li
+      className="left active"
+    >
+      <span>
+         
+        <span
+          className="glyphicon glyphicon-info-sign"
+          onClick={null}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+        />
+      </span>
+    </li>
+    <li
+      className="active"
+    >
+      <span
+        onClick={[Function]}
+      >
+        Editor
+      </span>
+    </li>
+    <li
+      className=""
+    >
+      <span
+        onClick={[Function]}
+      >
+        Preview
+      </span>
+    </li>
+  </ul>
+  <div
+    className="content"
+  >
+    <div
+      className={undefined}
+    >
+      <div
+        className="form-group null"
+      >
+        <textarea
+          className="form-control"
+          name={undefined}
+          onChange={[Function]}
+          placeholder={undefined}
+          rows="8"
+          type={undefined}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="help-inline"
+  />
+</div>
+`;

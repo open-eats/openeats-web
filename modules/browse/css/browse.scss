@@ -1,0 +1,38 @@
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+
+.search-bar {
+  margin-top: 20px;
+  .search-clear {
+    background-color: #ffffff;
+    &:hover {
+      background-color: #eeeeee;
+      cursor: pointer;
+    }
+  }
+}
+
+.no-results {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.spinner {
+  text-align: center;
+  .spinner-obj {
+    height: 100px !important;
+    width: 100px !important;
+    margin-top: 30px;
+    display: inline-block;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .search-bar {
+    .input-group-addon{
+      border-top-left-radius: 0;
+    }
+    .form-control {
+      border-top-right-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyLists component test 1`] = `
+<div
+  className="grocery-lists"
+>
+  <ul
+    className="list-group"
+  >
+    <a
+      className="list-group-item disabled"
+      href="#"
+    >
+      My Lists
+    </a>
+    <a
+      aria-current={false}
+      className="list-group-item"
+      href="/list/1"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <span
+        className="badge"
+      >
+        3
+      </span>
+      The first test
+    </a>
+    <a
+      aria-current={false}
+      className="list-group-item"
+      href="/list/2"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <span
+        className="badge"
+      >
+        4
+      </span>
+      another test
+    </a>
+    <a
+      aria-current={false}
+      className="list-group-item"
+      href="/list/3"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <span
+        className="badge"
+      >
+        0
+      </span>
+      test
+    </a>
+    <a
+      aria-current={false}
+      className="list-group-item"
+      href="/list/"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Create a New List!
+    </a>
+  </ul>
+</div>
+`;
+
+exports[`MyLists component test w/ no lists 1`] = `
+<div
+  className="grocery-lists"
+>
+  <ul
+    className="list-group"
+  >
+    <a
+      className="list-group-item disabled"
+      href="#"
+    >
+      My Lists
+    </a>
+    <a
+      className="list-group-item disabled"
+      href="#"
+    >
+      No Lists to display
+    </a>
+  </ul>
+</div>
+`;

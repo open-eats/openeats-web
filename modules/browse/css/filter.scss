@@ -1,0 +1,120 @@
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+
+.filter-title {
+  margin-top: 20px;
+  background-color: #eee;
+  padding: 6px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #555555;
+}
+
+.sidebar {
+  border: 1px solid #ccc;
+  padding-top: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  .reset-search {
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .filter {
+    .list-group-item {
+      border: 0;
+      padding: 3px 7px;
+      color: #337ab7;
+      .clear {
+        clear: both;
+      }
+      .glyphicon {
+        margin-right: 5px;
+      }
+      .badge {
+        display: block;
+        color: #fff;
+        background-color: #777777;
+      }
+      &.active {
+        background-color: #ffffff;
+        color: #337ab7;
+        font-weight: bold;
+        &:hover {
+          background-color: #eeeeee;
+          color: #135a97;
+        }
+      }
+    }
+    .clear-filter {
+      background-color: $brand-danger;
+      color: #eee;
+    }
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .filter {
+    .list-group-item {
+      padding: 7px 2px 7px 3px;
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .sidebar-header {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    background-color: #eeeeee;
+    color: #777777;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+    .filter-header {
+      .reset-margin {
+        margin-right: 60px;
+      }
+    }
+    .filter-header-clear {
+      float: right;
+      margin-top: -30px;
+      .clear-filter-mobile {
+        position: relative;
+        left: 10px;
+        padding: 9px;
+      }
+    }
+  }
+  .sidebar {
+    border: 1px solid #ddd;
+    margin-top: 0;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding: 5px 0;
+    [class*="col-"] {
+      padding: 0 3px;
+    }
+    .filter {
+      margin-bottom: 0;
+      .list-group-item {
+        text-transform: capitalize;
+      }
+    }
+  }
+  .search-bar {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 490px) {
+  .sidebar {
+    .filter {
+      .list-group-item {
+        .badge {
+          display: none;
+        }
+      }
+    }
+  }
+}

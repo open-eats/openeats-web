@@ -1,0 +1,15 @@
+# Folders
+site-media/
+static-files/
+node_modules/
+build/
+jest/
+.idea/
+
+# Files
+*.DS_Store
+*.pyc
+*.css.map
+*.js.map
+*.log
+*.pyc

@@ -1,0 +1,30 @@
+.rta {
+  position: relative;
+  .loading {
+    border: solid 1px #ddd;
+    background: #eee;
+    padding: 5px 10px;
+  }
+  .rta__autocomplete {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 3px;
+    ul {
+      list-style-type: none;
+      border: solid 1px #ccc;
+      background: #eee;
+      padding: 0;
+      width: 200px;
+      .rta__entity {
+        padding: 2px;
+        border-bottom: solid 1px #ccc;
+        width: 100%;
+        &.rta__entity--selected {
+          color: white;
+          background: hsl(200, 50%, 50%);
+          cursor: default;
+        }
+      }
+    }
+  }
+}

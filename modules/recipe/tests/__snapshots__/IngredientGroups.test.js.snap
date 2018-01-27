@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ingredient Group component test 1`] = `
+<div
+  className="ingredient-groups"
+>
+  <div
+    className="ingredient-group"
+  >
+    <b>
+      Chili
+    </b>
+    <ul
+      className="ingredients"
+    >
+      <li
+        className="ingredient"
+      >
+        <div
+          className={undefined}
+        >
+          <label
+            className="check-container"
+          >
+            <input
+              checked={false}
+              name={1}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkmark"
+            />
+          </label>
+        </div>
+        <span
+          className="quantity"
+        >
+          1
+           
+        </span>
+        <span
+          className="measurement"
+        >
+          dash
+           
+        </span>
+        <span
+          className="title"
+        >
+          black pepper
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="ingredient-group"
+  >
+    <b>
+      Spices
+    </b>
+    <ul
+      className="ingredients"
+    >
+      <li
+        className="ingredient"
+      >
+        <div
+          className={undefined}
+        >
+          <label
+            className="check-container"
+          >
+            <input
+              checked={false}
+              name={1}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkmark"
+            />
+          </label>
+        </div>
+        <span
+          className="quantity"
+        >
+          1
+           
+        </span>
+        <span
+          className="measurement"
+        >
+          dash
+           
+        </span>
+        <span
+          className="title"
+        >
+          black pepper
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="ingredient-group"
+  >
+    <ul
+      className="ingredients"
+    >
+      <li
+        className="ingredient"
+      >
+        <div
+          className={undefined}
+        >
+          <label
+            className="check-container"
+          >
+            <input
+              checked={false}
+              name={1}
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              className="checkmark"
+            />
+          </label>
+        </div>
+        <span
+          className="quantity"
+        >
+          1
+           
+        </span>
+        <span
+          className="measurement"
+        >
+          dash
+           
+        </span>
+        <span
+          className="title"
+        >
+          black pepper
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

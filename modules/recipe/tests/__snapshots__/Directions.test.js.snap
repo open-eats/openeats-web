@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Direction component test 1`] = `
+<ol
+  className="directions"
+>
+  <li
+    className="direction"
+  >
+    Brown the ground pork and ground sirlion in a medium pan. Add a teaspoon of sereano pepper while browning the meat. Season with kosher salt and pepper.\\nChop the onion, bell pepper and one Serrano pepper and place them in a large pot.\\nOpen up and drain both cans of kidney beans and add them to the large pot.\\nOpen up both cans of stewed chili style tomatoes and add them to the pot.\\nDrain the grease away from the browned meat and add the meat to the pot.\\nPour in the tomato juice over the meat mixture.\\nAdd kosher salt, black pepper, two table spoons of chili powder, and two teaspoons of ground cumin. Stir well.\\nCook slowly over medium low heat for an hour. If it starts to bubble turn down the heat. Taste during the cooking process to check the seasoning add more to taste.
+  </li>
+</ol>
+`;

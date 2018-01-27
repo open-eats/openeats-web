@@ -1,0 +1,53 @@
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+
+/* Carousel base class */
+/* Declare heights because of positioning of img element */
+.carousel {
+  height: 300px;
+  .item {
+    height: 300px;
+    background-color: #777;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 300px;
+    }
+    .carousel-caption {
+      z-index: 10;
+      /* Bump up size of carousel content */
+      p {
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+.home-buttons {
+  margin-bottom: 20px;
+  .home-browse-button {
+    width: 100%;
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .carousel {
+    height: 210px;
+    .item {
+      height: 210px;
+      .carousel-caption {
+        padding-bottom: 10px !important;
+        p {
+          font-size: 14px;
+        }
+      }
+      img {
+        height: 210px;
+      }
+    }
+  }
+}

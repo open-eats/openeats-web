@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Long Info Panel 1`] = `
+<div
+  className="panel panel-default"
+>
+  <table
+    className="table table-bordered"
+  >
+    <thead>
+      <tr
+        className="active"
+      >
+        <th>
+          Servings
+        </th>
+        <th>
+          Prep time
+        </th>
+        <th>
+          Cooking time
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div
+            className="input-group print-hidden"
+          >
+            <div
+              className="servings-textbox"
+            >
+              <div
+                className="form-group null"
+              >
+                <input
+                  className="form-control"
+                  name="servings"
+                  onChange={[Function]}
+                  placeholder={undefined}
+                  type="number"
+                  value={200000}
+                />
+              </div>
+            </div>
+            
+          </div>
+          <p
+            className="print-only"
+          >
+            200000
+          </p>
+        </td>
+        <td>
+          200000
+           
+          minutes
+        </td>
+        <td>
+          200000
+           
+          minutes
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    className="panel-body"
+  >
+    <p>
+      Lorem ipsum dolor sit amet, odio sem vel nulla aliquam, vestibulum pellentesque at risus eros, at leo mi urna quam, magna nunc vestibulum nibh condimentum arcu. Eu nunc blandit arcu magna, morbi eleifend dolor, nam ratione justo ullamcorper platea malesuada donec, fusce luctus varius. Vel ipsum nunc in justo, pulvinar magna interdum ut nunc vestibulum. Lorem dui vitae. Lectus elit vel lorem purus, in tortor, mi diam mus venenatis sit bibendum eu. Odio nec lectus quisquam ac eleifend sem, arcu congue neque neque nunc, nam maecenas, nec mauris pede erat dignissim, in gravida tempor. In amet mauris odio vitae montes. Nec vitae nostrud vestibulum, at in tincidunt justo varius wisi ut, nullam wisi erat lorem tempor ac. Lorem ipsum dolor sit amet, odio sem vel nulla aliquam, vestibulum pellentesque at risus eros, at leo mi urna quam, magna nunc vestibulum nibh condimentum arcu. Eu nunc blandit arcu magna, morbi eleifend dolor, nam ratione justo ullamcorper platea malesuada donec, fusce luctus varius. Vel ipsum nunc in justo, pulvinar magna interdum ut nunc vestibulum. Lorem dui vitae. Lectus elit vel lorem purus, in tortor, mi diam mus venenatis sit bibendum eu. Odio nec lectus quisquam ac eleifend sem, arcu congue neque neque nunc, nam maecenas, nec mauris pede erat dignissim, in gravida tempor. In amet mauris odio vitae montes. Nec vitae nostrud vestibulum, at in tincidunt justo varius wisi ut, nullam wisi erat lorem tempor ac.
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Short Info Panel 1`] = `
+<div
+  className="panel panel-default"
+>
+  <table
+    className="table table-bordered"
+  >
+    <thead>
+      <tr
+        className="active"
+      >
+        <th>
+          Servings
+        </th>
+        <th>
+          Prep time
+        </th>
+        <th>
+          Cooking time
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div
+            className="input-group print-hidden"
+          >
+            <div
+              className="servings-textbox"
+            >
+              <div
+                className="form-group null"
+              >
+                <input
+                  className="form-control"
+                  name="servings"
+                  onChange={[Function]}
+                  placeholder={undefined}
+                  type="number"
+                  value={8}
+                />
+              </div>
+            </div>
+            
+          </div>
+          <p
+            className="print-only"
+          >
+            8
+          </p>
+        </td>
+        <td>
+          40
+           
+          minutes
+        </td>
+        <td>
+          20
+           
+          minutes
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    className="panel-body"
+  >
+    <p>
+      This is a test!
+    </p>
+  </div>
+</div>
+`;

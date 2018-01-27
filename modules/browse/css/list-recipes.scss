@@ -1,0 +1,118 @@
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+
+.recipes {
+  margin-top: 20px;
+  .recipe {
+    padding: 0;
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    [class*='col-'] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    img {
+      width: 100%;
+    }
+    .caption {
+      h4 {
+        height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: blue;
+      }
+      .desc {
+        height: 60px;
+        overflow: hidden;
+      }
+    }
+    .ratings {
+      padding-right: 10px;
+      padding-left: 10px;
+      color: #d17581;
+      .date {
+        font-size: 12px;
+        margin-top: 1px;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .recipes {
+    .recipe {
+      .row {
+        display: table;
+      }
+      [class*="col-"] {
+        float: none;
+        display: table-cell;
+        vertical-align: top;
+      }
+      .caption {
+        padding: 0 1px 0 10px;
+        h4 {
+          font-size: 16px;
+          text-overflow: clip;
+          white-space: normal;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          line-height: 1.2em;
+          max-height: 2.4em;
+          //margin-right: -1em;
+          padding-right: 1em;
+        }
+        h4:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          width: 1em;
+          height: 1em;
+          margin-top: 0.2em;
+          background: white;
+        }
+        .date {
+          font-size: 12px;
+          margin: 0;
+          position: absolute;
+          bottom: 5px;
+          left: 10px;
+          color: #d17581;
+        }
+        .rating-stars {
+          margin: 0;
+          position: absolute;
+          bottom: 20px;
+          left: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 490px) {
+  .recipes {
+    .recipe {
+      .caption {
+        .desc {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 270px) {
+  .recipes {
+    .recipe {
+      .caption {
+        .visible-xs {
+          display: none !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Header 1`] = `
+<div
+  className="panel-heading hero-image"
+  style={
+    Object {
+      "backgroundImage": "url(1)",
+    }
+  }
+>
+  <div
+    className="row title"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <h3>
+        Tasty Chili
+      </h3>
+      <p
+        className="rating-stars"
+      >
+        <span
+          className="glyphicon glyphicon-star"
+        />
+        <span
+          className="glyphicon glyphicon-star"
+        />
+        <span
+          className="glyphicon glyphicon-star"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+      </p>
+    </div>
+  </div>
+  <div
+    className="row options print-hidden"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <button
+        className="btn btn-primary btn-sm"
+        onClick={[Function]}
+      >
+        <span
+          aria-hidden="true"
+          className="glyphicon glyphicon-print"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Header w/ bad rating 1`] = `
+<div
+  className="panel-heading"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <h3>
+        Tasty Chili
+      </h3>
+      <p
+        className="rating-stars"
+      >
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Header w/ no Photo 1`] = `
+<div
+  className="panel-heading"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <h3>
+        Tasty Chili
+      </h3>
+      <p
+        className="rating-stars"
+      >
+        <span
+          className="glyphicon glyphicon-star"
+        />
+        <span
+          className="glyphicon glyphicon-star"
+        />
+        <span
+          className="glyphicon glyphicon-star"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+        <span
+          className="glyphicon glyphicon-star-empty"
+        />
+      </p>
+    </div>
+  </div>
+</div>
+`;
