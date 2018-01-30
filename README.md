@@ -1,6 +1,7 @@
 # OpenEats Web App
 
 [![Web Build Status](https://travis-ci.org/open-eats/openeats-web.svg?branch=master)](https://travis-ci.org/open-eats/openeats-web)
+[![Coverage Status](https://coveralls.io/repos/github/open-eats/openeats-web/badge.svg)](https://coveralls.io/github/open-eats/openeats-web)
 
 This is the official web app that powers OpenEats. It's built using React/Redux.
 
