@@ -6,7 +6,7 @@ export const bulkAdd = (items, list) => {
   return (dispatch) => {
     const format = (i) => {
       let quantity = i.customQuantity ? i.customQuantity : i.quantity;
-      quantity = i.quantity ? i.quantity + " " : '';
+      quantity = quantity ? quantity + " " : '';
       let measurement = i.measurement ? i.measurement + " " : '';
       return quantity + measurement + i.title;
     };
