@@ -1,29 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { request } from '../../common/CustomSuperagent';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 import ListRecipes from '../components/ListRecipes'
-import { serverURLs } from '../../common/config'
+import * as MiniBrowseActions from "../actions/MiniBrowseActions";
 
 require("./../css/browse.scss");
 
 class MiniBrowse extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: this.props.data || []
-    };
-  }
-
   componentDidMount() {
-    request()
-      .get(serverURLs.mini_browse + this.props.qs)
-      .then(res => { this.setState({data: res.body.results}) })
+    this.props.miniBrowseActions.loadMiniBrowse(this.props.qs)
   }
 
   render() {
     return (
-      <ListRecipes format={this.props.format} data={this.state.data} />
+      <ListRecipes format={this.props.format} data={this.props.data} />
     );
   }
 }
@@ -33,4 +25,15 @@ MiniBrowse.propTypes = {
   qs: PropTypes.string.isRequired
 };
 
-export default MiniBrowse;
+const mapStateToProps = state => ({
+  data: state.browse.miniBrowse,
+});
+
+const mapDispatchToProps = dispatch => ({
+  miniBrowseActions: bindActionCreators(MiniBrowseActions, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MiniBrowse);

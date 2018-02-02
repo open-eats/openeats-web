@@ -8,7 +8,7 @@ export const load = (id) => {
     request()
       .get(serverURLs.recipe + id + "/")
       .then(res => dispatch({type: RecipeConstants.RECIPE_LOAD, data: res.body}))
-      .catch(err => { console.error(err); history.push('/notfound'); })
+      // .catch(err => { console.error(err); history.push('/notfound'); })
   }
 };
 
