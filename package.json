@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "if-env NODE_ENV=production && npm run start:prod || if-env NODE_ENV=demo && npm run start:demo || npm run start:dev",
     "start:dev": "webpack-dev-server --hot --inline --content-base public --history-api-fallback",
     "start:prod": "webpack && node server.js",
+    "start:demo": "webpack",
     "build": "webpack",
     "test": "jest"
   },

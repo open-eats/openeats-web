@@ -18,7 +18,7 @@ class Footer extends React.Component{
               description='Footer credit'
               defaultMessage='Created with {link}'
               values={{
-                link: <a href="https://github.com/RyanNoelk/OpenEats">OpenEats</a>
+                link: <a href="https://github.com/open-eats/OpenEats">OpenEats</a>
               }}
             />
             &nbsp;-&nbsp;
