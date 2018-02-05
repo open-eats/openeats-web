@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import store from '../../common/store'
-
 import Loading from '../../base/components/Loading'
 import RecipeScheme from '../components/RecipeScheme'
 import * as RecipeActions from '../actions/RecipeActions'
@@ -32,7 +30,6 @@ class Recipe extends React.Component {
   }
 
   render() {
-    console.log(store.getState());
     let { lists, recipes, match, status, user } = this.props;
     let { recipeActions, recipeItemActions } = this.props;
     let data = recipes.find(t => t.id == match.params.recipe);

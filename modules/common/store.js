@@ -4,7 +4,7 @@ import reducer from '../common/reducer'
 
 let data = { user: JSON.parse(localStorage.getItem('user')) || { id: 0 } };
 if (process.env.NODE_ENV === 'demo') {
-  data = require('./data.json');
+  data = require('./demo/data.json');
 }
 
 const store = createStore(

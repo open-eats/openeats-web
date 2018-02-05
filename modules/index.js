@@ -15,6 +15,7 @@ const messages = require('../locale/'+process.env.LOCALE+'.json');
 
 // Load components
 import NavBar from './header/containers/NavBar'
+import Demo from './base/components/Demo'
 import Footer from './base/components/Footer'
 import NotFound from './base/components/NotFound'
 import Login from './account/containers/Login'
@@ -43,6 +44,7 @@ const main = (
           <Router history={ history }>
             <div>
               <NavBar />
+              { process.env.NODE_ENV === 'demo' ? <Demo /> : '' }
               <Switch>
                 <Route exact path='/' component={ News } />
                 <Route path='/news' component={ News } />
