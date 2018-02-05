@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const isProd = (process.env.NODE_ENV === 'production');
+const isProd = (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'demo');
 
 // http://jonnyreeves.co.uk/2016/simple-webpack-prod-and-dev-config/
 function getPlugins() {
