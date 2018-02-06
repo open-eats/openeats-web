@@ -29,3 +29,24 @@ After adding new `defineMessages` you'll need to update the locale files. Instea
 docker-compose run --rm web sh
 ./node_modules/.bin/babel-node scripts/merge-locale.js
 ```
+
+#### Building the demo site
+
+The demo site is built using pure js and relies on populating the redux store when the app starts. If more data needs to be added be sure to update [the demo json](https://github.com/open-eats/openeats-web/tree/master/modules/common/demo)
+
+To Build the demo site, update the dev env file with the below.
+
+```bash
+# Node config
+NODE_ENV=demo
+NODE_API_URL=
+NODE_LOCALE=en
+```
+
+Then Run:
+
+```bash
+docker-compose up node
+```
+
+This will generate all the require files in the public folder. These files can be copied directly into the demo repo.
