@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
 // import * as MenuActions from '../actions/MenuActions'
 // import * as MenuItemActions from '../actions/MenuItemActions'
@@ -11,6 +12,7 @@ import documentTitle from '../../common/documentTitle'
 
 class Menu extends React.Component {
   componentDidMount() {
+    authCheckRedirect();
     // this.props.recipeActions.load(this.props.match.params.recipe);
   }
 

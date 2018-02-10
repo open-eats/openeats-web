@@ -11,6 +11,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 import { CreateRecipeMenuItem } from './CreateRecipeMenuItem'
 import { GroceryListMenuItem } from './GroceryListMenuItem'
+import { MenuMenuItem } from './MenuMenuItem'
 import { AccountMenuMenuItem, AccountLoginMenuItem } from './MyAccountMenuItem'
 
 class NavBar extends React.Component {
@@ -85,6 +86,9 @@ class NavBar extends React.Component {
             <NavItem onClick={ this.props.randomRecipeActions.randomRecipe }>
               {formatMessage(messages.randomRecipe)}
             </NavItem>
+            {( this.props.user.id ?
+                <MenuMenuItem/> : null
+            )}
             {( this.props.user.id  ?
                 <CreateRecipeMenuItem/> : null
             )}
