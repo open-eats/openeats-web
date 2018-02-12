@@ -6,12 +6,22 @@ import { connect } from 'react-redux'
 import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
 import Calender from '../components/Calender'
+import EventModal from '../components/EventModal'
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
 // import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
 import documentTitle from '../../common/documentTitle'
 
 class Menu extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: true,
+      editEventId: 1
+    };
+  }
+
   componentDidMount() {
     authCheckRedirect();
     documentTitle('Menu');
@@ -34,9 +44,17 @@ class Menu extends React.Component {
   render() {
     let { menus, menuItems } = this.props;
     let { menuActions, menuItemActions } = this.props;
-    if (menuItems) {
+    let { showModal, editEventId } = this.state;
+    if (menuItems.length > 0) {
       return (
+        <div>
+          <EventModal
+            show={ showModal }
+            onHide={ () => { this.setState({showModal: false}) } }
+            event={ menuItems.find(t => t.id == editEventId) }
+          />
           <Calender items={ menuItems }/>
+        </div>
       );
     } else {
       return ( <Loading message="Loading"/> )
