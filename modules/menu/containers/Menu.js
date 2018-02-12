@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
-import Basic from '../components/Basic'
+import Calender from '../components/Calender'
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
 // import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
@@ -36,7 +36,7 @@ class Menu extends React.Component {
     let { menuActions, menuItemActions } = this.props;
     if (menuItems) {
       return (
-          <Basic items={ menuItems }/>
+          <Calender items={ menuItems }/>
       );
     } else {
       return ( <Loading message="Loading"/> )
