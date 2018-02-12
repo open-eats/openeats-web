@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
+import Basic from '../components/Basic'
 // import * as MenuActions from '../actions/MenuActions'
 // import * as MenuItemActions from '../actions/MenuItemActions'
 // import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
@@ -36,7 +37,7 @@ class Menu extends React.Component {
       // let showEditLink = (user !== null && user.id === data.author);
       // documentTitle(data.title);
       return (
-          <div>hi</div>
+          <Basic/>
       );
     } else {
       return ( <Loading message="Loading"/> )
