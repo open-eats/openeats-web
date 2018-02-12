@@ -1,8 +1,9 @@
-import MenuConstants from '../constants/MenuConstants'
+import MenuItemConstants from '../constants/MenuItemConstants'
 
 const items = (state = [], action) => {
   switch (action.type) {
-    case MenuConstants.MENU_ITEM_LOAD:
+    case MenuItemConstants.MENU_ITEM_LOAD:
+      console.log(action.data);
       return action.data;
     // case MenuItemConstants.MENU_ITEM_ADD:
     //   return [

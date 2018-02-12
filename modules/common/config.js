@@ -1,11 +1,11 @@
-var apiHost = '';
+let apiHost = '';
 if (process.env.API_URL) {
   apiHost = process.env.API_URL;
 }
 
-var apiUrl = apiHost + '/api/v1';
+const apiUrl = apiHost + '/api/v1';
 
-export var serverURLs = {
+export const serverURLs = {
   auth_token: apiUrl + '/accounts/obtain-auth-token/',
   browse: apiUrl + '/recipe/recipes/?fields=id,title,pub_date,rating,photo_thumbnail,info',
   mini_browse: apiUrl + '/recipe/mini-browse/',
@@ -23,9 +23,11 @@ export var serverURLs = {
   list: apiUrl + '/list/lists/',
   list_item: apiUrl + '/list/items/',
   bulk_list_item: apiUrl + '/list/bulk_item/',
+  menu: apiUrl + '/menu/menu/',
+  menu_item: apiUrl + '/menu/menu-item/',
 };
 
-export var measurements = [
+export const measurements = [
   'tablespoon',
   'teaspoon',
   'cup',
@@ -37,6 +39,6 @@ export var measurements = [
 
 
 // http://www.bbc.co.uk/food/ingredients/by/letter/b
-export var ingredient = [
+export const ingredient = [
   '',
 ];

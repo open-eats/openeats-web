@@ -2,16 +2,22 @@ import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment';
 
-import events from './events'
-
 require('react-big-calendar/lib/css/react-big-calendar.css');
 require('../css/rbc-calendar.scss');
 
 BigCalendar.momentLocalizer(moment);
 const allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 
-const Basic = ({ recipes }) => {
-  // const events = recipes;
+const Basic = ({ items }) => {
+  const events = items.map(item => {
+    return {
+      id: item.id,
+      title: item.recipe_title,
+      // allDay: true,
+      start: new Date(2018, 1, 12),
+      end: new Date(2018, 1, 12),
+    }
+  });
   return (
     <div className="container">
       <div className="row">

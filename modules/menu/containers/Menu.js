@@ -6,38 +6,37 @@ import { connect } from 'react-redux'
 import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
 import Basic from '../components/Basic'
-// import * as MenuActions from '../actions/MenuActions'
-// import * as MenuItemActions from '../actions/MenuItemActions'
+import * as MenuActions from '../actions/MenuActions'
+import * as MenuItemActions from '../actions/MenuItemActions'
 // import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
 import documentTitle from '../../common/documentTitle'
 
 class Menu extends React.Component {
   componentDidMount() {
     authCheckRedirect();
-    // this.props.recipeActions.load(this.props.match.params.recipe);
+    documentTitle('Menu');
+    this.props.menuActions.load();
+    this.props.menuItemActions.load();
   }
 
   componentWillUnmount() {
     documentTitle();
   }
 
-  componentWillReceiveProps(nextProps) {
-    // if (nextProps.match.params.recipe !== this.props.match.params.recipe) {
-    //   nextProps.recipeItemActions.reset();
-    //   nextProps.recipeActions.load(nextProps.match.params.recipe);
-    //   window.scrollTo(0, 0);
-    // }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.match.params.recipe !== this.props.match.params.recipe) {
+  //     nextProps.recipeItemActions.reset();
+  //     nextProps.recipeActions.load(nextProps.match.params.recipe);
+  //     window.scrollTo(0, 0);
+  //   }
+  // }
 
   render() {
-    // let { lists, recipes, match, status, user } = this.props;
-    // let { recipeActions, recipeItemActions } = this.props;
-    // let data = recipes.find(t => t.id == match.params.recipe);
-    if (true) {
-      // let showEditLink = (user !== null && user.id === data.author);
-      // documentTitle(data.title);
+    let { menus, menuItems } = this.props;
+    let { menuActions, menuItemActions } = this.props;
+    if (menuItems) {
       return (
-          <Basic/>
+          <Basic items={ menuItems }/>
       );
     } else {
       return ( <Loading message="Loading"/> )
@@ -56,18 +55,13 @@ class Menu extends React.Component {
 // };
 
 const mapStateToProps = state => ({
-  // user: state.user,
-  // recipes: state.recipe.recipes,
-  // status: state.recipe.status,
-  // lists: state.list.lists,
+  menus: state.menu.menus,
+  menuItems: state.menu.items,
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  // recipeItemActions: bindActionCreators(MenuItemActions, dispatch),
-  // recipeActions: bindActionCreators(
-  //   bindIndexToActionCreators(MenuActions, props.match.params.recipe),
-  //   dispatch
-  // ),
+  menuActions: bindActionCreators(MenuActions, dispatch),
+  menuItemActions: bindActionCreators(MenuItemActions, dispatch),
 });
 
 export default connect(
