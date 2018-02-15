@@ -14,8 +14,8 @@ const Calender = ({ items, onShow }) => {
     return {
       ...item,
       // allDay: true,
-      start: new Date(2018, 1, 12),
-      end: new Date(2018, 1, 12),
+      start: item.start_date,
+      end: item.end_date,
       onShow: onShow.bind(this, item.id)
     }
   });

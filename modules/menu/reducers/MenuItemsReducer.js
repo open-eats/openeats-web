@@ -5,9 +5,9 @@ const items = (state = [], action) => {
     case MenuItemConstants.MENU_ITEM_LOAD:
       return action.data;
     case MenuItemConstants.MENU_ITEM_SAVE:
-      if (state.find(t => t.id == action.id)) {
+      if (state.find(t => t.id == action.data.id)) {
         return state.map(item =>
-          item.id === action.id ? { ...action } : item
+          item.id === action.data.id ? { ...action.data } : item
         );
       }
       else {
