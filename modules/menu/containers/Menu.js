@@ -17,8 +17,8 @@ class Menu extends React.Component {
     super(props);
 
     this.state = {
-      showModal: true,
-      editEventId: 1
+      showModal: false,
+      editEventId: 0
     };
   }
 
@@ -53,7 +53,10 @@ class Menu extends React.Component {
             onHide={ () => { this.setState({showModal: false}) } }
             event={ menuItems.find(t => t.id == editEventId) }
           />
-          <Calender items={ menuItems }/>
+          <Calender
+            items={ menuItems }
+            onShow={ (id) => { console.log(id); this.setState({showModal: true, editEventId: id}) } }
+          />
         </div>
       );
     } else {

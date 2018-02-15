@@ -9,15 +9,16 @@ require('../css/rbc-calendar.scss');
 
 BigCalendar.momentLocalizer(moment);
 
-const Basic = ({ items }) => {
+const Calender = ({ items, onShow }) => {
   const events = items.map(item => {
     return {
       id: item.id,
-      title: item.recipe_title,
+      recipe_title: item.recipe_title,
       recipe: item.recipe,
       // allDay: true,
       start: new Date(2018, 1, 12),
       end: new Date(2018, 1, 12),
+      onShow: onShow.bind(this, item.id)
     }
   });
 
@@ -39,13 +40,7 @@ const Basic = ({ items }) => {
             // defaultDate={ new Date(2015, 3, 1) }
             // defaultView="week"
             // onSelectEvent={event => alert(event.title)}
-            onSelectSlot={slotInfo =>
-              alert(
-                `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-                  `\nend: ${slotInfo.end.toLocaleString()}` +
-                  `\naction: ${slotInfo.action}`
-              )
-            }
+            // onSelectSlot={ slotInfo => onShow(1) }
           />
         </div>
       </div>
@@ -53,4 +48,4 @@ const Basic = ({ items }) => {
   )
 };
 
-export default Basic
+export default Calender
