@@ -4,7 +4,7 @@ import { injectIntl, defineMessages } from 'react-intl';
 
 import { Input, DateTime } from '../../common/components/FormComponents'
 
-require('react-datetime/css/react-datetime.css');
+require('../css/rbc-calendar-modal.scss');
 
 const EventModal = ({ show, onHide, event, intl }) => {
   const messages = defineMessages({
@@ -52,10 +52,12 @@ const EventModal = ({ show, onHide, event, intl }) => {
   console.log(event);
 
   return (
-    <Modal show={ show } onHide={ onHide }>
+    <Modal show={ show } onHide={ onHide } className="rbc-calendar-modal">
       <Modal.Header>
         <Modal.Title>{ title }</Modal.Title>
-        <button className="btn btn-danger pull-right">Delete</button>
+        <button className="btn btn-danger pull-right">
+          <span className="glyphicon glyphicon-trash"/>
+        </button>
       </Modal.Header>
 
       <Modal.Body>

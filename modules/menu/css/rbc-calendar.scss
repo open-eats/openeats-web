@@ -1,4 +1,9 @@
 .rbc-calendar {
   margin-top: 20px;
   min-height: 600px;
+  .calender-recipe-event {
+    a {
+      color: #ffffff;
+    }
+  }
 }

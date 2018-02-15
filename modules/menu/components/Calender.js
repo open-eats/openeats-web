@@ -12,9 +12,7 @@ BigCalendar.momentLocalizer(moment);
 const Calender = ({ items, onShow }) => {
   const events = items.map(item => {
     return {
-      id: item.id,
-      recipe_title: item.recipe_title,
-      recipe: item.recipe,
+      ...item,
       // allDay: true,
       start: new Date(2018, 1, 12),
       end: new Date(2018, 1, 12),
@@ -40,7 +38,7 @@ const Calender = ({ items, onShow }) => {
             // defaultDate={ new Date(2015, 3, 1) }
             // defaultView="week"
             // onSelectEvent={event => alert(event.title)}
-            // onSelectSlot={ slotInfo => onShow(1) }
+            // onSelectSlot={ slotInfo => onShow(0) }
           />
         </div>
       </div>

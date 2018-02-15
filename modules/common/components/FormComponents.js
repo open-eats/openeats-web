@@ -7,6 +7,7 @@ import {
     formatMessage
 } from 'react-intl';
 
+require('react-datetime/css/react-datetime.css');
 import '../css/checkbox.scss'
 
 class BaseComponent extends React.Component {
