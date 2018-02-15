@@ -89,6 +89,16 @@ class DateTime extends BaseComponent {
     super(props);
   }
 
+  handleChange(date) {
+    this.setState({
+      value: date
+    });
+
+    if(this.props.change) {
+      this.props.change(this.props.name, date);
+    }
+  }
+
   render() {
     return (
       <div className={ this.props.size } key={ this.props.id }>

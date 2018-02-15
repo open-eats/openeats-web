@@ -38,7 +38,7 @@ const Calender = ({ items, onShow }) => {
             // defaultDate={ new Date(2015, 3, 1) }
             // defaultView="week"
             // onSelectEvent={event => alert(event.title)}
-            // onSelectSlot={ slotInfo => onShow(0) }
+            onSelectSlot={ slotInfo => onShow(0) }
           />
         </div>
       </div>
