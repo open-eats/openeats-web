@@ -12,7 +12,6 @@ export const load = () => {
 
 export const save = (id, data) => {
   return (dispatch) => {
-    console.log(data);
     if (id != 0) {
       request()
         .patch(serverURLs.menu_item + id + '/')

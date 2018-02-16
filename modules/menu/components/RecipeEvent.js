@@ -6,7 +6,8 @@ const RecipeEvent = ({ event, title, isAllDay }) => (
     <Link to={ '/recipe/' + event.recipe }>
       { event.recipe_title  }
     </Link>
-    <span onClick={ event.onShow } className="glyphicon glyphicon-pencil pull-right"/>
+    <span className="glyphicon glyphicon-pencil pull-right"/>
+    {/*<span onClick={ event.onShow } className="glyphicon glyphicon-pencil pull-right"/>*/}
   </div>
 );
 

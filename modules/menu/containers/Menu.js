@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
-import Calender from '../components/Calender'
+import Calender from '../components/Calendar'
 import EventModal from '../components/EventModal'
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
@@ -18,7 +18,9 @@ class Menu extends React.Component {
 
     this.state = {
       showModal: false,
-      editEventId: 0
+      editEventId: 0,
+      startDate: null,
+      endDate: null,
     };
   }
 
@@ -44,7 +46,8 @@ class Menu extends React.Component {
   render() {
     let { menus, menuItems } = this.props;
     let { menuActions, menuItemActions } = this.props;
-    let { showModal, editEventId } = this.state;
+    let { showModal, editEventId, startDate, endDate } = this.state;
+    //TODO adding a loading status here so that if there are no menu items the code still works!
     if (menuItems.length > 0) {
       return (
         <div>
@@ -55,10 +58,19 @@ class Menu extends React.Component {
             onHide={ () => { this.setState({showModal: false}) } }
             event={ menuItems.find(t => t.id == editEventId) }
             menuItemActions={ menuItemActions }
+            startDate={ startDate }
+            endDate={ endDate }
           />
           <Calender
             items={ menuItems }
-            onShow={ (id) => { this.setState({showModal: true, editEventId: id}) } }
+            onShow={ (id, startDate=null, endDate=null) => {
+              this.setState({
+                showModal: true,
+                editEventId: id,
+                startDate: startDate,
+                endDate: endDate,
+              })
+            }}
           />
         </div>
       );

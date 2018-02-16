@@ -20,14 +20,14 @@ class EventModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let { event } = nextProps;
+    let { event, startDate, endDate } = nextProps;
 
     // let title = intl.formatMessage(messages.new_menu_item);
     let title = 'Create a new Menu Item';
     let menu = '';
     let recipe = '';
-    let start_date = new Date();
-    let end_date = new Date();
+    let start_date = startDate || new Date();
+    let end_date = endDate || new Date();
 
     if (event) {
       menu = event.menu;
@@ -50,6 +50,18 @@ class EventModal extends React.Component {
     let newState = {};
     newState[name] = value;
     this.setState(newState)
+  };
+
+  remove = (message) => {
+    if (confirm(message)) {
+      this.props.menuItemActions.remove(this.props.id);
+      this.props.onHide();
+    }
+  };
+
+  save = () => {
+    this.props.menuItemActions.save(this.props.id, this.state);
+    this.props.onHide();
   };
 
   render () {
@@ -81,6 +93,11 @@ class EventModal extends React.Component {
         description: 'Create a new Menu Item',
         defaultMessage: 'Create a new Menu Item',
       },
+      confirmDelete: {
+        id: 'men_event_model.confirm_delete',
+        description: 'Are you sure you want to delete this?',
+        defaultMessage: 'Are you sure you want to delete this?',
+      },
     });
 
     return (
@@ -88,7 +105,12 @@ class EventModal extends React.Component {
         <Modal.Header>
           <Modal.Title>{ title }</Modal.Title>
           <button className="btn btn-danger pull-right">
-            <span className="glyphicon glyphicon-trash"/>
+            <span
+              onClick={
+                this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
+              }
+              className="glyphicon glyphicon-trash"
+            />
           </button>
         </Modal.Header>
 
@@ -121,7 +143,7 @@ class EventModal extends React.Component {
         </Modal.Body>
 
         <Modal.Footer>
-          <button className="btn btn-success" onClick={ menuItemActions.save.bind(this, id, this.state) }>Save</button>
+          <button className="btn btn-success" onClick={ this.save }>Save</button>
           <button className="btn btn-primary" onClick={ onHide }>Cancel</button>
         </Modal.Footer>
       </Modal>

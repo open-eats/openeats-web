@@ -9,13 +9,15 @@ require('../css/rbc-calendar.scss');
 
 BigCalendar.momentLocalizer(moment);
 
-const Calender = ({ items, onShow }) => {
+const Calendar = ({ items, onShow }) => {
   const events = items.map(item => {
     return {
       ...item,
       // allDay: true,
-      start: item.start_date,
-      end: item.end_date,
+      start_date: moment(item.start_date).toDate(),
+      end_date: moment(item.end_date).toDate(),
+      start: moment(item.start_date).toDate(),
+      end: moment(item.end_date).toDate(),
       onShow: onShow.bind(this, item.id)
     }
   });
@@ -35,10 +37,10 @@ const Calender = ({ items, onShow }) => {
             components={ components }
             events={ events }
             // step={ 60 }
-            // defaultDate={ new Date(2015, 3, 1) }
             // defaultView="week"
-            // onSelectEvent={event => alert(event.title)}
-            onSelectSlot={ slotInfo => onShow(0) }
+            defaultDate={ new Date() }
+            onSelectEvent={ event => onShow(event.id) }
+            onSelectSlot={ slotInfo => onShow(0, slotInfo.start, slotInfo.end) }
           />
         </div>
       </div>
@@ -46,4 +48,4 @@ const Calender = ({ items, onShow }) => {
   )
 };
 
-export default Calender
+export default Calendar
