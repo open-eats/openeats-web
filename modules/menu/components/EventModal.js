@@ -2,7 +2,10 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 import { injectIntl, defineMessages } from 'react-intl';
 
-import { Input, DateTime, Select } from '../../common/components/FormComponents'
+import { Select } from '../../common/components/FormComponents'
+import { DateTime } from '../../common/components/DateTime'
+import { Async } from '../../common/components/Select'
+import { fetchRecipeList } from '../actions/RecipeListActions'
 
 require('../css/rbc-calendar-modal.scss');
 
@@ -115,11 +118,13 @@ class EventModal extends React.Component {
         </Modal.Header>
 
         <Modal.Body>
-          <Input
-            label={ intl.formatMessage(messages.recipe) }
-            value={ recipe }
+          <Async
             name="recipe"
+            title="title"
+            label={ intl.formatMessage(messages.recipe) }
+            value={{ value: recipe, label: title }}
             change={ this.onChange }
+            loadOptions={ fetchRecipeList }
           />
           <Select
             data={ menus }

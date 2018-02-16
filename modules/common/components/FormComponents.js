@@ -1,5 +1,4 @@
 import React from 'react'
-import Datetime from 'react-datetime'
 import {
     injectIntl,
     IntlProvider,
@@ -7,7 +6,6 @@ import {
     formatMessage
 } from 'react-intl';
 
-require('react-datetime/css/react-datetime.css');
 import '../css/checkbox.scss'
 
 class BaseComponent extends React.Component {
@@ -78,38 +76,6 @@ class Input extends BaseComponent {
                  value={ this.state.value }
                  onChange={ this.handleChange }/>
           { this.getErrorMessage() }
-        </div>
-      </div>
-    )
-  }
-}
-
-class DateTime extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  handleChange(date) {
-    this.setState({
-      value: date
-    });
-
-    if(this.props.change) {
-      this.props.change(this.props.name, date);
-    }
-  }
-
-  render() {
-    return (
-      <div className={ this.props.size } key={ this.props.id }>
-        <div className={ "form-group " + (this.hasErrors() ? 'has-error' : null) }>
-          { this.props.label ? <label>{this.props.label}</label> : null }
-          <Datetime
-            inputProps={{ name: this.props.name, className: 'form-control' }}
-            onChange={ this.handleChange }
-            value={ this.props.value }
-          />
-        { this.getErrorMessage() }
         </div>
       </div>
     )
@@ -265,9 +231,9 @@ class Select extends BaseComponent {
   }
 }
 
+module.exports.BaseComponent = BaseComponent;
 module.exports.Input = Input;
 module.exports.TextArea = TextArea;
-module.exports.DateTime = DateTime;
 module.exports.File = injectIntl(File);
 module.exports.Checkbox = Checkbox;
 module.exports.Select = injectIntl(Select);

@@ -1,0 +1,35 @@
+import React from 'react'
+import { Async as AsyncReact } from 'react-select'
+import { BaseComponent } from './FormComponents'
+
+require('react-select/dist/react-select.css');
+
+export class Async extends BaseComponent {
+  handleChange(data) {
+    this.setState({
+      value: data
+    });
+
+    if(this.props.change) {
+      this.props.change(this.props.name, data.value);
+      this.props.change(this.props.title, data.label);
+    }
+  }
+
+  render() {
+    return (
+      <div className={ this.props.size } key={ this.props.id }>
+        <div className={ "form-group " + (this.hasErrors() ? 'has-error' : null) }>
+          { this.props.label ? <label>{ this.props.label }</label> : null }
+          <AsyncReact
+            name="recipe"
+            value={ this.props.value }
+            onChange={ this.handleChange }
+            loadOptions={ this.props.loadOptions }
+          />
+          { this.getErrorMessage() }
+        </div>
+      </div>
+    )
+  }
+}
