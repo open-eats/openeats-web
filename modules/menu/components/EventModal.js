@@ -2,9 +2,8 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 import { injectIntl, defineMessages } from 'react-intl';
 
-import { Select } from '../../common/components/FormComponents'
 import { DateTime } from '../../common/components/DateTime'
-import { Async } from '../../common/components/Select'
+import { Async, Select } from '../../common/components/Select'
 import { fetchRecipeList } from '../actions/RecipeListActions'
 
 require('../css/rbc-calendar-modal.scss');
@@ -127,7 +126,7 @@ class EventModal extends React.Component {
             loadOptions={ fetchRecipeList }
           />
           <Select
-            data={ menus }
+            data={ menus.map(t => { return {value: t.id, label: t.title} }) }
             value={ menu }
             name="menu"
             label={ intl.formatMessage(messages.menu) }
