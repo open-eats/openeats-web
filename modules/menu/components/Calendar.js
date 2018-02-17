@@ -1,15 +1,16 @@
 import React from 'react'
 import BigCalendar from 'react-big-calendar'
-import moment from 'moment';
+import moment from 'moment'
 
 import RecipeEvent from './RecipeEvent'
+import RecipeToolBar from './RecipeToolBar'
 
 require('react-big-calendar/lib/css/react-big-calendar.css');
 require('../css/rbc-calendar.scss');
 
 BigCalendar.momentLocalizer(moment);
 
-const Calendar = ({ items, onShow }) => {
+const Calendar = ({ items, onShow, qs }) => {
   const events = items.map(item => {
     return {
       ...item,
@@ -24,6 +25,7 @@ const Calendar = ({ items, onShow }) => {
 
   let components = {
     event: RecipeEvent, // used by each view (Month, Day, Week)
+    // toolbar: RecipeToolBar,
   };
 
   return (
@@ -37,7 +39,7 @@ const Calendar = ({ items, onShow }) => {
             components={ components }
             events={ events }
             // step={ 60 }
-            // defaultView="week"
+            defaultView={ qs.view || 'month' }
             defaultDate={ new Date() }
             onSelectEvent={ event => onShow(event.id) }
             onSelectSlot={ slotInfo => onShow(0, slotInfo.start, slotInfo.end) }

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import qs from 'query-string'
 
 import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
@@ -44,7 +45,7 @@ class Menu extends React.Component {
   // }
 
   render() {
-    let { menus, menuItems } = this.props;
+    let { menus, menuItems, location } = this.props;
     let { menuActions, menuItemActions } = this.props;
     let { showModal, editEventId, startDate, endDate } = this.state;
     //TODO adding a loading status here so that if there are no menu items the code still works!
@@ -63,6 +64,7 @@ class Menu extends React.Component {
           />
           <Calender
             items={ menuItems }
+            qs={ qs.parse(location.search) }
             onShow={ (id, startDate=null, endDate=null) => {
               this.setState({
                 showModal: true,
