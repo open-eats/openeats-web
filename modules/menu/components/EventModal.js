@@ -106,11 +106,13 @@ class EventModal extends React.Component {
       <Modal show={ show } onHide={ onHide } className="rbc-calendar-modal">
         <Modal.Header>
           <Modal.Title>{ title }</Modal.Title>
-          <button className="btn btn-danger pull-right">
+          <button
+            className="btn btn-danger pull-right"
+            onClick={
+              this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
+            }
+          >
             <span
-              onClick={
-                this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
-              }
               className="glyphicon glyphicon-trash"
             />
           </button>

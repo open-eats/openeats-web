@@ -7,7 +7,6 @@ const RecipeEvent = ({ event, title, isAllDay }) => (
       { event.recipe_title  }
     </Link>
     <span className="glyphicon glyphicon-pencil pull-right"/>
-    {/*<span onClick={ event.onShow } className="glyphicon glyphicon-pencil pull-right"/>*/}
   </div>
 );
 

@@ -25,15 +25,19 @@ export const save = (id, data) => {
         .patch(serverURLs.menu_item + id + '/')
         .send(data)
         .then(res => dispatch({
-          type: MenuItemConstants.MENU_ITEM_SAVE, data: res.body
+            type: MenuItemConstants.MENU_ITEM_SAVE,
+            data: res.body
         }))
     } else {
       request()
         .post(serverURLs.menu_item)
         .send(data)
-        .then(res => dispatch({
-          type: MenuItemConstants.MENU_ITEM_SAVE, data: res.body
-        }))
+        .then(res => {
+          dispatch({
+            type: MenuItemConstants.MENU_ITEM_SAVE,
+            data: res.body
+          })
+        })
     }
   }
 };

@@ -15,11 +15,8 @@ const Calendar = ({ items, onShow, qs }) => {
     return {
       ...item,
       // allDay: true,
-      start_date: moment(item.start_date).toDate(),
-      end_date: moment(item.end_date).toDate(),
       start: moment(item.start_date).toDate(),
       end: moment(item.end_date).toDate(),
-      onShow: onShow.bind(this, item.id)
     }
   });
 
@@ -38,7 +35,6 @@ const Calendar = ({ items, onShow, qs }) => {
             showMultiDayTimes
             components={ components }
             events={ events }
-            // step={ 60 }
             defaultView={ qs.view || 'month' }
             defaultDate={ new Date() }
             onSelectEvent={ event => onShow(event.id) }

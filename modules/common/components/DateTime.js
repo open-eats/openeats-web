@@ -1,5 +1,6 @@
 import React from 'react'
 import Datetime from 'react-datetime'
+import moment from 'moment'
 import { BaseComponent } from './FormComponents'
 
 require('react-datetime/css/react-datetime.css');
@@ -15,7 +16,7 @@ export class DateTime extends BaseComponent {
     });
 
     if(this.props.change) {
-      this.props.change(this.props.name, date);
+      this.props.change(this.props.name, moment(date).toISOString());
     }
   }
 
@@ -27,7 +28,9 @@ export class DateTime extends BaseComponent {
           <Datetime
             inputProps={{ name: this.props.name, className: 'form-control' }}
             onChange={ this.handleChange }
-            value={ this.props.value }
+            value={ moment(this.props.value).format('llll') }
+            dateFormat={ this.props.dateFormat || 'ddd, ll' }
+            timeFormat={ this.props.timeFormat }
           />
         { this.getErrorMessage() }
         </div>
