@@ -4,19 +4,16 @@ const items = (state = [], action) => {
   switch (action.type) {
     case MenuItemConstants.MENU_ITEM_LOAD:
       return action.data;
+    case MenuItemConstants.MENU_ITEM_CREATE:
+        return [ ...state, { ...action.data }];
     case MenuItemConstants.MENU_ITEM_SAVE:
-      if (state.find(t => t.id == action.data.id)) {
-        return state.map(item =>
-          item.id === action.data.id ? { ...action.data } : item
-        );
-      }
-      else {
-        return [ ...state, { ...action.data }]
-      }
+      return state.map(item =>
+        item.id === action.data.id ? { ...action.data } : item
+      );
     case MenuItemConstants.MENU_ITEM_DELETE:
       return state.filter(t => t.id !== action.id);
     default:
-      return state
+      return state;
   }
 };
 

@@ -34,7 +34,7 @@ export const save = (id, data) => {
         .send(data)
         .then(res => {
           dispatch({
-            type: MenuItemConstants.MENU_ITEM_SAVE,
+            type: MenuItemConstants.MENU_ITEM_CREATE,
             data: res.body
           })
         })
