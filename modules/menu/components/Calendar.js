@@ -1,9 +1,10 @@
 import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
+import querystring from 'query-string'
 
+import history from '../../common/history'
 import RecipeEvent from './RecipeEvent'
-import RecipeToolBar from './RecipeToolBar'
 
 require('react-big-calendar/lib/css/react-big-calendar.css');
 require('../css/rbc-calendar.scss');
@@ -22,7 +23,18 @@ const Calendar = ({ items, onShow, qs }) => {
 
   let components = {
     event: RecipeEvent, // used by each view (Month, Day, Week)
-    // toolbar: RecipeToolBar,
+  };
+
+  let buildViewUrl = value => {
+    let parsed = querystring.parse(location.search);
+    parsed['view'] = value;
+    history.push('/menu/?' + querystring.stringify(parsed));
+  };
+
+  let buildDateUrl = value => {
+    let parsed = querystring.parse(location.search);
+    parsed['date'] = moment(value).format('YYYY-MM-DD');
+    history.push('/menu/?' + querystring.stringify(parsed));
   };
 
   return (
@@ -35,8 +47,15 @@ const Calendar = ({ items, onShow, qs }) => {
             showMultiDayTimes
             components={ components }
             events={ events }
-            defaultView={ qs.view || 'month' }
-            defaultDate={ new Date() }
+
+            view={ qs.view || 'month' }
+            defaultView={ 'month' }
+            onView={ buildViewUrl }
+
+            date={ moment(qs.date).toDate() }
+            defaultDate={ moment(qs.date).toDate() || new Date() }
+            onNavigate={ buildDateUrl }
+
             onSelectEvent={ event => onShow(event.id) }
             onSelectSlot={ slotInfo => onShow(0, slotInfo.start, slotInfo.end) }
           />
