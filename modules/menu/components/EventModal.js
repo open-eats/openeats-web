@@ -148,14 +148,14 @@ class EventModal extends React.Component {
           <DateTime
             label={ intl.formatMessage(messages.start_date) }
             name="start_date"
-            value={ all_day ? moment(start_date).format('ddd, ll') : moment(start_date).format('llll') }
+            value={ start_date }
             change={ this.onChange }
             timeFormat={ !all_day }
           />
           <DateTime
             label={ intl.formatMessage(messages.end_date) }
             name="end_date"
-            value={ all_day ? moment(end_date).format('ddd, ll') : moment(end_date).format('llll') }
+            value={ end_date }
             change={ this.onChange }
             timeFormat={ !all_day }
           />
