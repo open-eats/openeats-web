@@ -15,7 +15,7 @@ const Calendar = ({ items, onShow, qs }) => {
   const events = items.map(item => {
     return {
       ...item,
-      // allDay: true,
+      allDay: item.all_day,
       start: moment(item.start_date).toDate(),
       end: moment(item.end_date).toDate(),
     }

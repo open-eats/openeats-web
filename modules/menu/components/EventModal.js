@@ -1,7 +1,9 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 import { injectIntl, defineMessages } from 'react-intl';
+import moment from 'moment'
 
+import { Checkbox } from '../../common/components/FormComponents'
 import { DateTime } from '../../common/components/DateTime'
 import { Async, Select } from '../../common/components/Select'
 import { fetchRecipeList } from '../actions/RecipeListActions'
@@ -18,6 +20,7 @@ class EventModal extends React.Component {
       title: '',
       start_date: '',
       end_date: '',
+      all_day: ''
     };
   }
 
@@ -30,6 +33,7 @@ class EventModal extends React.Component {
     let recipe = '';
     let start_date = startDate || new Date();
     let end_date = endDate || new Date();
+    let all_day = false;
 
     if (event) {
       menu = event.menu;
@@ -37,6 +41,7 @@ class EventModal extends React.Component {
       title = event.recipe_title;
       start_date = event.start_date;
       end_date = event.end_date;
+      all_day = event.all_day;
     }
 
     this.setState({
@@ -45,6 +50,7 @@ class EventModal extends React.Component {
       title: title,
       start_date: start_date,
       end_date: end_date,
+      all_day: all_day,
     });
   }
 
@@ -68,7 +74,7 @@ class EventModal extends React.Component {
 
   render () {
     let { id, show, onHide, menus, menuItemActions, intl } = this.props;
-    let { menu, recipe, title, start_date, end_date } = this.state;
+    let { menu, recipe, title, start_date, end_date, all_day } = this.state;
     const messages = defineMessages({
       start_date: {
         id: 'men_event_model.start_date',
@@ -89,6 +95,11 @@ class EventModal extends React.Component {
         id: 'men_event_model.menu',
         description: 'Menu',
         defaultMessage: 'Menu',
+      },
+      all_day: {
+        id: 'men_event_model.all_day',
+        description: 'Anytime today',
+        defaultMessage: 'Anytime today',
       },
       new_menu_item: {
         id: 'men_event_model.new_menu_item',
@@ -137,13 +148,21 @@ class EventModal extends React.Component {
           <DateTime
             label={ intl.formatMessage(messages.start_date) }
             name="start_date"
-            value={ start_date }
+            value={ all_day ? moment(start_date).format('ddd, ll') : moment(start_date).format('llll') }
             change={ this.onChange }
+            timeFormat={ !all_day }
           />
           <DateTime
             label={ intl.formatMessage(messages.end_date) }
             name="end_date"
-            value={ end_date }
+            value={ all_day ? moment(end_date).format('ddd, ll') : moment(end_date).format('llll') }
+            change={ this.onChange }
+            timeFormat={ !all_day }
+          />
+          <Checkbox
+            label={ intl.formatMessage(messages.all_day) }
+            name="all_day"
+            checked={ all_day }
             change={ this.onChange }
           />
         </Modal.Body>
