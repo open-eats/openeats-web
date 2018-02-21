@@ -5,6 +5,7 @@ import querystring from 'query-string'
 
 import history from '../../common/history'
 import RecipeEvent from './RecipeEvent'
+import RecipeToolbar from './RecipeToolbar'
 
 require('react-big-calendar/lib/css/react-big-calendar.css');
 require('../css/rbc-calendar.scss');
@@ -23,6 +24,7 @@ const Calendar = ({ items, onShow, qs }) => {
 
   let components = {
     event: RecipeEvent, // used by each view (Month, Day, Week)
+    toolbar: RecipeToolbar,
   };
 
   let buildViewUrl = value => {
