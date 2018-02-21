@@ -2,10 +2,14 @@ import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 import querystring from 'query-string'
+// import { injectIntl, defineMessages } from 'react-intl';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import history from '../../common/history'
 import RecipeEvent from './RecipeEvent'
 import RecipeToolbar from './RecipeToolbar'
+import * as MenuActions from "../actions/MenuActions";
 
 require('react-big-calendar/lib/css/react-big-calendar.css');
 require('../css/rbc-calendar.scss');
@@ -22,11 +26,6 @@ const Calendar = ({ items, onShow, qs }) => {
     }
   });
 
-  let components = {
-    event: RecipeEvent, // used by each view (Month, Day, Week)
-    toolbar: RecipeToolbar,
-  };
-
   let buildViewUrl = value => {
     let parsed = querystring.parse(location.search);
     parsed['view'] = value;
@@ -37,6 +36,31 @@ const Calendar = ({ items, onShow, qs }) => {
     let parsed = querystring.parse(location.search);
     parsed['date'] = moment(value).format('YYYY-MM-DD');
     history.push('/menu/?' + querystring.stringify(parsed));
+  };
+
+  let buildVisibilityUrl = (name, value) => {
+    let parsed = querystring.parse(location.search);
+    if (value) {
+      parsed['menu'] = value;
+    } else {
+      delete parsed['menu'];
+    }
+    history.push('/menu/?' + querystring.stringify(parsed));
+  };
+
+  const mapStateToProps = state => ({
+    menus: state.menu.menus,
+    qs: qs,
+  });
+
+  const mapDispatchToProps = dispatch => ({
+    menuActions: bindActionCreators(MenuActions, dispatch),
+    buildVisibilityUrl: buildVisibilityUrl,
+  });
+
+  let components = {
+    event: RecipeEvent, // used by each view (Month, Day, Week)
+    toolbar: connect(mapStateToProps, mapDispatchToProps)(RecipeToolbar),
   };
 
   return (

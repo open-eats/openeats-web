@@ -1,7 +1,6 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 import { injectIntl, defineMessages } from 'react-intl';
-import moment from 'moment'
 
 import { Checkbox } from '../../common/components/FormComponents'
 import { DateTime } from '../../common/components/DateTime'

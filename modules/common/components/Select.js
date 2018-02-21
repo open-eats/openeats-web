@@ -53,7 +53,7 @@ export class Select extends BaseComponent {
           { this.props.label ? <label>{ this.props.label }</label> : null }
           <SelectReact
             name={ this.props.name }
-            value={ this.props.value }
+            value={ this.state.value }
             onChange={ this.handleChange }
             options={ this.props.data }
           />

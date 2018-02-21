@@ -48,6 +48,7 @@ class Menu extends React.Component {
     let { menus, menuItems, location } = this.props;
     let { menuActions, menuItemActions } = this.props;
     let { showModal, editEventId, startDate, endDate } = this.state;
+    const query = qs.parse(location.search);
     //TODO adding a loading status here so that if there are no menu items the code still works!
     if (menuItems.length > 0) {
       return (
@@ -63,8 +64,8 @@ class Menu extends React.Component {
             endDate={ endDate }
           />
           <Calender
-            items={ menuItems }
-            qs={ qs.parse(location.search) }
+            items={ query.menu ? menuItems.filter(t => t.menu == query.menu ) : menuItems }
+            qs={ query }
             onShow={ (id, startDate=null, endDate=null) => {
               this.setState({
                 showModal: true,

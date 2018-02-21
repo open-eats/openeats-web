@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import cn from 'classnames'
 import { navigate } from 'react-big-calendar/lib/utils/constants'
-import { Async, Select } from '../../common/components/Select'
+// import { Async, Select } from '../../common/components/Select'
+import { Select } from '../../common/components/FormComponents'
 
 class Toolbar extends React.Component {
   static propTypes = {
@@ -15,7 +16,7 @@ class Toolbar extends React.Component {
   };
 
   render() {
-    let { messages, label } = this.props;
+    let { messages, label, menus, qs, menuActions, buildVisibilityUrl } = this.props;
 
     return (
       <div className="rbc-toolbar">
@@ -40,7 +41,16 @@ class Toolbar extends React.Component {
           </button>
         </span>
 
-        <span className="rbc-toolbar-label">{label}<Select/></span>
+        <span className="rbc-toolbar-label">
+          {label}
+          <Select
+            name="menu-filter"
+            size="menu-selector"
+            value={ qs.menu || '' }
+            data={ menus }
+            change={ buildVisibilityUrl }
+          />
+        </span>
 
         <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
       </div>
