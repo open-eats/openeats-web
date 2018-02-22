@@ -9,7 +9,7 @@ import { fetchRecipeList } from '../actions/RecipeListActions'
 
 require('../css/rbc-calendar-modal.scss');
 
-class EventModal extends React.Component {
+class MenuItemModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -175,4 +175,4 @@ class EventModal extends React.Component {
   }
 }
 
-export default injectIntl(EventModal)
+export default injectIntl(MenuItemModal)

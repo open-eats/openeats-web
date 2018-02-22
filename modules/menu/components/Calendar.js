@@ -9,14 +9,13 @@ import { connect } from 'react-redux'
 import history from '../../common/history'
 import RecipeEvent from './RecipeEvent'
 import RecipeToolbar from './RecipeToolbar'
-import * as MenuActions from "../actions/MenuActions";
 
 require('react-big-calendar/lib/css/react-big-calendar.css');
 require('../css/rbc-calendar.scss');
 
 BigCalendar.momentLocalizer(moment);
 
-const Calendar = ({ items, onShow, qs }) => {
+const Calendar = ({ items, onMenuShow, onMenuItemShow, qs }) => {
   const events = items.map(item => {
     return {
       ...item,
@@ -54,8 +53,8 @@ const Calendar = ({ items, onShow, qs }) => {
   });
 
   const mapDispatchToProps = dispatch => ({
-    menuActions: bindActionCreators(MenuActions, dispatch),
     buildVisibilityUrl: buildVisibilityUrl,
+    onMenuShow: onMenuShow,
   });
 
   let components = {
@@ -82,8 +81,8 @@ const Calendar = ({ items, onShow, qs }) => {
             defaultDate={ moment(qs.date).toDate() || new Date() }
             onNavigate={ buildDateUrl }
 
-            onSelectEvent={ event => onShow(event.id) }
-            onSelectSlot={ slotInfo => onShow(0, slotInfo.start, slotInfo.end) }
+            onSelectEvent={ event => onMenuItemShow(event.id) }
+            onSelectSlot={ slotInfo => onMenuItemShow(0, slotInfo.start, slotInfo.end) }
           />
         </div>
       </div>

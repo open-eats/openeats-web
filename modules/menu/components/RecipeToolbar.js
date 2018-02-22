@@ -16,7 +16,7 @@ class Toolbar extends React.Component {
   };
 
   render() {
-    let { messages, label, menus, qs, menuActions, buildVisibilityUrl } = this.props;
+    let { messages, label, menus, qs, onMenuShow, buildVisibilityUrl } = this.props;
 
     return (
       <div className="rbc-toolbar">
@@ -42,14 +42,24 @@ class Toolbar extends React.Component {
         </span>
 
         <span className="rbc-toolbar-label">
-          {label}
-          <Select
-            name="menu-filter"
-            size="menu-selector"
-            value={ qs.menu || '' }
-            data={ menus }
-            change={ buildVisibilityUrl }
-          />
+          <div>{ label }</div>
+          <div className="menus-group">
+            <span
+              className="glyphicon glyphicon-plus"
+              onClick={ onMenuShow.bind(this, 0) }
+            />
+            <Select
+              name="menu-filter"
+              size="menu-selector"
+              value={ qs.menu || '' }
+              data={ menus }
+              change={ buildVisibilityUrl }
+            />
+            <span
+              className="glyphicon glyphicon-pencil"
+              onClick={ onMenuShow.bind(this, qs.menu) }
+            />
+          </div>
         </span>
 
         <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>

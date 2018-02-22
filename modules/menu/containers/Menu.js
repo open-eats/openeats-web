@@ -7,7 +7,8 @@ import qs from 'query-string'
 import authCheckRedirect from '../../common/authCheckRedirect'
 import Loading from '../../base/components/Loading'
 import Calender from '../components/Calendar'
-import EventModal from '../components/EventModal'
+import MenuModal from '../components/MenuModal'
+import MenuItemModal from '../components/MenuItemModal'
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
 // import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
@@ -18,8 +19,10 @@ class Menu extends React.Component {
     super(props);
 
     this.state = {
-      showModal: false,
-      editEventId: 0,
+      showMenuModal: false,
+      editMenuEventId: 0,
+      showItemModal: false,
+      editMenuItemEventId: 0,
       startDate: null,
       endDate: null,
     };
@@ -47,18 +50,26 @@ class Menu extends React.Component {
   render() {
     let { menus, menuItems, location } = this.props;
     let { menuActions, menuItemActions } = this.props;
-    let { showModal, editEventId, startDate, endDate } = this.state;
+    let { showMenuModal, editMenuEventId, showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
     const query = qs.parse(location.search);
+    console.log(menus)
     //TODO adding a loading status here so that if there are no menu items the code still works!
     if (menuItems.length > 0) {
       return (
         <div>
-          <EventModal
-            id={ editEventId }
+          <MenuModal
+            id={ editMenuEventId }
+            show={ showMenuModal }
+            onHide={ () => { this.setState({showMenuModal: false}) } }
+            event={ menus.find(t => t.id == editMenuEventId) }
+            menuActions={ menuActions }
+          />
+          <MenuItemModal
+            id={ editMenuItemEventId }
             menus={ menus }
-            show={ showModal }
-            onHide={ () => { this.setState({showModal: false}) } }
-            event={ menuItems.find(t => t.id == editEventId) }
+            show={ showItemModal }
+            onHide={ () => { this.setState({showItemModal: false}) } }
+            event={ menuItems.find(t => t.id == editMenuItemEventId) }
             menuItemActions={ menuItemActions }
             startDate={ startDate }
             endDate={ endDate }
@@ -66,10 +77,20 @@ class Menu extends React.Component {
           <Calender
             items={ query.menu ? menuItems.filter(t => t.menu == query.menu ) : menuItems }
             qs={ query }
-            onShow={ (id, startDate=null, endDate=null) => {
+            onMenuItemShow={ (id, startDate=null, endDate=null) => {
+              console.log(id)
               this.setState({
-                showModal: true,
-                editEventId: id,
+                showItemModal: true,
+                editMenuItemEventId: id,
+                startDate: startDate,
+                endDate: endDate,
+              })
+            }}
+            onMenuShow={ id => {
+              console.log(id)
+              this.setState({
+                showMenuModal: true,
+                editMenuEventId: id,
                 startDate: startDate,
                 endDate: endDate,
               })

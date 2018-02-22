@@ -14,9 +14,19 @@
     }
   }
   .rbc-toolbar-label {
-    .form-group {
+    .menus-group {
       display: inline-block;
-      width: 200px;
+      .glyphicon {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 10px;
+      }
+      .menu-selector {
+        display: inline-block;
+        .form-group {
+          width: 200px;
+        }
+      }
     }
   }
 }
