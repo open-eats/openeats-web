@@ -24,7 +24,7 @@ import List from './list/containers/List'
 import Browse from './browse/containers/Browse'
 import Form from './recipe_form/containers/Form'
 import RecipeView from './recipe/components/RecipeView'
-import Menu from './menu/containers/Menu'
+import Menu from './menu/components/Menu'
 
 // Load required polyfills
 import {

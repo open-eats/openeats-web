@@ -3,16 +3,24 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import qs from 'query-string'
+import BigCalendar from 'react-big-calendar'
+import moment from 'moment'
 
+import history from '../../common/history'
 import authCheckRedirect from '../../common/authCheckRedirect'
+import documentTitle from '../../common/documentTitle'
+
 import Loading from '../../base/components/Loading'
-import Calender from '../components/Calendar'
+import RecipeEvent from '../components/RecipeEvent'
+import RecipeToolbar from '../components/RecipeToolbar'
 import MenuModal from '../components/MenuModal'
 import MenuItemModal from '../components/MenuItemModal'
+
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
-import documentTitle from '../../common/documentTitle'
+
+BigCalendar.momentLocalizer(moment);
 
 class Menu extends React.Component {
   constructor(props) {
@@ -47,13 +55,80 @@ class Menu extends React.Component {
   //   }
   // }
 
+  buildViewUrl = value => {
+    let parsed = qs.parse(this.props.location.search);
+    parsed['view'] = value;
+    history.push('/menu/?' + qs.stringify(parsed));
+  };
+
+  buildDateUrl = value => {
+    let parsed = qs.parse(this.props.location.search);
+    parsed['date'] = moment(value).format('YYYY-MM-DD');
+    history.push('/menu/?' + qs.stringify(parsed));
+  };
+
+  buildVisibilityUrl = (name, value) => {
+    let parsed = qs.parse(this.props.location.search);
+    if (value) {
+      parsed['menu'] = value;
+    } else {
+      delete parsed['menu'];
+    }
+    history.push('/menu/?' + qs.stringify(parsed));
+  };
+
+  onMenuItemShow = (id, startDate=null, endDate=null) => {
+    this.setState({
+      showItemModal: true,
+      editMenuItemEventId: id,
+      startDate: startDate,
+      endDate: endDate,
+    })
+  };
+
+  getComponents = () => {
+    const query = qs.parse(this.props.location.search);
+    const mapStateToProps = state => ({
+      menus: state.menu.menus,
+      qs: query,
+    });
+
+    const mapDispatchToProps = dispatch => ({
+      buildVisibilityUrl: this.buildVisibilityUrl,
+      onMenuShow: id => this.setState({
+        showMenuModal: true,
+        editMenuEventId: id,
+      })
+    });
+
+    return {
+      event: RecipeEvent, // used by each view (Month, Day, Week)
+      toolbar: connect(mapStateToProps, mapDispatchToProps)(RecipeToolbar),
+    };
+  };
+
   render() {
-    let { menus, menuItems, location } = this.props;
-    let { menuActions, menuItemActions } = this.props;
-    let { showMenuModal, editMenuEventId, showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
+    const { menus, menuItems, location } = this.props;
+    const { menuActions, menuItemActions } = this.props;
+    const { showMenuModal, editMenuEventId } = this.state;
+    const { showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
     const query = qs.parse(location.search);
+
     //TODO adding a loading status here so that if there are no menu items the code still works!
     if (menuItems.length > 0) {
+      let events = (
+        query.menu ?
+          menuItems.filter(t => t.menu == query.menu ) :
+          menuItems
+      ).map(item => {
+        return {
+          ...item,
+          allDay: item.all_day,
+          start: moment(item.start_date).toDate(),
+          end: moment(item.end_date).toDate(),
+        }
+      });
+
       return (
         <div>
           <MenuModal
@@ -74,25 +149,23 @@ class Menu extends React.Component {
             endDate={ endDate }
             fetchRecipeList={ fetchRecipeList }
           />
-          <Calender
-            items={ query.menu ? menuItems.filter(t => t.menu == query.menu ) : menuItems }
-            qs={ query }
-            onMenuItemShow={ (id, startDate=null, endDate=null) => {
-              this.setState({
-                showItemModal: true,
-                editMenuItemEventId: id,
-                startDate: startDate,
-                endDate: endDate,
-              })
-            }}
-            onMenuShow={ id => {
-              this.setState({
-                showMenuModal: true,
-                editMenuEventId: id,
-                startDate: startDate,
-                endDate: endDate,
-              })
-            }}
+          <BigCalendar
+            popup
+            selectable
+            showMultiDayTimes
+            components={ this.getComponents() }
+            events={ events }
+
+            view={ query.view || 'month' }
+            defaultView={ 'month' }
+            onView={ this.buildViewUrl }
+
+            date={ moment(query.date).toDate() }
+            defaultDate={ moment(query.date).toDate() || new Date() }
+            onNavigate={ this.buildDateUrl }
+
+            onSelectEvent={ event => this.onMenuItemShow(event.id) }
+            onSelectSlot={ slotInfo => this.onMenuItemShow(0, slotInfo.start, slotInfo.end) }
           />
         </div>
       );
@@ -117,7 +190,7 @@ const mapStateToProps = state => ({
   menuItems: state.menu.items,
 });
 
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = dispatch => ({
   menuActions: bindActionCreators(MenuActions, dispatch),
   menuItemActions: bindActionCreators(MenuItemActions, dispatch),
 });
