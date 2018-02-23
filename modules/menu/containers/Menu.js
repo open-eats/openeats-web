@@ -11,7 +11,7 @@ import MenuModal from '../components/MenuModal'
 import MenuItemModal from '../components/MenuItemModal'
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
-// import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
+import { fetchRecipeList } from '../actions/RecipeListActions'
 import documentTitle from '../../common/documentTitle'
 
 class Menu extends React.Component {
@@ -52,7 +52,6 @@ class Menu extends React.Component {
     let { menuActions, menuItemActions } = this.props;
     let { showMenuModal, editMenuEventId, showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
     const query = qs.parse(location.search);
-    console.log(menus)
     //TODO adding a loading status here so that if there are no menu items the code still works!
     if (menuItems.length > 0) {
       return (
@@ -73,12 +72,12 @@ class Menu extends React.Component {
             menuItemActions={ menuItemActions }
             startDate={ startDate }
             endDate={ endDate }
+            fetchRecipeList={ fetchRecipeList }
           />
           <Calender
             items={ query.menu ? menuItems.filter(t => t.menu == query.menu ) : menuItems }
             qs={ query }
             onMenuItemShow={ (id, startDate=null, endDate=null) => {
-              console.log(id)
               this.setState({
                 showItemModal: true,
                 editMenuItemEventId: id,
@@ -87,7 +86,6 @@ class Menu extends React.Component {
               })
             }}
             onMenuShow={ id => {
-              console.log(id)
               this.setState({
                 showMenuModal: true,
                 editMenuEventId: id,

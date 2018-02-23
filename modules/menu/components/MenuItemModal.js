@@ -5,7 +5,6 @@ import { injectIntl, defineMessages } from 'react-intl';
 import { Checkbox } from '../../common/components/FormComponents'
 import { DateTime } from '../../common/components/DateTime'
 import { Async, Select } from '../../common/components/Select'
-import { fetchRecipeList } from '../actions/RecipeListActions'
 
 require('../css/rbc-calendar-modal.scss');
 
@@ -26,8 +25,7 @@ class MenuItemModal extends React.Component {
   componentWillReceiveProps(nextProps) {
     let { event, startDate, endDate } = nextProps;
 
-    // let title = intl.formatMessage(messages.new_menu_item);
-    let title = 'Create a new Menu Item';
+    let title = this.props.intl.messages['men_item_event_model.new_menu_item'];
     let menu = '';
     let recipe = '';
     let start_date = startDate || new Date();
@@ -72,41 +70,41 @@ class MenuItemModal extends React.Component {
   };
 
   render () {
-    let { id, show, onHide, menus, menuItemActions, intl } = this.props;
+    let { show, onHide, fetchRecipeList, menus, intl } = this.props;
     let { menu, recipe, title, start_date, end_date, all_day } = this.state;
     const messages = defineMessages({
       start_date: {
-        id: 'men_event_model.start_date',
+        id: 'men_item_event_model.start_date',
         description: 'Start Date',
         defaultMessage: 'Start Date',
       },
       end_date: {
-        id: 'men_event_model.end_date',
+        id: 'men_item_event_model.end_date',
         description: 'End Date',
         defaultMessage: 'End Date',
       },
       recipe: {
-        id: 'men_event_model.recipe',
+        id: 'men_item_event_model.recipe',
         description: 'Recipe',
         defaultMessage: 'Recipe',
       },
       menu: {
-        id: 'men_event_model.menu',
+        id: 'men_item_event_model.menu',
         description: 'Menu',
         defaultMessage: 'Menu',
       },
       all_day: {
-        id: 'men_event_model.all_day',
+        id: 'men_item_event_model.all_day',
         description: 'Anytime today',
         defaultMessage: 'Anytime today',
       },
       new_menu_item: {
-        id: 'men_event_model.new_menu_item',
+        id: 'men_item_event_model.new_menu_item',
         description: 'Create a new Menu Item',
         defaultMessage: 'Create a new Menu Item',
       },
       confirmDelete: {
-        id: 'men_event_model.confirm_delete',
+        id: 'men_item_event_model.confirm_delete',
         description: 'Are you sure you want to delete this?',
         defaultMessage: 'Are you sure you want to delete this?',
       },
@@ -122,9 +120,7 @@ class MenuItemModal extends React.Component {
               this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
             }
           >
-            <span
-              className="glyphicon glyphicon-trash"
-            />
+            <span className="glyphicon glyphicon-trash"/>
           </button>
         </Modal.Header>
 

@@ -5,7 +5,6 @@ const items = (state = [], action) => {
     case MenuConstants.MENU_LOAD:
       return action.data;
     case MenuConstants.MENU_ADD:
-      console.log(action)
       return [ ...state, { ...action.data }];
     case MenuConstants.MENU_SAVE:
       return state.map(item =>

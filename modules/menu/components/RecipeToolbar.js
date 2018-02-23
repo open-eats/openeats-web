@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import cn from 'classnames'
 import { navigate } from 'react-big-calendar/lib/utils/constants'
-// import { Async, Select } from '../../common/components/Select'
+
 import { Select } from '../../common/components/FormComponents'
 
 class Toolbar extends React.Component {
@@ -11,8 +11,12 @@ class Toolbar extends React.Component {
     views: PropTypes.arrayOf(PropTypes.string).isRequired,
     label: PropTypes.node.isRequired,
     messages: PropTypes.object,
+    menus: PropTypes.array,
+    qs: PropTypes.object,
     onNavigate: PropTypes.func.isRequired,
     onViewChange: PropTypes.func.isRequired,
+    onMenuShow: PropTypes.func.isRequired,
+    buildVisibilityUrl: PropTypes.func.isRequired,
   };
 
   render() {
@@ -55,10 +59,13 @@ class Toolbar extends React.Component {
               data={ menus }
               change={ buildVisibilityUrl }
             />
-            <span
-              className="glyphicon glyphicon-pencil"
-              onClick={ onMenuShow.bind(this, qs.menu) }
-            />
+            { qs.menu ?
+              <span
+                  className="glyphicon glyphicon-pencil"
+                  onClick={onMenuShow.bind(this, qs.menu)}
+              /> :
+              <span className="glyphicon glyphicon-space"/>
+            }
           </div>
         </span>
 

@@ -19,8 +19,7 @@ class MenuModal extends React.Component {
   componentWillReceiveProps(nextProps) {
     let { event } = nextProps;
 
-    // let title = intl.formatMessage(messages.new_menu);
-    let title = 'Create a new Menu';
+    let title = this.props.intl.messages['men_event_model.new_menu'];
     let description = '';
 
     if (event) {
@@ -53,7 +52,7 @@ class MenuModal extends React.Component {
   };
 
   render () {
-    let { id, show, onHide, menus, menuActions, intl } = this.props;
+    let { show, onHide, intl } = this.props;
     let { title, description } = this.state;
     const messages = defineMessages({
       title: {
@@ -66,10 +65,10 @@ class MenuModal extends React.Component {
         description: 'Description',
         defaultMessage: 'Description',
       },
-      new_menu_item: {
-        id: 'men_event_model.new_menu_item',
-        description: 'Create a new Menu Item',
-        defaultMessage: 'Create a new Menu Item',
+      new_menu: {
+        id: 'men_event_model.new_menu',
+        description: 'Create a new Menu',
+        defaultMessage: 'Create a new Menu',
       },
       confirmDelete: {
         id: 'men_event_model.confirm_delete',
@@ -88,9 +87,7 @@ class MenuModal extends React.Component {
               this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
             }
           >
-            <span
-              className="glyphicon glyphicon-trash"
-            />
+            <span className="glyphicon glyphicon-trash" />
           </button>
         </Modal.Header>
 

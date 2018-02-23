@@ -20,6 +20,9 @@
         cursor: pointer;
         display: inline-block;
         margin: 0 10px;
+        &.glyphicon-space {
+          margin: 0 18px;
+        }
       }
       .menu-selector {
         display: inline-block;
