@@ -1,7 +1,18 @@
 import { request } from '../../common/CustomSuperagent';
 import { serverURLs } from '../../common/config'
 import MenuConstants from '../constants/MenuConstants';
-import MenuItemConstants from "../constants/MenuItemConstants";
+import history from '../../common/history'
+import qs from 'query-string'
+
+const changeUrl = id => {
+  let parsed = qs.parse(window.location.search);
+  if (id) {
+    parsed['menu'] = id;
+  } else {
+    delete parsed['menu'];
+  }
+  history.push('/menu/?' + qs.stringify(parsed));
+};
 
 export const load = () => {
   return (dispatch) => {
@@ -35,7 +46,8 @@ export const save = (id, data) => {
           dispatch({
             type: MenuConstants.MENU_ADD,
             data: res.body
-          })
+          });
+          changeUrl(res.body.id);
         })
     }
   }
@@ -45,6 +57,9 @@ export const remove = (id) => {
   return (dispatch) => {
     request()
       .delete(serverURLs.menu + id)
-      .then(res => dispatch({type: MenuConstants.MENU_DELETE, id: id}))
+      .then(res => {
+        dispatch({type: MenuConstants.MENU_DELETE, id: id});
+        changeUrl();
+      })
   }
 };

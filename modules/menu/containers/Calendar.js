@@ -47,14 +47,6 @@ class Menu extends React.Component {
     documentTitle();
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.match.params.recipe !== this.props.match.params.recipe) {
-  //     nextProps.recipeItemActions.reset();
-  //     nextProps.recipeActions.load(nextProps.match.params.recipe);
-  //     window.scrollTo(0, 0);
-  //   }
-  // }
-
   buildViewUrl = value => {
     let parsed = qs.parse(this.props.location.search);
     parsed['view'] = value;
@@ -175,15 +167,13 @@ class Menu extends React.Component {
   }
 }
 
-// Menu.propTypes = {
-//   recipes: PropTypes.array.isRequired,
-//   lists: PropTypes.array.isRequired,
-//   status: PropTypes.string.isRequired,
-//   user: PropTypes.object.isRequired,
-//   match: PropTypes.object.isRequired,
-//   recipeActions: PropTypes.object.isRequired,
-//   recipeItemActions: PropTypes.object.isRequired,
-// };
+Menu.propTypes = {
+  menus: PropTypes.array.isRequired,
+  menuItems: PropTypes.array.isRequired,
+  menuActions: PropTypes.object.isRequired,
+  menuItemActions: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = state => ({
   menus: state.menu.menus,

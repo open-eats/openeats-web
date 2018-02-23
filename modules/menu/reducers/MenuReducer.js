@@ -11,7 +11,7 @@ const items = (state = [], action) => {
         item.id === action.data.id ? { ...action.data } : item
       );
     case MenuConstants.MENU_DELETE:
-      return state.filter(t => t.id !== action.id);
+      return state.filter(t => t.id != action.id);
     default:
       return state;
   }
