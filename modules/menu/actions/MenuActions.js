@@ -48,6 +48,27 @@ export const save = (id, data) => {
   }
 };
 
+export const copy = (id, data) => {
+  return (dispatch) => {
+    data['menu'] = id;
+    console.log(data);
+    request()
+      .post(serverURLs.menuCopy)
+      .send(data)
+      .then(res => {
+        dispatch({
+          type: MenuConstants.MENU_ADD,
+          data: res.body.menu
+        });
+        dispatch({
+          type: MenuItemConstants.MENU_ITEM_CREATE_BULK,
+          data: res.body.items
+        });
+        changeUrl(res.body.menu.id);
+      })
+  }
+};
+
 export const remove = (id) => {
   return (dispatch) => {
     request()

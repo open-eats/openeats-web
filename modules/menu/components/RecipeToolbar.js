@@ -20,7 +20,8 @@ class Toolbar extends React.Component {
   };
 
   render() {
-    let { messages, label, menus, qs, onMenuShow, buildVisibilityUrl } = this.props;
+    let { messages, label, menus, qs } = this.props;
+    let { onMenuShow, onCopyMenuShow, buildVisibilityUrl } = this.props;
 
     return (
       <div className="rbc-toolbar">
@@ -61,10 +62,16 @@ class Toolbar extends React.Component {
               change={ buildVisibilityUrl }
             />
             { qs.menu ?
-              <span
-                  className="glyphicon glyphicon-pencil"
-                  onClick={onMenuShow.bind(this, qs.menu)}
-              /> :
+              <span>
+                <span
+                    className="glyphicon glyphicon-pencil"
+                    onClick={onMenuShow.bind(this, qs.menu)}
+                />
+                <span
+                    className="glyphicon glyphicon-copy"
+                    onClick={onCopyMenuShow.bind(this, qs.menu)}
+                />
+              </span>:
               <span className="glyphicon glyphicon-space"/>
             }
           </div>

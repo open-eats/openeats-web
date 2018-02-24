@@ -14,6 +14,7 @@ import Loading from '../../base/components/Loading'
 import RecipeEvent from '../components/RecipeEvent'
 import RecipeToolbar from '../components/RecipeToolbar'
 import MenuModal from '../components/MenuModal'
+import MenuCopyModal from '../components/MenuCopyModal'
 import MenuItemModal from '../components/MenuItemModal'
 
 import * as MenuActions from '../actions/MenuActions'
@@ -29,6 +30,8 @@ class Menu extends React.Component {
     this.state = {
       showMenuModal: false,
       editMenuEventId: 0,
+      showCopyMenuModal: false,
+      editCopyMenuEventId: 0,
       showItemModal: false,
       editMenuItemEventId: 0,
       startDate: null,
@@ -93,6 +96,10 @@ class Menu extends React.Component {
       onMenuShow: id => this.setState({
         showMenuModal: true,
         editMenuEventId: id,
+      }),
+      onCopyMenuShow: id => this.setState({
+        showCopyMenuModal: true,
+        editCopyMenuEventId: id,
       })
     });
 
@@ -106,6 +113,7 @@ class Menu extends React.Component {
     const { menus, menuItems, location } = this.props;
     const { menuActions, menuItemActions } = this.props;
     const { showMenuModal, editMenuEventId } = this.state;
+    const { showCopyMenuModal, editCopyMenuEventId } = this.state;
     const { showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
     const query = qs.parse(location.search);
 
@@ -130,6 +138,13 @@ class Menu extends React.Component {
             show={ showMenuModal }
             onHide={ () => { this.setState({showMenuModal: false}) } }
             event={ menus.find(t => t.id == editMenuEventId) }
+            menuActions={ menuActions }
+          />
+          <MenuCopyModal
+            id={ editCopyMenuEventId }
+            show={ showCopyMenuModal }
+            onHide={ () => { this.setState({showCopyMenuModal: false}) } }
+            event={ menus.find(t => t.id == editCopyMenuEventId) }
             menuActions={ menuActions }
           />
           <MenuItemModal
