@@ -13,7 +13,7 @@ class MenuModal extends React.Component {
 
     this.state = {
       title: '',
-      start: '',
+      start: new Date(),
       description: '',
       placeholder: this.props.intl.messages['men_event_model.new_menu'],
     };
@@ -96,7 +96,7 @@ class MenuModal extends React.Component {
             />
             <DateTime
               name="start"
-              value={ new Date() }
+              value={ start }
               timeFormat={ false }
               change={ this.onChange }
               label={ intl.formatMessage(messages.start) }
