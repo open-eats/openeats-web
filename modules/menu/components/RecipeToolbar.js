@@ -57,6 +57,7 @@ class Toolbar extends React.Component {
               size="menu-selector"
               value={ qs.menu || '' }
               data={ menus }
+              default="All Menus"
               change={ buildVisibilityUrl }
             />
             { qs.menu ?

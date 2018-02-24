@@ -19,7 +19,7 @@ export class Async extends BaseComponent {
 
   render() {
     return (
-      <div className={ this.props.size } key={ this.props.id }>
+      <div className={ this.props.class } key={ this.props.id }>
         <div className={ "form-group " + (this.hasErrors() ? 'has-error' : null) }>
           { this.props.label ? <label>{ this.props.label }</label> : null }
           <AsyncReact
@@ -48,7 +48,7 @@ export class Select extends BaseComponent {
 
   render() {
     return (
-      <div className={ this.props.size } key={ this.props.id }>
+      <div className={ this.props.class } key={ this.props.id }>
         <div className={ "form-group " + (this.hasErrors() ? 'has-error' : null) }>
           { this.props.label ? <label>{ this.props.label }</label> : null }
           <SelectReact

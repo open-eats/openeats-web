@@ -204,15 +204,6 @@ class Select extends BaseComponent {
       );
     });
 
-    const {formatMessage} = this.props.intl;
-    const messages = defineMessages({
-      header: {
-        id: 'select_widget.header',
-        description: 'Select widget default message',
-        defaultMessage: 'Please select a {label}',
-      }
-    });
-
     return (
       <div className={ this.props.size } key={ this.props.id }>
         <div className={ "form-group " + (this.hasErrors() ? 'has-error' : null) }>
@@ -221,7 +212,7 @@ class Select extends BaseComponent {
                   className="form-control"
                   value={ this.state.value }
                   onChange={ this.handleChange }>
-            <option key={0} value="">{ formatMessage(messages.header, { label: this.props.label }) }</option>
+            <option key={0} value="">{ this.props.default }</option>
             { options }
           </select>
           { this.getErrorMessage() }
@@ -236,4 +227,4 @@ module.exports.Input = Input;
 module.exports.TextArea = TextArea;
 module.exports.File = injectIntl(File);
 module.exports.Checkbox = Checkbox;
-module.exports.Select = injectIntl(Select);
+module.exports.Select = Select;

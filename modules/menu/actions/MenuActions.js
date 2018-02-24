@@ -1,6 +1,7 @@
 import { request } from '../../common/CustomSuperagent';
 import { serverURLs } from '../../common/config'
 import MenuConstants from '../constants/MenuConstants';
+import MenuItemConstants from '../constants/MenuItemConstants';
 import history from '../../common/history'
 import qs from 'query-string'
 
@@ -59,6 +60,7 @@ export const remove = (id) => {
       .delete(serverURLs.menu + id)
       .then(res => {
         dispatch({type: MenuConstants.MENU_DELETE, id: id});
+        dispatch({type: MenuItemConstants.MENU_ITEM_MENU_DELETE, id: id});
         changeUrl();
       })
   }

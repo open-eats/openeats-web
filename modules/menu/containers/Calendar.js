@@ -70,12 +70,15 @@ class Menu extends React.Component {
   };
 
   onMenuItemShow = (id, startDate=null, endDate=null) => {
-    this.setState({
-      showItemModal: true,
-      editMenuItemEventId: id,
-      startDate: startDate,
-      endDate: endDate,
-    })
+    // TODO add message saying to create a menu
+    if (this.props.menus.length > 0) {
+      this.setState({
+        showItemModal: true,
+        editMenuItemEventId: id,
+        startDate: startDate,
+        endDate: endDate,
+      })
+    }
   };
 
   getComponents = () => {
@@ -106,8 +109,7 @@ class Menu extends React.Component {
     const { showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
     const query = qs.parse(location.search);
 
-    //TODO adding a loading status here so that if there are no menu items the code still works!
-    if (menuItems.length > 0) {
+    if (menuItems !== null) {
       let events = (
         query.menu ?
           menuItems.filter(t => t.menu == query.menu ) :
@@ -157,7 +159,11 @@ class Menu extends React.Component {
             onNavigate={ this.buildDateUrl }
 
             onSelectEvent={ event => this.onMenuItemShow(event.id) }
-            onSelectSlot={ slotInfo => this.onMenuItemShow(0, slotInfo.start, slotInfo.end) }
+            onSelectSlot={ slotInfo => this.onMenuItemShow(
+                0,
+                moment(slotInfo.start),
+                moment(slotInfo.end).add(1, 'h')
+            )}
           />
         </div>
       );
@@ -168,8 +174,8 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  menus: PropTypes.array.isRequired,
-  menuItems: PropTypes.array.isRequired,
+  menus: PropTypes.array,
+  menuItems: PropTypes.array,
   menuActions: PropTypes.object.isRequired,
   menuItemActions: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
