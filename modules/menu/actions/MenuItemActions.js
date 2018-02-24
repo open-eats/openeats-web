@@ -14,12 +14,6 @@ export const load = () => {
 
 export const save = (id, data) => {
   return (dispatch) => {
-    // TODO add a better check ot see if the reicpe has been updated.
-    // right now we are just making sure that it's a int
-    if ((typeof data.recipe) === 'string') {
-      delete data.recipe;
-    }
-
     if (id != 0) {
       request()
         .patch(serverURLs.menu_item + id + '/')
