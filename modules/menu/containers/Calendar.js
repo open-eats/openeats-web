@@ -16,6 +16,7 @@ import RecipeToolbar from '../components/RecipeToolbar'
 import MenuModal from '../components/MenuModal'
 import MenuCopyModal from '../components/MenuCopyModal'
 import MenuItemModal from '../components/MenuItemModal'
+import MenuList from '../components/MenuList'
 
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
@@ -164,6 +165,13 @@ class Menu extends React.Component {
             showMultiDayTimes
             components={ this.getComponents() }
             events={ events }
+            views={{
+              month: true,
+              week: true,
+              day: true,
+              agenda: true,
+              menu: MenuList,
+            }}
 
             view={ query.view || 'month' }
             defaultView={ 'month' }
