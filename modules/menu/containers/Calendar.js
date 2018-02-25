@@ -170,7 +170,10 @@ class Menu extends React.Component {
               week: true,
               day: true,
               agenda: true,
-              menu: MenuList,
+              // The MenuList doesn't have a great direction right now.
+              // I'm thinking this should be treated like an admin resource for older menu items.
+              // This means that we will need to add pagination to it to make it effective.
+              // menu: MenuList,
             }}
 
             view={ query.view || 'month' }
