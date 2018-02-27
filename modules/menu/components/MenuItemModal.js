@@ -58,6 +58,7 @@ class MenuItemModal extends React.Component {
   onChange = (name, value) => {
     let newState = {};
     newState[name] = value;
+    // TODO: before we update teh state check to see if a valid value was entered
     this.setState(newState)
   };
 
