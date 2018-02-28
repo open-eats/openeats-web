@@ -1,15 +1,15 @@
 import moment from 'moment'
 
 const isDate = val => {
-  return moment(val).isValid();
+  return moment(val).isValid() ? '' : 'Please entry a valid date.';
 };
 
 const double = val => {
-  return !isNaN(val);
+  return !isNaN(val) ? '' : 'This field is required.';
 };
 
 const notNull = val => {
-  return !!val;
+  return val ? '' : 'This field is required.';
 };
 
 export const menuItemValidation = [
