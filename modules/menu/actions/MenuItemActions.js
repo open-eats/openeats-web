@@ -18,6 +18,12 @@ export const load = () => {
 
 export const save = (id, data) => {
   return (dispatch) => {
+    dispatch({
+      type: StatusConstants.MENU_STATUS_DISPLAY,
+      message: 'Saving. Please wait...',
+      alert: 'alert-info'
+    });
+
     if (id != 0) {
       request()
         .patch(serverURLs.menu_item + id + '/')
@@ -27,10 +33,18 @@ export const save = (id, data) => {
             type: MenuItemConstants.MENU_ITEM_SAVE,
             data: res.body
           });
-          dispatch({ type: StatusConstants.MENU_ITEM_SUCCESS });
+          dispatch({
+            type: StatusConstants.MENU_STATUS_DISPLAY,
+            message: 'Menu Item Saved!',
+            alert: 'alert-success'
+          });
         })
         .catch(err => {
-          dispatch({ type: StatusConstants.MENU_ITEM_ERROR });
+          dispatch({
+            type: StatusConstants.MENU_STATUS_DISPLAY,
+            message: 'Menu Item failed to saved.',
+            alert: 'alert-error'
+          });
         })
     } else {
       request()
@@ -41,10 +55,18 @@ export const save = (id, data) => {
             type: MenuItemConstants.MENU_ITEM_CREATE,
             data: res.body
           });
-          dispatch({ type: StatusConstants.MENU_ITEM_SUCCESS });
+          dispatch({
+            type: StatusConstants.MENU_STATUS_DISPLAY,
+            message: 'Menu Item Created!',
+            alert: 'alert-success'
+          });
         })
         .catch(err => {
-          dispatch({ type: StatusConstants.MENU_ITEM_ERROR });
+          dispatch({
+            type: StatusConstants.MENU_STATUS_DISPLAY,
+            message: 'Menu Item failed to saved.',
+            alert: 'alert-error'
+          });
         })
     }
   }
@@ -52,14 +74,28 @@ export const save = (id, data) => {
 
 export const remove = (id) => {
   return (dispatch) => {
+    dispatch({
+      type: StatusConstants.MENU_STATUS_DISPLAY,
+      message: 'Deleting. Please wait...',
+      alert: 'alert-info'
+    });
+
     request()
       .delete(serverURLs.menu_item + id)
       .then(res => {
         dispatch({type: MenuItemConstants.MENU_ITEM_DELETE, id: id});
-        dispatch({ type: StatusConstants.MENU_ITEM_SUCCESS });
+        dispatch({
+          type: StatusConstants.MENU_STATUS_DISPLAY,
+          message: 'Menu Item Removed!',
+          alert: 'alert-success'
+        });
       })
       .catch(err => {
-        dispatch({ type: StatusConstants.MENU_ITEM_ERROR });
+        dispatch({
+          type: StatusConstants.MENU_STATUS_DISPLAY,
+          message: 'Menu Item failed to be deleted.',
+          alert: 'alert-error'
+        });
       })
   }
 };

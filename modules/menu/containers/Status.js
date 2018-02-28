@@ -12,8 +12,8 @@ class Status extends React.Component {
 
     return (
       <StatusBar
-        alert={ '' }
-        message={ status }
+        alert={ status.alert }
+        message={ status.message }
         close={ menuStatusActions.close }
       />
     );
