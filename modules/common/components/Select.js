@@ -4,6 +4,7 @@ import { Async as AsyncReact} from 'react-select'
 import { BaseComponent } from './FormComponents'
 
 require('react-select/dist/react-select.css');
+require('../css/select.scss');
 
 export class Async extends BaseComponent {
   handleChange(data) {

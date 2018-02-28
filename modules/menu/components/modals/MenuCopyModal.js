@@ -2,12 +2,13 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 import { injectIntl, defineMessages } from 'react-intl';
 
-import { DateTime } from '../../common/components/DateTime'
-import { Input, TextArea } from '../../common/components/FormComponents'
+import BaseModal from './BaseModal'
+import { DateTime } from '../../../common/components/DateTime'
+import { Input, TextArea } from '../../../common/components/FormComponents'
 
-require('../css/rbc-calendar-modal.scss');
+require('../../css/rbc-calendar-modal.scss');
 
-class MenuModal extends React.Component {
+class MenuModal extends BaseModal {
   constructor(props) {
     super(props);
 
@@ -35,18 +36,6 @@ class MenuModal extends React.Component {
       description: description,
     });
   }
-
-  onChange = (name, value) => {
-    let newState = {};
-    newState[name] = value;
-    this.setState(newState)
-  };
-
-  save = (e) => {
-    e.preventDefault();
-    this.props.menuActions.copy(this.props.id, this.state);
-    this.props.onHide();
-  };
 
   render () {
     let { show, onHide, intl } = this.props;
@@ -76,38 +65,39 @@ class MenuModal extends React.Component {
 
     return (
       <Modal show={ show } onHide={ onHide } className="rbc-calendar-modal">
-        <form onSubmit={ this.save }>
-          <Modal.Header>
-            <Modal.Title>{ placeholder }</Modal.Title>
-          </Modal.Header>
+        <Modal.Header>
+          <Modal.Title>{ placeholder }</Modal.Title>
+        </Modal.Header>
 
-          <Modal.Body>
-            <Input
-              name="title"
-              value={ title }
-              change={ this.onChange }
-              label={ intl.formatMessage(messages.title) }
-            />
-            <TextArea
-              name="description"
-              value={ description }
-              change={ this.onChange }
-              label={ intl.formatMessage(messages.description) }
-            />
-            <DateTime
-              name="start"
-              value={ start }
-              timeFormat={ false }
-              change={ this.onChange }
-              label={ intl.formatMessage(messages.start) }
-            />
-          </Modal.Body>
+        <Modal.Body>
+          <Input
+            name="title"
+            value={ title }
+            change={ this.change }
+            label={ intl.formatMessage(messages.title) }
+            errors={ this.state['error_title'] }
+          />
+          <TextArea
+            name="description"
+            value={ description }
+            change={ this.change }
+            label={ intl.formatMessage(messages.description) }
+            errors={ this.state['error_description'] }
+          />
+          <DateTime
+            name="start"
+            value={ start }
+            timeFormat={ false }
+            change={ this.change }
+            label={ intl.formatMessage(messages.start) }
+            errors={ this.state['error_start'] }
+          />
+        </Modal.Body>
 
-          <Modal.Footer>
-            <button className="btn btn-success" onClick={ this.save }>Clone</button>
-            <button className="btn btn-primary" onClick={ onHide }>Cancel</button>
-          </Modal.Footer>
-        </form>
+        <Modal.Footer>
+          <button className="btn btn-success" onClick={ this.save }>Clone</button>
+          <button className="btn btn-primary" onClick={ onHide }>Cancel</button>
+        </Modal.Footer>
       </Modal>
     )
   }

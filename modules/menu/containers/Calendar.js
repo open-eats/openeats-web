@@ -13,14 +13,15 @@ import documentTitle from '../../common/documentTitle'
 import Loading from '../../base/components/Loading'
 import RecipeEvent from '../components/RecipeEvent'
 import RecipeToolbar from '../components/RecipeToolbar'
-import MenuModal from '../components/MenuModal'
-import MenuCopyModal from '../components/MenuCopyModal'
-import MenuItemModal from '../components/MenuItemModal'
+import MenuModal from '../components/modals/MenuModal'
+import MenuCopyModal from '../components/modals/MenuCopyModal'
+import MenuItemModal from '../components/modals/MenuItemModal'
 import MenuList from '../components/MenuList'
 
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
+import { menuItemValidation, menuValidation, copyMenuValidation } from '../actions/validation'
 
 BigCalendar.momentLocalizer(moment);
 
@@ -139,14 +140,17 @@ class Menu extends React.Component {
             show={ showMenuModal }
             onHide={ () => { this.setState({showMenuModal: false}) } }
             event={ menus.find(t => t.id == editMenuEventId) }
-            menuActions={ menuActions }
+            onSave={ menuActions.save }
+            onRemove={ menuActions.remove }
+            validation={ menuValidation }
           />
           <MenuCopyModal
             id={ editCopyMenuEventId }
             show={ showCopyMenuModal }
             onHide={ () => { this.setState({showCopyMenuModal: false}) } }
             event={ menus.find(t => t.id == editCopyMenuEventId) }
-            menuActions={ menuActions }
+            onSave={ menuActions.copy }
+            validation={ copyMenuValidation }
           />
           <MenuItemModal
             id={ editMenuItemEventId }
@@ -154,10 +158,12 @@ class Menu extends React.Component {
             show={ showItemModal }
             onHide={ () => { this.setState({showItemModal: false}) } }
             event={ menuItems.find(t => t.id == editMenuItemEventId) }
-            menuItemActions={ menuItemActions }
             startDate={ startDate }
             endDate={ endDate }
+            onSave={ menuItemActions.save }
+            onRemove={ menuItemActions.remove }
             fetchRecipeList={ fetchRecipeList }
+            validation={ menuItemValidation }
           />
           <BigCalendar
             popup
