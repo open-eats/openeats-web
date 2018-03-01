@@ -23,6 +23,27 @@ class Toolbar extends React.Component {
     let { messages, label, menus, qs } = this.props;
     let { onMenuShow, onCopyMenuShow, buildVisibilityUrl } = this.props;
 
+    const menuButtons = () => (
+      <span>
+        <span className="menu-edit-buttons">
+          <span
+            className="glyphicon glyphicon-pencil"
+            onClick={onMenuShow.bind(this, qs.menu)}
+          />
+        </span>
+        <span className="menu-edit-buttons">
+          <span
+            className="glyphicon glyphicon-copy"
+            onClick={onCopyMenuShow.bind(this, qs.menu)}
+          />
+        </span>
+      </span>
+    );
+
+    const menuSpace = () => (
+      <span className="glyphicon glyphicon-space"/>
+    );
+
     return (
       <div className="rbc-toolbar">
         <span className="rbc-btn-group">
@@ -49,10 +70,12 @@ class Toolbar extends React.Component {
         <span className="rbc-toolbar-label">
           <div>{ label }</div>
           <div className="menus-group">
-            <span
-              className="glyphicon glyphicon-plus"
-              onClick={ onMenuShow.bind(this, 0) }
-            />
+            <span className="new-menu">
+              <span
+                className="glyphicon glyphicon-plus"
+                onClick={ onMenuShow.bind(this, 0) }
+              />
+            </span>
             <Select
               name="menu-filter"
               size="menu-selector"
@@ -61,19 +84,7 @@ class Toolbar extends React.Component {
               default="All Menus"
               change={ buildVisibilityUrl }
             />
-            { qs.menu ?
-              <span>
-                <span
-                    className="glyphicon glyphicon-pencil"
-                    onClick={onMenuShow.bind(this, qs.menu)}
-                />
-                <span
-                    className="glyphicon glyphicon-copy"
-                    onClick={onCopyMenuShow.bind(this, qs.menu)}
-                />
-              </span>:
-              <span className="glyphicon glyphicon-space"/>
-            }
+            { qs.menu ? menuButtons() : menuSpace() }
           </div>
         </span>
 

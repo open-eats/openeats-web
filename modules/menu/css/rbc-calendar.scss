@@ -16,6 +16,18 @@
   .rbc-toolbar-label {
     .menus-group {
       display: inline-block;
+      .menu-edit-buttons {
+        padding: 6px 0 8px 0;
+        border-right: solid 1px #ccc;
+        border-top: solid 1px #ccc;
+        border-bottom: solid 1px #ccc;
+      }
+      .new-menu {
+        padding: 6px 0 8px 0;
+        border-left: solid 1px #ccc;
+        border-top: solid 1px #ccc;
+        border-bottom: solid 1px #ccc;
+      }
       .glyphicon {
         cursor: pointer;
         display: inline-block;
@@ -28,6 +40,9 @@
         display: inline-block;
         .form-group {
           width: 200px;
+          select {
+            border-radius: 0;
+          }
         }
       }
     }
