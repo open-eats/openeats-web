@@ -6,7 +6,7 @@ import {
     defineMessages,
 } from 'react-intl'
 
-const RecipeFooter = ({ id, source, username, updateDate, showEditLink, deleteRecipe, intl }) => {
+const RecipeFooter = ({ slug, source, username, updateDate, showEditLink, deleteRecipe, intl }) => {
   const messages = defineMessages({
     source: {
       id: 'recipe.source',
@@ -40,7 +40,7 @@ const RecipeFooter = ({ id, source, username, updateDate, showEditLink, deleteRe
 
   const handleDelete = () => {
     if (confirm(intl.formatMessage(messages.confirm_delete))) {
-      deleteRecipe(id)
+      deleteRecipe(slug)
     }
   };
 
@@ -52,7 +52,7 @@ const RecipeFooter = ({ id, source, username, updateDate, showEditLink, deleteRe
   );
 
   const editLink = (
-    <Link to={ "/recipe/edit/" + id }>
+    <Link to={ "/recipe/edit/" + slug }>
       <button className="btn btn-primary btn-sm">
         <span className="glyphicon glyphicon-pencil"/>
       </button>
@@ -83,7 +83,7 @@ const RecipeFooter = ({ id, source, username, updateDate, showEditLink, deleteRe
 };
 
 RecipeFooter.PropTypes = {
-  id: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
   source: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   updateDate: PropTypes.instanceOf(Date).isRequired,

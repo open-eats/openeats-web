@@ -2,7 +2,7 @@ import { request } from '../../common/CustomSuperagent';
 import { serverURLs } from '../../common/config'
 import RecipeConstants from '../constants/RecipeConstants';
 
-export const bulkAdd = (items, list) => {
+export const bulkAdd = (recipeState, list) => {
   return (dispatch) => {
     const format = (i) => {
       let quantity = i.customQuantity ? i.customQuantity : i.quantity;
@@ -11,7 +11,7 @@ export const bulkAdd = (items, list) => {
       return quantity + measurement + i.title;
     };
 
-    let checkedIngredients = items.ingredient_groups.map(item => {
+    let checkedIngredients = recipeState.ingredient_groups.map(item => {
       return item.ingredients.reduce((myList, ingredient) => {
         if (ingredient && ingredient.checked) {
           myList.push({list: list, title: format(ingredient)})
@@ -20,7 +20,7 @@ export const bulkAdd = (items, list) => {
       }, []);
     });
 
-    let checkedSubRecipe = items.subrecipes.reduce((myList, ingredient) => {
+    let checkedSubRecipe = recipeState.subrecipes.reduce((myList, ingredient) => {
       if (ingredient && ingredient.checked) {
         myList.push({list: list, title: format(ingredient)})
       }
@@ -39,7 +39,7 @@ export const bulkAdd = (items, list) => {
           dispatch({
             type: RecipeConstants.RECIPE_INGREDIENT_UNCHECK_ALL,
             value: false,
-            recipe: items.id
+            recipe: recipeState.id
           })
         })
         .catch(err => { dispatch({type: RecipeConstants.RECIPE_LIST_ERROR}); })

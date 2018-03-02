@@ -22,8 +22,8 @@ class From extends React.Component {
     this.props.recipeGroupActions.fetchCuisines();
     this.props.recipeGroupActions.fetchCourses();
     this.props.recipeGroupActions.fetchTags();
-    if (this.props.match.params.id) {
-      this.props.recipeFormActions.load(this.props.match.params.id);
+    if (this.props.match.params.recipe) {
+      this.props.recipeFormActions.load(this.props.match.params.recipe);
     } else {
       this.props.recipeFormActions.create()
     }
@@ -35,11 +35,11 @@ class From extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.id != this.props.match.params.id) {
+    if (nextProps.match.params.recipe != this.props.match.params.recipe) {
       window.scrollTo(0, 0);
       nextProps.statusActions.close();
-      if (nextProps.match.params.id && !this.props.form.find(t => t.id == nextProps.match.params.id)) {
-        nextProps.recipeFormActions.load(nextProps.match.params.id);
+      if (nextProps.match.params.recipe && !this.props.form.find(t => t.slug == nextProps.match.params.recipe)) {
+        nextProps.recipeFormActions.load(nextProps.match.params.recipe);
       } else {
         nextProps.recipeFormActions.create()
       }
@@ -53,10 +53,10 @@ class From extends React.Component {
       recipeFormActions,
       statusActions
     } = this.props;
-    let id = this.props.match.params.id || 0;
-    let selectForm = form.find(t => t.id == id);
+    let slug = this.props.match.params.recipe || '';
+    let selectForm = form.find(t => t.slug == slug);
     if (selectForm) {
-      if (user !== null && (id === 0 || user.id === selectForm.author)) {
+      if (user !== null && (slug == '' || user.id === selectForm.author)) {
         documentTitle(selectForm.title);
         return (
           <RecipeForm
@@ -72,7 +72,7 @@ class From extends React.Component {
           />
         );
       }
-      history.push('/recipe/' + selectForm.id);
+      history.push('/recipe/' + selectForm.slug);
       return (<div/>)
     } else {
       return ( <Loading message="Loading"/> )
@@ -107,7 +107,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   recipeFormActions: bindActionCreators(
     bindIndexToActionCreators(
       RecipeFormActions,
-      props.match.params.id || 0
+      props.match.params.recipe || ''
     ),
     dispatch
   ),

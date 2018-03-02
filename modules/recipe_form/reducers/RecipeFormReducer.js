@@ -6,7 +6,7 @@ function form(state = [], action) {
       return [...state, { ...action.data, errors: [] }];
     case RecipeFormConstants.RECIPE_FORM_UPDATE:
       return state.map(recipe => {
-        if (recipe.id == action.recipe) {
+        if (recipe.slug == action.recipeSlug) {
           let newState = [], errors = [];
           errors[action.name] = action.error;
           newState[action.name] = action.value;

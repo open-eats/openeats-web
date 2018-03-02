@@ -23,7 +23,7 @@ const SubRecipes = ({ data, check }) => {
             : null
         }
         { (subRecipe.title)
-            ? <Link to={ "/recipe/" + subRecipe.child_recipe_id } className="title">{ subRecipe.title }</Link>
+            ? <Link to={ "/recipe/" + subRecipe.slug } className="title">{ subRecipe.title }</Link>
             : null
         }
       </li>
@@ -40,6 +40,7 @@ const SubRecipes = ({ data, check }) => {
 SubRecipes.PropTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({
     child_recipe_id: PropTypes.number.isRequired,
+    slug: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     measurement: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

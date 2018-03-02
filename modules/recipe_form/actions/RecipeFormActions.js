@@ -5,10 +5,10 @@ import { serverURLs } from '../../common/config'
 import validation from './validation'
 import history from '../../common/history'
 
-export const load = (id) => {
+export const load = (recipeSlug) => {
   return (dispatch) => {
     request()
-      .get(serverURLs.recipe + id + "/")
+      .get(serverURLs.recipe + recipeSlug + "/")
       .then(res => dispatch({type: RecipeFormConstants.RECIPE_FORM_INIT, data: res.body}))
       .catch(err => { console.error(err); history.push('/notfound'); })
   }
@@ -18,12 +18,12 @@ export const create = () => {
   return (dispatch) => {
     dispatch({
       type: RecipeFormConstants.RECIPE_FORM_INIT,
-      data: { id: 0, public: true },
+      data: { id: 0, slug: '', public: true },
     });
   }
 };
 
-export const update = (name, value, recipe) => {
+export const update = (name, value, recipeSlug) => {
   const validator = validation.find(v => name === v.name);
   let errors = '';
   validator ? validator.validators.map(f => errors += f(value)) : '';
@@ -31,7 +31,7 @@ export const update = (name, value, recipe) => {
   return (dispatch) => {
     dispatch({
       type: RecipeFormConstants.RECIPE_FORM_UPDATE,
-      recipe: recipe,
+      recipeSlug: recipeSlug,
       name: name,
       value: value,
       error: errors,
@@ -41,7 +41,7 @@ export const update = (name, value, recipe) => {
 
 export const submit = (data) => {
   return (dispatch) => {
-    dispatch(save(data, (data) => history.push('/recipe/' + data.id)));
+    dispatch(save(data, (data) => history.push('/recipe/' + data.slug)));
   }
 };
 
@@ -62,7 +62,7 @@ export const save = (data, event) => {
     delete data['photo_thumbnail'];
 
     let r = 'id' in data && data.id ?
-      request().patch(serverURLs.recipe + data.id + '/') :
+      request().patch(serverURLs.recipe + data.slug + '/') :
       request().post(serverURLs.recipe);
 
     //TODO: check for errors
@@ -96,7 +96,7 @@ export const save = (data, event) => {
           //send the image once the file has been created
           if (photo) {
             request()
-              .patch(serverURLs.recipe + res.body.id + "/")
+              .patch(serverURLs.recipe + res.body.slug + "/")
               .attach('photo', photo)
               .then(res => {
                 dispatch({
