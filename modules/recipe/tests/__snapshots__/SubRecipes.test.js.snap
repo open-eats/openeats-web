@@ -38,7 +38,7 @@ exports[`Test Sub Recipes 1`] = `
     </span>
     <a
       className="title"
-      href="/recipe/1"
+      href="/recipe/undefined"
       onClick={[Function]}
     >
       black pepper
@@ -78,7 +78,7 @@ exports[`Test Sub Recipes 1`] = `
     </span>
     <a
       className="title"
-      href="/recipe/2"
+      href="/recipe/undefined"
       onClick={[Function]}
     >
       chili powder
