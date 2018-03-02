@@ -12,23 +12,20 @@ export const add = (title) => {
         if (!err && res) {
           dispatch({
             type: ListConstants.LIST_ADD,
-            id: res.body.id,
-            title: res.body.title,
-            item_count: 0
+            data: res.body
           });
-          history.push('/list/' + res.body.id);
+          history.push('/list/' + res.body.slug);
         } else {
           console.error(err.toString());
-          console.error(res.body);
         }
       });
   }
 };
 
-export const save = (id, title) => {
+export const save = (id, slug, title) => {
   return (dispatch) => {
     request()
-      .patch(serverURLs.list + id + "/")
+      .patch(serverURLs.list + slug + "/")
       .send({title: title})
       .end((err, res) => {
         if (!err && res) {
@@ -39,16 +36,15 @@ export const save = (id, title) => {
           });
         } else {
           console.error(err.toString());
-          console.error(res.body);
         }
       });
   }
 };
 
-export const destroy = (id) => {
+export const destroy = (id, slug) => {
   return (dispatch) => {
     request()
-      .delete(serverURLs.list + id + "/")
+      .delete(serverURLs.list + slug + "/")
       .end((err, res) => {
         if (!err && res) {
           history.push('/list/');
@@ -58,7 +54,6 @@ export const destroy = (id) => {
           });
         } else {
           console.error(err.toString());
-          console.error(res.body);
         }
       });
   }
@@ -76,7 +71,6 @@ export const load = () => {
           });
         } else {
           console.error(err.toString());
-          // console.error(res.body);
         }
       });
   }

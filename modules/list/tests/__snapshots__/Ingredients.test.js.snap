@@ -30,7 +30,7 @@ exports[`MyLists component test 1`] = `
     <a
       aria-current={false}
       className="list-group-item"
-      href="/list/2"
+      href="/list/sdfsdf"
       onClick={[Function]}
       style={undefined}
     >
@@ -44,7 +44,7 @@ exports[`MyLists component test 1`] = `
     <a
       aria-current={false}
       className="list-group-item"
-      href="/list/3"
+      href="/list/test"
       onClick={[Function]}
       style={undefined}
     >

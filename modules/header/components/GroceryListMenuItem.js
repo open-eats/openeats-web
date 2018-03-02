@@ -21,7 +21,7 @@ class GroceryListMenuItem extends React.Component {
 
     let lists = this.props.data.map((list) => {
       return (
-        <LinkContainer to={"/list/" + list.id} key={ list.id }>
+        <LinkContainer to={"/list/" + list.slug} key={ list.id }>
           <MenuItem>{ list.title }</MenuItem>
         </LinkContainer>
       )

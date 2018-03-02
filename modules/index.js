@@ -55,7 +55,7 @@ const main = (
                 <Route path='/recipe/edit/:recipe' component={ Form } />
                 <Route path='/recipe/:recipe' component={ RecipeView } />
 
-                <Route path='/list/:listId' component={ List } />
+                <Route path='/list/:list' component={ List } />
                 <Route path='/list' component={ List } />
 
                 <Route path='/NotFound' component={ NotFound } />
