@@ -35,7 +35,7 @@ class Items extends React.Component {
 }
 
 Items.propTypes = {
-  activeListID: PropTypes.string.isRequired,
+  activeListID: PropTypes.number.isRequired,
   items: PropTypes.array.isRequired,
   itemActions: PropTypes.object.isRequired
 };

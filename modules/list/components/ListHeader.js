@@ -29,7 +29,7 @@ class ListHeader extends React.Component {
 
   handleDelete = (message) => {
     if (confirm(message)) {
-      this.props.removeList(this.props.list.id)
+      this.props.removeList(this.props.list.id, this.props.list.slug)
     }
   };
 
@@ -57,7 +57,7 @@ class ListHeader extends React.Component {
   handleSubmit = () => {
     let val = this.state.title.trim();
     if (val) {
-      this.props.updateList(this.props.list.id, val);
+      this.props.updateList(this.props.list.id, this.props.list.slug, val);
       this.setState({
         title: val,
         editing: false,

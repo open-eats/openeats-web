@@ -75,7 +75,7 @@ GroceryList.propTypes = {
     item_count: PropTypes.number.isRequired
   }).isRequired).isRequired,
   error: PropTypes.string,
-  activeListID: PropTypes.string,
+  activeListID: PropTypes.number,
   listActions: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
 };

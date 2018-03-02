@@ -22,8 +22,8 @@ class List extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.lists.length > 0 && nextProps.match.params.listId) {
-      if (!(nextProps.lists.find(t => t.id == nextProps.match.params.listId))) {
+    if (nextProps.lists.length > 0 && nextProps.match.params.list) {
+      if (!(nextProps.lists.find(t => t.slug === nextProps.match.params.list))) {
         this.props.history.push('/list/');
       }
     }
@@ -31,12 +31,12 @@ class List extends React.Component {
 
   render() {
     let { match, lists, listActions, intl } = this.props;
-    let list = lists.find(t => t.id == match.params.listId);
+    let list = lists.find(t => t.slug === match.params.list);
     list ? documentTitle(list.title) : documentTitle(intl.messages['new_list.header']);
     return (
       <GroceryList
         lists={ lists }
-        activeListID={ match.params.listId }
+        activeListID={ list ? list.id : 0 }
         listActions={ listActions }
       />
     )

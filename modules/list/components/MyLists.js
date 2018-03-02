@@ -35,7 +35,7 @@ const MyLists = ({title, lists, intl}) => {
   }
 
   let items = lists.map(function(item) {
-    let link = '/list/' + item.id;
+    let link = '/list/' + item.slug;
     return (
       <NavLink
         to={ link }

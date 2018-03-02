@@ -121,7 +121,7 @@ ListItems.propTypes = {
     title: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
   }).isRequired).isRequired,
-  activeListID: PropTypes.string,
+  activeListID: PropTypes.number,
   itemActions: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
 };
