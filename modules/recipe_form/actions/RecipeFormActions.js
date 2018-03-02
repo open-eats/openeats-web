@@ -96,7 +96,7 @@ export const save = (data, event) => {
           //send the image once the file has been created
           if (photo) {
             request()
-              .patch(serverURLs.recipe + res.body.sluf + "/")
+              .patch(serverURLs.recipe + res.body.slug + "/")
               .attach('photo', photo)
               .then(res => {
                 dispatch({
