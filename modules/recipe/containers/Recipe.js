@@ -32,7 +32,7 @@ class Recipe extends React.Component {
   render() {
     let { lists, recipes, match, status, user } = this.props;
     let { recipeActions, recipeItemActions } = this.props;
-    let data = recipes.find(t => t.id == match.params.recipe);
+    let data = recipes.find(t => t.slug === match.params.recipe);
     if (data) {
       let showEditLink = (user !== null && user.id === data.author);
       documentTitle(data.title);

@@ -52,7 +52,7 @@ const main = (
                 <Route path='/browse' component={ Browse } />
 
                 <Route path='/recipe/create' component={ Form } />
-                <Route path='/recipe/edit/:id' component={ Form } />
+                <Route path='/recipe/edit/:recipe' component={ Form } />
                 <Route path='/recipe/:recipe' component={ RecipeView } />
 
                 <Route path='/list/:listId' component={ List } />

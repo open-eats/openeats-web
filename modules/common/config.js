@@ -1,13 +1,13 @@
-var apiHost = '';
+let apiHost = '';
 if (process.env.API_URL) {
   apiHost = process.env.API_URL;
 }
 
-var apiUrl = apiHost + '/api/v1';
+const apiUrl = apiHost + '/api/v1';
 
 export var serverURLs = {
   auth_token: apiUrl + '/accounts/obtain-auth-token/',
-  browse: apiUrl + '/recipe/recipes/?fields=id,title,pub_date,rating,photo_thumbnail,info',
+  browse: apiUrl + '/recipe/recipes/?fields=id,slug,title,pub_date,rating,photo_thumbnail,info',
   mini_browse: apiUrl + '/recipe/mini-browse/',
   cuisine_count: apiUrl + '/recipe_groups/cuisine-count/',
   cuisine: apiUrl + '/recipe_groups/cuisine/',

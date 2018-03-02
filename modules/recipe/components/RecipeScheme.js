@@ -85,7 +85,7 @@ class RecipeScheme extends React.Component {
             </div>
           </div>
           <RecipeFooter
-            id={ this.props.id }
+            slug={ this.props.slug }
             source={ this.props.source }
             username={ this.props.username }
             updateDate={ this.props.update_date }
