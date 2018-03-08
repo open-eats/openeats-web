@@ -25,61 +25,61 @@ export const deleteRecipe = (recipeSlug) => {
   }
 };
 
-export const updateServings = (key, value, recipeId) => {
+export const updateServings = (key, value, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE,
       value,
-      recipeId
+      recipeSlug
     })
   }
 };
 
-export const resetServings = (event, recipeId) => {
+export const resetServings = (event, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_SERVINGS_RESET,
-      recipeId
+      recipeSlug
     })
   }
 };
 
-export const checkIngredient = (id, value, recipeId) => {
+export const checkIngredient = (id, value, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_CHECK_INGREDIENT,
       id,
       value,
-      recipeId
+      recipeSlug
     })
   }
 };
 
-export const checkSubRecipe = (id, value, recipeId) => {
+export const checkSubRecipe = (id, value, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_CHECK_SUBRECIPE,
       id,
       value,
-      recipeId
+      recipeSlug
     })
   }
 };
 
-export const checkAll = (event, recipeId) => {
+export const checkAll = (event, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_CHECK_ALL,
-      recipeId
+      recipeSlug
     })
   }
 };
 
-export const unCheckAll = (event, recipeId) => {
+export const unCheckAll = (event, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_UNCHECK_ALL,
-      recipeId
+      recipeSlug
     })
   }
 };

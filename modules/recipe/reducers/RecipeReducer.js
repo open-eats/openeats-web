@@ -44,7 +44,7 @@ const recipes = (state = [], action) => {
       }
     case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE:
       return state.map(recipe => {
-        if (recipe.id == action.recipe){
+        if (recipe.slug === action.recipeSlug){
           action.servings = action.value / recipe.servings;
           let subRecipes = subrecipes(recipe.subrecipes, action);
           let ingredients = ingredient(recipe.ingredient_groups, action);
@@ -59,7 +59,7 @@ const recipes = (state = [], action) => {
       });
     case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_RESET:
       return state.map(recipe => {
-        if (recipe.id == action.recipe){
+        if (recipe.slug === action.recipeSlug){
           let subRecipes = subrecipes(recipe.subrecipes, action);
           let ingredients = ingredient(recipe.ingredient_groups, action);
           return {
@@ -73,7 +73,7 @@ const recipes = (state = [], action) => {
       });
     case (action.type.indexOf(RecipeConstants.RECIPE_INGREDIENT) !== -1 ? action.type : '') :
       return state.map(recipe => {
-        if (recipe.id == action.recipe){
+        if (recipe.slug === action.recipeSlug){
           let subRecipes = subrecipes(recipe.subrecipes, action);
           let ingredients = ingredient(recipe.ingredient_groups, action);
           return {
