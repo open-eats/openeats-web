@@ -16,6 +16,9 @@
   .rbc-toolbar-label {
     .menus-group {
       display: inline-block;
+      .menu-filter {
+        border-radius: 0 !important;
+      }
       .menu-edit-buttons {
         padding: 6px 0 8px 0;
         border-right: solid 1px #ccc;

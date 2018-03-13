@@ -28,7 +28,7 @@ export class DateTime extends BaseComponent {
           <Datetime
             inputProps={{ name: this.props.name, className: 'form-control' }}
             onChange={ this.handleChange }
-            value={ !this.state.timeFormat ? moment(this.state.value).format('ddd, ll') : moment(this.state.value).format('llll') }
+            value={ !this.props.timeFormat ? moment(this.state.value).format('ddd, ll') : moment(this.state.value).format('llll') }
             dateFormat={ this.props.dateFormat || 'ddd, ll' }
             timeFormat={ this.props.timeFormat }
           />

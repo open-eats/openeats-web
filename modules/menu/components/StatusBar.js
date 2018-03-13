@@ -1,5 +1,7 @@
 import React from 'react'
 
+require('../css/rbc-calendar-alert.scss');
+
 const Status = ({ alert, message, close }) => {
   if (message.length > 1) {
     let cssClass = "alert alert-info alert-dismissible";

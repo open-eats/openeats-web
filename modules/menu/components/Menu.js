@@ -6,7 +6,7 @@ require('react-big-calendar/lib/css/react-big-calendar.css');
 require('../css/rbc-calendar.scss');
 
 const Menu = (location) => (
-  <div className="container">
+  <div className="container calendar">
     <div className="row">
       <div className="col-xs-12">
         <Status/>

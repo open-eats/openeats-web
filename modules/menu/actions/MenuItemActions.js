@@ -43,7 +43,7 @@ export const save = (id, data) => {
           dispatch({
             type: StatusConstants.MENU_STATUS_DISPLAY,
             message: 'Menu Item failed to saved.',
-            alert: 'alert-error'
+            alert: 'alert-danger'
           });
         })
     } else {
@@ -65,7 +65,7 @@ export const save = (id, data) => {
           dispatch({
             type: StatusConstants.MENU_STATUS_DISPLAY,
             message: 'Menu Item failed to saved.',
-            alert: 'alert-error'
+            alert: 'alert-danger'
           });
         })
     }
@@ -94,7 +94,7 @@ export const remove = (id) => {
         dispatch({
           type: StatusConstants.MENU_STATUS_DISPLAY,
           message: 'Menu Item failed to be deleted.',
-          alert: 'alert-error'
+          alert: 'alert-danger'
         });
       })
   }
