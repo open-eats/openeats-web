@@ -9,7 +9,7 @@
     "start:prod": "webpack && node server.js",
     "start:demo": "webpack",
     "build": "webpack",
-    "test": "jest"
+    "test": "./tests.sh"
   },
   "jest": {
     "moduleNameMapper": {
