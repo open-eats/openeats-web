@@ -10,3 +10,4 @@ jest --coverage
 
 # Submit coverage to Coveralls
 #./node_modules/coveralls/bin/coveralls.js
+coveralls < coverage/lcov.info
