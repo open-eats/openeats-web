@@ -16,4 +16,4 @@ jest --coverage
 coveralls
 
 # Submit report to Code Climate
-./cc-test-reporter after-build --exit-code 0
+./cc-test-reporter after-build --coverage-input-type coverage.py --exit-code 0
