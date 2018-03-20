@@ -26,6 +26,8 @@
     "compression": "^1.6.2",
     "express": "^4.14.0",
     "if-env": "^1.0.0",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.21.0",
     "prop-types": "^15.5.10",
     "query-string": "^5.0.0",
     "react": "16.0.0",
