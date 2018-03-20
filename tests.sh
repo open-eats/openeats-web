@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 # Install test related dependencies
-yarn add istanbul
 apk add git
 apk add curl
 
@@ -11,7 +10,7 @@ chmod +x ./cc-test-reporter
 ./cc-test-reporter before-build
 
 # Run the tests and create a coverage report
-istanbul cover jest
+jest --coverage
 
 # Submit coverage to Coveralls
 coveralls
