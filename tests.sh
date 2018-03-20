@@ -9,4 +9,4 @@ apk add git
 jest --coverage
 
 # Submit coverage to Coveralls
-./node_modules/coveralls/bin/coveralls.js
+#./node_modules/coveralls/bin/coveralls.js
