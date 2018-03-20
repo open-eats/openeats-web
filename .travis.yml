@@ -12,4 +12,10 @@ before_install:
 - docker-compose -f test.yml -p test build
 
 script:
-- docker-compose -f test.yml -p test run --rm --entrypoint 'npm test' web
+- docker-compose -f test.yml -p test run --rm
+  --entrypoint 'npm test'
+  -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID
+  -e TRAVIS_BRANCH=$TRAVIS_BRANCH
+  -e TRAVIS=$TRAVIS
+  -e CC_TEST_REPORTER_ID=83e4d4d7cf7daaa7f29a6b65212d55d96c91f301d8154820052cc5c33b3f9dc7
+  web
