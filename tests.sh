@@ -2,7 +2,7 @@
 
 # Install test related dependencies
 yarn add coveralls
-akp update
+apk update
 apk add git
 apk add curl
 
