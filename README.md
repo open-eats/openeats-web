@@ -19,7 +19,8 @@ To run tests locally:
 ```bash
 cd openeats-api
 docker-compose -f test.yml -p test build
-docker-compose -f test.yml -p test run --rm --entrypoint 'npm test' web
+docker-compose -f test.yml -p test run --rm --entrypoint sh web
+./node_modules/.bin/jest --coverage
 ```
 
 #### Generating locale files
