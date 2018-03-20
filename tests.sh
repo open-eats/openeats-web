@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
 # Install test related dependencies
+yarn add coveralls
+akp update
 apk add git
 apk add curl
 
