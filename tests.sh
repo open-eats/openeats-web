@@ -17,4 +17,4 @@ istanbul cover jest
 coveralls
 
 # Submit report to Code Climate
-./cc-test-reporter after-build --exit-code 1
+./cc-test-reporter after-build --exit-code 0
