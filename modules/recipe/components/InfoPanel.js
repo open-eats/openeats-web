@@ -32,7 +32,7 @@ const RecipeHeader = ({ cookTime, prepTime, servings, customServings, info, upda
   });
 
   let clearInput = '';
-  if (servings != customServings && !!customServings) {
+  if (servings !== customServings && !!customServings) {
     clearInput = (
       <span className="input-group-btn">
         <button className="btn btn-default" type="button" onClick={ clearServings }>

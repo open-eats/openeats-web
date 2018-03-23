@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -61,7 +59,7 @@ const ListFooter = ({activeFilter, completedCount, itemCount, onClearCompleted, 
       <ul className="filters">
         <li>
           <a
-            href="#"
+            href="javascript;"
             className={ classNames({ selected: activeFilter === ALL_ITEMS })}
             onClick={ () => { onFilterStatus(ALL_ITEMS) }}>
               { formatMessage(messages.all) }
@@ -70,7 +68,7 @@ const ListFooter = ({activeFilter, completedCount, itemCount, onClearCompleted, 
         { ' ' }
         <li>
           <a
-            href="#"
+            href="javascript;"
             className={ classNames({ selected: activeFilter === ACTIVE_ITEMS })}
             onClick={ () => { onFilterStatus(ACTIVE_ITEMS) }}>
               { formatMessage(messages.active) }
@@ -79,7 +77,7 @@ const ListFooter = ({activeFilter, completedCount, itemCount, onClearCompleted, 
         { ' ' }
         <li>
           <a
-            href="#"
+            href="javascript;"
             className={ classNames({ selected: activeFilter === COMPLETED_ITEMS })}
             onClick={ () => { onFilterStatus(COMPLETED_ITEMS) }}>
               { formatMessage(messages.completed) }

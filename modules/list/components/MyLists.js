@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
@@ -23,10 +21,10 @@ const MyLists = ({title, lists, intl}) => {
     return (
       <div className="grocery-lists">
       <ul className="list-group">
-        <a href="#" className="list-group-item disabled">
+        <a href="javascript;" className="list-group-item disabled">
           { title }
         </a>
-        <a href="#" className="list-group-item disabled">
+        <a href="javascript;" className="list-group-item disabled">
           { intl.formatMessage(messages.no_lists) }
         </a>
       </ul>
@@ -52,7 +50,7 @@ const MyLists = ({title, lists, intl}) => {
   return (
     <div className="grocery-lists">
       <ul className="list-group">
-        <a href="#" className="list-group-item disabled">
+        <a href="javascript;" className="list-group-item disabled">
           { title }
         </a>
         { items }

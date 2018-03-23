@@ -1,9 +1,6 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { injectIntl, defineMessages } from 'react-intl'
 
 import {
   ENTER_KEY,
@@ -11,7 +8,7 @@ import {
 } from '../constants/ListStatus'
 import { Checkbox } from '../../common/components/FormComponents'
 
-class ListItem extends React.Component {
+export default class ListItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -104,5 +101,3 @@ ListItem.propTypes = {
   onToggleEdit: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
 };
-
-export default injectIntl(ListItem)

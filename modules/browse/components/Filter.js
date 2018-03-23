@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Filter = ({title, qsTitle, data, qs, multiSelect, cssClass, buildUrl}) => {
   const items = data.map((item) => {
-    if (item.total == 0) {
+    if (parseInt(item.total, 10) === 0) {
       return null;
     }
 

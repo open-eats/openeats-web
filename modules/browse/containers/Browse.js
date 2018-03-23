@@ -83,6 +83,7 @@ class Browse extends React.Component {
             delete qs[name];
           } else {
             let str = '';
+            // eslint-disable-next-line
             query.map(val => { val != value ? str += val + ',' : ''});
             qs[name] = str.substring(0, str.length - 1);
           }

@@ -13,7 +13,9 @@ const ingredients = (state, cb) => {
 
 const merge = (state, action) => {
   let list = [];
+  // eslint-disable-next-line
   state.map((ig) => {
+    // eslint-disable-next-line
     ig.ingredients.map(ingredient => {
       if (ingredient.checked) {
         list.push(ingredient.id);
@@ -35,7 +37,7 @@ const recipes = (state = [], action) => {
       return state ? merge(state, action) : action;
     case RecipeConstants.RECIPE_INGREDIENT_CHECK_INGREDIENT:
       return ingredients(state, (i) => {
-        if (i.id == action.id) {
+        if (i.id === action.id) {
           return {...i, checked: action.value}
         }
         return i

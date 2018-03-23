@@ -2,10 +2,12 @@
 const ingRequired = val => {
   let tr = '';
   if (val) {
+    // eslint-disable-next-line
     val.map(ig => {
       if (ig.title) {
         tr += ig.title + ':\n';
       }
+      // eslint-disable-next-line
       ig.ingredients.map(i => {
         tr += i.quantity ? i.quantity + " " : '';
         tr += i.measurement ? i.measurement + " " : '';
@@ -18,12 +20,13 @@ const ingRequired = val => {
   return tr.trim() === '' ? 'This Field is Required.' : '';
 };
 
-const ratings = val => {
-  val = parseInt(val);
+const ratings = (val) => {
+  val = parseInt(val, 10);
   return val > 5 || val < 0 ? 'Please choose a number between 0-5.' : '';
 };
 
 const url = val => {
+  // eslint-disable-next-line
   const res = val.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
   return res || !val ? '' : 'Please enter a valid URL.';
 };

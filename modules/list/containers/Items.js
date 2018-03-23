@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
@@ -17,7 +15,7 @@ class Items extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.activeListID != this.props.activeListID) {
+    if (nextProps.activeListID !== this.props.activeListID) {
       this.props.itemActions.load(nextProps.activeListID);
     }
   }
@@ -41,7 +39,7 @@ Items.propTypes = {
 };
 
 const getItemsFromList = (lists, listId) => {
-  let list = lists.find(t => t.id == listId);
+  let list = lists.find(t => t.id === listId);
   if (list) {
     return list.items
   }

@@ -25,7 +25,7 @@ const lists = (state = [], action) => {
       return state.filter(t => t.id !== action.id);
     case (action.type.indexOf(ItemConstants.ITEM_INDEX) !== -1 ? action.type : '') :
       return state.map(list => {
-        if (list.id == action.listId){
+        if (list.id === action.listId){
           let newItems = items(list.items, action);
           return { ...list, items: newItems, item_count: newItems.length };
         }

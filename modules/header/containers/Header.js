@@ -1,18 +1,16 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import Nav from '../components/Nav'
+import NavBar from '../components/NavBar'
 import * as ListActions from '../../list/actions/ListActions'
 import * as AuthActions from '../../account/actions/AuthActions'
 import * as RandomRecipeActions from '../actions/RandomRecipeActions'
 
-let NavBar = ({ user, lists, listActions, authActions, randomRecipeActions }) => {
+let Header = ({ user, lists, listActions, authActions, randomRecipeActions }) => {
   return (
-    <Nav
+    <NavBar
       user={ user }
       lists={ lists }
       listActions={ listActions }
@@ -21,7 +19,7 @@ let NavBar = ({ user, lists, listActions, authActions, randomRecipeActions }) =>
     />
 )};
 
-NavBar.propTypes = {
+Header.propTypes = {
   lists: PropTypes.array.isRequired,
   listActions: PropTypes.object.isRequired,
   randomRecipeActions: PropTypes.object.isRequired,
@@ -41,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavBar);
+)(Header);

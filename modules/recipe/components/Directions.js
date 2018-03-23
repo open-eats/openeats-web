@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Directions = ({ data }) => {
-  let directions = [];
-  data.split("\n").map((direction, i) => {
+  // eslint-disable-next-line
+  let directions = data.split("\n").filter((direction, i) => {
     if (direction.length > 0) {
-      directions.push(
+      return (
         <li className="direction" key={ i }>
           { direction }
         </li>

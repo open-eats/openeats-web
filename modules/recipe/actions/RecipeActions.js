@@ -8,8 +8,8 @@ export const load = (recipeSlug) => {
     request()
       .get(serverURLs.recipe + recipeSlug + "/")
       .then(res => dispatch({type: RecipeConstants.RECIPE_LOAD, data: res.body}))
-      .catch(err => {
-        process.ENV.NODE_ENV!=='demo' ? history.replace('/notfound') : '';
+      .catch(() => {
+         if (process.ENV.NODE_ENV !== 'demo') history.replace('/notfound');
       })
   }
 };

@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom'
 import { Carousel } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {
-    injectIntl,
-    IntlProvider,
-    defineMessages,
-    formatMessage
-} from 'react-intl'
+import { injectIntl, defineMessages } from 'react-intl'
 
 import MiniBrowse from '../../browse/containers/MiniBrowse'
 import documentTitle from '../../common/documentTitle'
@@ -41,7 +36,7 @@ class News extends React.Component {
     let carouselItems = this.props.news ? this.props.news.map((entry) => {
       return (
         <Carousel.Item key={ entry.id }>
-          <img src={ entry.image }/>
+          <img src={ entry.image } alt={ entry.title }/>
           <Carousel.Caption>
             <h3>{ entry.title }</h3>
             <p dangerouslySetInnerHTML={{ __html: entry.content }}/>

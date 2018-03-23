@@ -2,7 +2,7 @@ version: '2.3'
 services:
   web:
     build: .
-    command: npm start
+    command: npm travis
     environment:
       - NODE_ENV=dev
       - NODE_LOCALE=en
