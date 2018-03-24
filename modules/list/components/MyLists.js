@@ -21,12 +21,12 @@ const MyLists = ({title, lists, intl}) => {
     return (
       <div className="grocery-lists">
       <ul className="list-group">
-        <a href="javascript;" className="list-group-item disabled">
+        <p className="list-group-item disabled">
           { title }
-        </a>
-        <a href="javascript;" className="list-group-item disabled">
+        </p>
+        <p className="list-group-item disabled">
           { intl.formatMessage(messages.no_lists) }
-        </a>
+        </p>
       </ul>
     </div>
     );
@@ -50,9 +50,9 @@ const MyLists = ({title, lists, intl}) => {
   return (
     <div className="grocery-lists">
       <ul className="list-group">
-        <a href="javascript;" className="list-group-item disabled">
+        <p className="list-group-item disabled">
           { title }
-        </a>
+        </p>
         { items }
         <NavLink exact={ true } to={ '/list/' } className="list-group-item">
           { intl.formatMessage(messages.new_list) }
