@@ -16,7 +16,7 @@ exports[`Test Footer with Edit Link 1`] = `
         <a
           href="google.com"
         >
-          
+          localhost
         </a>
       </div>
       <div>
@@ -73,7 +73,7 @@ exports[`Test Footer without Edit Link 1`] = `
         <a
           href="google.com"
         >
-          
+          localhost
         </a>
       </div>
       <div>

@@ -4,7 +4,7 @@
 yarn add coveralls
 
 # Run the tests and create a coverage report
-jest --coverage
+yarn test -- --coverage
 
 # Submit coverage to Coveralls
 coveralls < coverage/lcov.info
