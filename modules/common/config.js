@@ -1,5 +1,4 @@
 let apiHost = '';
-console.log(process.env)
 if (process.env.NODE_API_URL) {
   apiHost = process.env.NODE_API_URL;
 }
