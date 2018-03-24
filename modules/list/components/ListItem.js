@@ -99,5 +99,4 @@ ListItem.propTypes = {
   onSave: PropTypes.func.isRequired,
   onDestroy: PropTypes.func.isRequired,
   onToggleEdit: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
 };

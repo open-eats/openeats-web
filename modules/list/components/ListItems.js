@@ -120,5 +120,4 @@ ListItems.propTypes = {
   }).isRequired).isRequired,
   activeListID: PropTypes.number,
   itemActions: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
 };
