@@ -5,7 +5,7 @@ export const fetchRecipeList = (searchTerm) => {
   return request()
     .get(serverURLs.recipe + '?fields=id,title&limit=5&search=' + searchTerm)
     .then(res => {
-      return res.body.results.filter(recipe => {
+      return res.body.results.map(recipe => {
         return { name: recipe.title, char: recipe.title };
       });
     })
