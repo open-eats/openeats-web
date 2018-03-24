@@ -36,7 +36,7 @@ class News extends React.Component {
     let carouselItems = this.props.news ? this.props.news.map((entry) => {
       return (
         <Carousel.Item key={ entry.id }>
-          <img src={ entry.image } alt={ entry.title }/>
+          { entry.image ? <img src={ entry.image } alt={ entry.title }/> : ''}
           <Carousel.Caption>
             <h3>{ entry.title }</h3>
             <p dangerouslySetInnerHTML={{ __html: entry.content }}/>
