@@ -10,4 +10,4 @@ ls
 yarn test -- --coverage
 
 # Submit coverage to Coveralls
-coveralls < coverage/lcov.info
+./node_modules/coveralls/bin/coveralls.js < coverage/lcov.info
