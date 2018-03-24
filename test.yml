@@ -2,7 +2,7 @@ version: '2.3'
 services:
   web:
     build: .
-    command: ./test.sh
+    command: sh tests.sh
     environment:
       - NODE_ENV=development
       - NODE_LOCALE=en

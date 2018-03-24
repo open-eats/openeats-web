@@ -13,7 +13,7 @@ before_install:
 
 script:
 - docker-compose -f test.yml -p test run --rm
-  --entrypoint 'npm test'
+  --entrypoint 'sh tests.sh'
   -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID
   -e TRAVIS_BRANCH=$TRAVIS_BRANCH
   -e TRAVIS=$TRAVIS
