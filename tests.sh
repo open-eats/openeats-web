@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Install test related dependencies
-yarn add coveralls
+yarn add coveralls@2.12.0
 
 env
 pwd
