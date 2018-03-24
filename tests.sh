@@ -3,6 +3,9 @@
 # Install test related dependencies
 yarn add coveralls
 
+env
+pwd
+ls
 # Run the tests and create a coverage report
 yarn test -- --coverage
 
