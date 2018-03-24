@@ -48,7 +48,7 @@ export const checkIngredient = (id, value, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_CHECK_INGREDIENT,
-      id,
+      id: parseInt(id, 10),
       value,
       recipeSlug
     })
@@ -59,7 +59,7 @@ export const checkSubRecipe = (id, value, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_CHECK_SUBRECIPE,
-      id,
+      id: parseInt(id, 10),
       value,
       recipeSlug
     })
