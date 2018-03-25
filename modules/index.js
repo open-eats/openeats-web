@@ -34,8 +34,8 @@ const messages = require('./locale/'+process.env.NODE_LOCALE+'.json');
 
 // Load in the base CSS
 require("../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss");
-require("./base/css/core.css");
-require("./base/css/print.css");
+require("./base/css/core.scss");
+require("./base/css/print.scss");
 
 const main = (
   <IntlProvider locale={ process.env.NODE_LOCALE } messages={ messages }>

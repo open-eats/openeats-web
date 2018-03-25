@@ -1,7 +1,7 @@
 import React from 'react'
 import { injectIntl, FormattedMessage } from 'react-intl';
 
-require("../css/footer.css");
+require("../css/footer.scss");
 
 class Footer extends React.Component{
   render() {

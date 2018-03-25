@@ -6,12 +6,12 @@ const app = express();
 // must be first!
 app.use(compression());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // ...
 app.get('*', function (req, res) {
   // and drop 'public' in the middle of here
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
 
 const PORT = process.env.NODE_PORT || 8080;
