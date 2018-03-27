@@ -2,7 +2,7 @@
 
 exports[`Loading component test 1`] = `
 <div
-  className="row"
+  className="row"asdfasdf
 >
   <div
     className="col-xs-12"

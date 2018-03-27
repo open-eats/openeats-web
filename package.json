@@ -28,8 +28,8 @@
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest_mocks/fileTransform.js",
-      "\\.(css|sass|scss|less)$": "<rootDir>/jest_mocks/cssTransform.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileTransform.js",
+      "\\.(css|sass|scss|less)$": "<rootDir>/config/jest/cssTransform.js"
     },
     "moduleFileExtensions": [
       "web.js",
