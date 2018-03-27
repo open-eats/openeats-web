@@ -1,6 +1,6 @@
 import React from 'react';
 import RecipeHeader from '../components/RecipeHeader';
-import createComponentWithIntl from '../../../jest_mocks/createComponentWithIntl.js';
+import createComponentWithIntl from '../../../config/jest/createComponentWithIntl';
 
 test('Test Header', () => {
   const component = createComponentWithIntl(

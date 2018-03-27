@@ -3,7 +3,6 @@ site-media/
 static-files/
 node_modules/
 build/
-jest/
 .idea/
 
 # Files

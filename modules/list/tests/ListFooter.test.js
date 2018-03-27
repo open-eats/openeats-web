@@ -1,6 +1,6 @@
 import React from 'react';
 import ListFooter from '../components/ListFooter';
-import createComponentWithIntl from '../../../jest_mocks/createComponentWithIntl.js';
+import createComponentWithIntl from '../../../config/jest/createComponentWithIntl';
 
 import {
   ALL_ITEMS,

@@ -1,6 +1,6 @@
 import React from 'react';
 import InfoPanel from '../components/InfoPanel';
-import createComponentWithIntl from '../../../jest_mocks/createComponentWithIntl';
+import createComponentWithIntl from '../../../config/jest/createComponentWithIntl';
 
 test('Short Info Panel', () => {
   const mockUpdateServings = jest.fn();

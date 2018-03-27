@@ -1,6 +1,6 @@
 import React from 'react';
 import RecipeFooter from '../components/RecipeFooter';
-import createComponentWithIntlAndRouter from '../../../jest_mocks/createComponentWithIntlAndRouter';
+import createComponentWithIntlAndRouter from '../../../config/jest/createComponentWithIntlAndRouter';
 
 test('Test Footer without Edit Link', () => {
   const component = createComponentWithIntlAndRouter(
