@@ -2,7 +2,7 @@ import React from 'react'
 
 require("../css/demo.scss");
 
-const Demo = ({}) => (
+const Demo = () => (
   <div className="list-error demo-no-margin">
     <div className="alert alert-info demo-no-margin" role="alert">
       <div className="container">

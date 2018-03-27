@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -60,30 +58,27 @@ const ListFooter = ({activeFilter, completedCount, itemCount, onClearCompleted, 
       </span>
       <ul className="filters">
         <li>
-          <a
-            href="#"
+          <p
             className={ classNames({ selected: activeFilter === ALL_ITEMS })}
             onClick={ () => { onFilterStatus(ALL_ITEMS) }}>
               { formatMessage(messages.all) }
-          </a>
+          </p>
         </li>
         { ' ' }
         <li>
-          <a
-            href="#"
+          <p
             className={ classNames({ selected: activeFilter === ACTIVE_ITEMS })}
             onClick={ () => { onFilterStatus(ACTIVE_ITEMS) }}>
               { formatMessage(messages.active) }
-          </a>
+          </p>
         </li>
         { ' ' }
         <li>
-          <a
-            href="#"
+          <p
             className={ classNames({ selected: activeFilter === COMPLETED_ITEMS })}
             onClick={ () => { onFilterStatus(COMPLETED_ITEMS) }}>
               { formatMessage(messages.completed) }
-          </a>
+          </p>
         </li>
       </ul>
       { clearButton }

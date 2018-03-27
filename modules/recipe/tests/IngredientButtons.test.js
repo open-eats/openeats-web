@@ -1,7 +1,7 @@
 import React from 'react';
 import RecipeListStatusConstants from '../constants/RecipeListStatusConstants';
 import IngredientButtons from '../components/IngredientButtons';
-import createComponentWithIntlAndRouter from '../../../jest_mocks/createComponentWithIntlAndRouter';
+import createComponentWithIntlAndRouter from '../../../config/jest/createComponentWithIntlAndRouter';
 
 const lists = [{id: 1, title: 'title'},{id: 2, title: 'tütle'},];
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import SearchMenu from '../components/SearchMenu'
 import SearchBar from '../components/SearchBar'
@@ -32,7 +31,7 @@ const Search = ({ search, courses, cuisines, ratings, qs, qsString, buildUrl, do
             {
               search.loading ?
                 <Loading/> :
-                !search.results[qsString] || search.results[qsString].recipes.length == 0 ?
+                !search.results[qsString] || search.results[qsString].recipes.length === 0 ?
                   <NoResults/> :
                   <Results
                     search={ search.results[qsString] }

@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-    injectIntl,
-    IntlProvider,
-    defineMessages,
-    formatMessage
-} from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 
 require("../css/404.scss");
 
@@ -25,7 +20,7 @@ const NotFound = ({ intl }) => {
   return (
     <div className="not-found">
       <h3>{ intl.formatMessage(messages.header) }</h3>
-      <img className="img-responsive" src="/images/404.png" alt="404 image"/>
+      <img className="img-responsive" src="/images/404.png" alt="404"/>
       <p>{ intl.formatMessage(messages.message) }</p>
     </div>
   );

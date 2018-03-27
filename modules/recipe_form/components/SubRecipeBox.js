@@ -21,7 +21,7 @@ class SubRecipeBox extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.id != this.props.id) {
+    if (nextProps.id !== this.props.id) {
       this.setState({
         data: nextProps.data || [],
         text: this.unarrayify(nextProps.data || []),
@@ -32,6 +32,7 @@ class SubRecipeBox extends React.Component {
   unarrayify = value => {
     let tr = '';
     if (value) {
+      // eslint-disable-next-line
       value.map(i => {
         tr += i.quantity ? i.quantity + " " : '';
         tr += i.measurement ? i.measurement + " " : '';

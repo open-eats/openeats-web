@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-    injectIntl,
-    IntlProvider,
-    defineMessages,
-    formatMessage
-} from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 
 import Alert from './Alert'
 

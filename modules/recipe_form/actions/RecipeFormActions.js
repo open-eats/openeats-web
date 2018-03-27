@@ -26,7 +26,7 @@ export const create = () => {
 export const update = (name, value, recipeSlug) => {
   const validator = validation.find(v => name === v.name);
   let errors = '';
-  validator ? validator.validators.map(f => errors += f(value)) : '';
+  if (validator) validator.validators.map(f => errors += f(value));
 
   return (dispatch) => {
     dispatch({
@@ -54,7 +54,7 @@ export const save = (data, event) => {
     });
 
     let photo = false;
-    if (typeof data.photo == "object") {
+    if (typeof data.photo === "object") {
       photo = data.photo;
     }
 
@@ -73,7 +73,7 @@ export const save = (data, event) => {
     for (let name in data) {
       const validator = validation.find(v => name === v.name);
       let errors = '';
-      validator ? validator.validators.map(f => errors += f(data[name])) : '';
+      if (validator) validator.validators.map(f => errors += f(data[name]));
       if (errors) {
         error = true;
         dispatch({
@@ -109,7 +109,7 @@ export const save = (data, event) => {
                   message: 'Recipe save!',
                   alert: 'alert-success'
                 });
-                typeof event === 'function' ? event(res.body) : '';
+                if (typeof event === 'function') event(res.body);
               })
               .catch(err => {
                 dispatch({
@@ -129,7 +129,7 @@ export const save = (data, event) => {
               message: 'Recipe save!',
               alert: 'alert-success'
             });
-            typeof event === 'function' ? event(res.body) : '';
+            if (typeof event === 'function') event(res.body);
           }
         })
         .catch(err => {

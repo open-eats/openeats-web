@@ -4,7 +4,6 @@ import NewsConstants from '../constants/NewsConstants';
 
 export const load = () => {
   return (dispatch) => {
-    let url = serverURLs.news;
     request()
       .get(serverURLs.news)
       .then(res => {
@@ -12,9 +11,6 @@ export const load = () => {
           type: NewsConstants.NEWS_LOAD,
           news: res.body.results
         })
-      })
-      .catch(err => {
-        console.error(err.toString());
       })
   }
 };

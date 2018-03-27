@@ -1,6 +1,6 @@
 let apiHost = '';
-if (process.env.API_URL) {
-  apiHost = process.env.API_URL;
+if (process.env.NODE_API_URL) {
+  apiHost = process.env.NODE_API_URL;
 }
 
 const apiUrl = apiHost + '/api/v1';

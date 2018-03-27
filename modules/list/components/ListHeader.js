@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
@@ -28,7 +26,7 @@ class ListHeader extends React.Component {
   }
 
   handleDelete = (message) => {
-    if (confirm(message)) {
+    if (window.confirm(message)) {
       this.props.removeList(this.props.list.id, this.props.list.slug)
     }
   };

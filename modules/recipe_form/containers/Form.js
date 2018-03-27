@@ -35,10 +35,10 @@ class From extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.recipe != this.props.match.params.recipe) {
+    if (nextProps.match.params.recipe !== this.props.match.params.recipe) {
       window.scrollTo(0, 0);
       nextProps.statusActions.close();
-      if (nextProps.match.params.recipe && !this.props.form.find(t => t.slug == nextProps.match.params.recipe)) {
+      if (nextProps.match.params.recipe && !this.props.form.find(t => t.slug === nextProps.match.params.recipe)) {
         nextProps.recipeFormActions.load(nextProps.match.params.recipe);
       } else {
         nextProps.recipeFormActions.create()
@@ -54,9 +54,9 @@ class From extends React.Component {
       statusActions
     } = this.props;
     let slug = this.props.match.params.recipe || '';
-    let selectForm = form.find(t => t.slug == slug);
+    let selectForm = form.find(t => t.slug === slug);
     if (selectForm) {
-      if (user !== null && (slug == '' || user.id === selectForm.author)) {
+      if (user !== null && (slug === '' || user.id === selectForm.author)) {
         documentTitle(selectForm.title);
         return (
           <RecipeForm

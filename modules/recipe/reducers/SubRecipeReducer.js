@@ -2,6 +2,7 @@ import RecipeConstants from '../constants/RecipeConstants'
 
 const merge = (state, action) => {
   let list = [];
+  // eslint-disable-next-line
   state.map((i) => {
     if (i.checked) {
       list.push(i.id);
@@ -22,7 +23,7 @@ const subRecipes = (state = [], action) => {
       return state ? merge(state, action) : action;
     case RecipeConstants.RECIPE_INGREDIENT_CHECK_SUBRECIPE:
       return state.map(i => {
-        if (i.child_recipe_id == action.id) {
+        if (i.child_recipe_id === action.id) {
           return {...i, checked: action.value}
         }
         return i

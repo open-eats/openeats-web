@@ -1,9 +1,9 @@
 sudo: required
 
-language: node_js
+language: python
 
-node_js:
-  - "8.9.4"
+python:
+  - "3.6"
 
 services:
   - docker
@@ -13,8 +13,9 @@ before_install:
 
 script:
 - docker-compose -f test.yml -p test run --rm
-  --entrypoint 'npm test'
+  --entrypoint 'sh tests.sh'
   -e TRAVIS_JOB_ID=$TRAVIS_JOB_ID
   -e TRAVIS_BRANCH=$TRAVIS_BRANCH
   -e TRAVIS=$TRAVIS
+  -e CI=TRUE
   web

@@ -1,10 +1,13 @@
 #!/usr/bin/env sh
 
 # Install test related dependencies
-yarn add coveralls
+yarn add coveralls@2.12.0
 
-# Run the tests and create a coverage report
-jest --coverage
+yarn test -- --coverage
+ret=$?
+if [ $ret -ne 0 ]; then
+    exit 1
+fi
 
 # Submit coverage to Coveralls
-coveralls < coverage/lcov.info
+./node_modules/coveralls/bin/coveralls.js < coverage/lcov.info

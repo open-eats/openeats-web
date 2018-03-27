@@ -19,7 +19,7 @@ class IngredientBox extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.id != this.props.id) {
+    if (nextProps.id !== this.props.id) {
       this.setState({
         data: nextProps.data || [],
         text: this.unarrayify(nextProps.data || []),
@@ -30,10 +30,12 @@ class IngredientBox extends React.Component {
   unarrayify = value => {
     let tr = '';
     if (value) {
+      // eslint-disable-next-line
       value.map(ig => {
         if (ig.title) {
           tr += ig.title + ':\n';
         }
+        // eslint-disable-next-line
         ig.ingredients.map(i => {
           tr += i.quantity ? i.quantity + " " : '';
           tr += i.measurement ? i.measurement + " " : '';
@@ -63,6 +65,7 @@ class IngredientBox extends React.Component {
           if (line.includes(':') && line.length > 1) {
             igTitle = line.substring(0, line.length - 1);
             dict.push({title: igTitle, ingredients: []});
+            // eslint-disable-next-line
             ings = dict.find(t => t.title === igTitle).ingredients;
           } else {
             let tags = line.split(' ');
