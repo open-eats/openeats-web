@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import IngredientQuantity from './IngredientQuantity'
 import { Checkbox } from '../../common/components/FormComponents'
 
 const Ingredients = ({ data, check }) => {
@@ -13,10 +14,10 @@ const Ingredients = ({ data, check }) => {
           checked={ ingredient.checked ? ingredient.checked : false }
           change={ check }
         />
-        { (ingredient.quantity !== 0)
-            ? <span className="quantity">{ quantity } </span>
-            : null
-        }
+        <IngredientQuantity
+          numerator = { ingredient.numerator }
+          denominator = { ingredient.denominator }
+        />
         { (ingredient.measurement)
             ? <span className="measurement">{ ingredient.measurement } </span>
             : null
