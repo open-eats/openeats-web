@@ -9,7 +9,7 @@ export const load = (recipeSlug) => {
       .get(serverURLs.recipe + recipeSlug + "/")
       .then(res => dispatch({type: RecipeConstants.RECIPE_LOAD, data: res.body}))
       .catch(() => {
-         if (process.ENV.NODE_ENV !== 'demo') history.replace('/notfound');
+         if (process.env.NODE_ENV !== 'demo') history.replace('/notfound');
       })
   }
 };
