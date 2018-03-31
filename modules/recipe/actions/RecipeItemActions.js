@@ -9,6 +9,20 @@ export const bulkAdd = (recipeState, list) => {
       quantity = quantity ? quantity + " " : '';
       let measurement = i.measurement ? i.measurement + " " : '';
       return quantity + measurement + i.title;
+      // let numerator = i.customNumerator ? i.customNumerator : i.numerator;
+      // if (i.denominator > 1) {
+      //   const whole = numerator / i.denominator;
+      //   const fraction = numerator % i.denominator;
+      //   if (fraction > 0) {
+      //     numerator = whole.toString() + " " + fraction.toString() + "/" + i.denominator.toString()
+      //   }
+      //   numerator = whole.toString();
+      // } else if (numerator > 0) {
+      //   numerator = numerator.toString();
+      // }
+      //
+      // numerator = numerator ? numerator + " " : '';
+      // return numerator + measurement + i.title;
     };
 
     let checkedIngredients = recipeState.ingredient_groups.map(item => {
