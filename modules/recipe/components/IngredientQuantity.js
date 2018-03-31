@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const IngredientQuantity = ({ numerator, denominator }) => {
+const IngredientQuantity = ({ numerator, denominator, servings, customServings }) => {
   if (denominator > 1) {
     const whole = numerator / denominator;
     const fraction = numerator % denominator;
@@ -19,6 +19,8 @@ const IngredientQuantity = ({ numerator, denominator }) => {
 IngredientQuantity.PropTypes = {
   numerator: PropTypes.number.isRequired,
   denominator: PropTypes.number.isRequired,
+  servings: PropTypes.number.isRequired,
+  customServings: PropTypes.number.isRequired,
 };
 
 export default IngredientQuantity;
