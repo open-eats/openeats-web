@@ -1,6 +1,7 @@
 import RecipeConstants from '../constants/RecipeConstants'
 import { default as ingredient } from './IngredientReducer'
 import { default as subrecipes } from './SubRecipeReducer'
+import fq from '../utilts/formatQuantity'
 
 const recipes = (state = [], action) => {
   switch (action.type) {
@@ -9,27 +10,20 @@ const recipes = (state = [], action) => {
       if (recipe) {
         return state.map(recipe => {
           if (recipe.id === action.data.id) {
-            let customServings = action.data.servings;
-            let servingMultiplier = 1;
-            if (action.data.servings === recipe.servings) {
-              customServings = recipe.customServings;
-              servingMultiplier = recipe.customServings ? recipe.customServings / recipe.servings : 1;
-            }
             let subRecipes = subrecipes(
               recipe.subrecipes,
               { subrecipes: action.data.subrecipes,
-                servings: servingMultiplier,
+                formatQuantity: fq.bind(this, recipe.servings, action.data.servings),
                 type: action.type }
             );
             let ingredients = ingredient(
               recipe.ingredient_groups,
               { ingredient_groups: action.data.ingredient_groups,
-                servings: servingMultiplier,
+                formatQuantity: fq.bind(this, recipe.servings, action.data.servings),
                 type: action.type }
             );
             return {
               ...action.data,
-              customServings: customServings,
               subrecipes: subRecipes,
               ingredient_groups: ingredients
             };
@@ -39,34 +33,28 @@ const recipes = (state = [], action) => {
       } else {
         return [
           ...state,
-          { ...action.data }
+          { ...action.data, customServings: action.data.servings }
         ]
       }
     case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE:
       return state.map(recipe => {
         if (recipe.slug === action.recipeSlug){
-          action.servings = action.value / recipe.servings;
-          let subRecipes = subrecipes(recipe.subrecipes, action);
-          let ingredients = ingredient(recipe.ingredient_groups, action);
+          action.servings = recipe.servings;
+          let subRecipes = subrecipes(
+            recipe.subrecipes,
+            { formatQuantity: fq.bind(this, recipe.servings, action.customServings),
+              type: action.type }
+          );
+          let ingredients = ingredient(
+            recipe.ingredient_groups,
+            { formatQuantity: fq.bind(this, recipe.servings, action.customServings),
+              type: action.type }
+          );
           return {
             ...recipe,
             subrecipes: subRecipes,
             ingredient_groups: ingredients,
-            customServings: action.value
-          };
-        }
-        return recipe;
-      });
-    case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_RESET:
-      return state.map(recipe => {
-        if (recipe.slug === action.recipeSlug){
-          let subRecipes = subrecipes(recipe.subrecipes, action);
-          let ingredients = ingredient(recipe.ingredient_groups, action);
-          return {
-            ...recipe,
-            subrecipes: subRecipes,
-            ingredient_groups: ingredients,
-            customServings: recipe.servings
+            customServings: action.customServings
           };
         }
         return recipe;
@@ -74,12 +62,10 @@ const recipes = (state = [], action) => {
     case (action.type.indexOf(RecipeConstants.RECIPE_INGREDIENT) !== -1 ? action.type : '') :
       return state.map(recipe => {
         if (recipe.slug === action.recipeSlug){
-          let subRecipes = subrecipes(recipe.subrecipes, action);
-          let ingredients = ingredient(recipe.ingredient_groups, action);
           return {
             ...recipe,
-            subrecipes: subRecipes,
-            ingredient_groups: ingredients
+            subrecipes: subrecipes(recipe.subrecipes, action),
+            ingredient_groups: ingredient(recipe.ingredient_groups, action)
           };
         }
         return recipe;

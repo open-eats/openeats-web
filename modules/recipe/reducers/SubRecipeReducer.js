@@ -38,13 +38,8 @@ const subRecipes = (state = [], action) => {
       });
     case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE:
       return state.map(i => {
-        let factor = Math.pow(10, 3);
-        let custom = Math.round(i.quantity * factor * action.servings) / factor;
-        return {...i, customQuantity: custom}
-      });
-    case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_RESET:
-      return state.map(i => {
-        return {...i, customQuantity: i.quantity}
+        let custom = action.formatQuantity(i.numerator, i.denominator);
+        return {...i, quantity: custom}
       });
     default:
       return state;

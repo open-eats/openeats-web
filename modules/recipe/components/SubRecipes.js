@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import IngredientQuantity from './IngredientQuantity'
 import { Checkbox } from '../../common/components/FormComponents'
 
 const SubRecipes = ({ data, check }) => {

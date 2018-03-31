@@ -5,24 +5,9 @@ import RecipeConstants from '../constants/RecipeConstants';
 export const bulkAdd = (recipeState, list) => {
   return (dispatch) => {
     const format = (i) => {
-      let quantity = i.customQuantity ? i.customQuantity : i.quantity;
-      quantity = quantity ? quantity + " " : '';
-      let measurement = i.measurement ? i.measurement + " " : '';
+      const quantity = i.quantity ? i.quantity + " " : '';
+      const measurement = i.measurement ? i.measurement + " " : '';
       return quantity + measurement + i.title;
-      // let numerator = i.customNumerator ? i.customNumerator : i.numerator;
-      // if (i.denominator > 1) {
-      //   const whole = numerator / i.denominator;
-      //   const fraction = numerator % i.denominator;
-      //   if (fraction > 0) {
-      //     numerator = whole.toString() + " " + fraction.toString() + "/" + i.denominator.toString()
-      //   }
-      //   numerator = whole.toString();
-      // } else if (numerator > 0) {
-      //   numerator = numerator.toString();
-      // }
-      //
-      // numerator = numerator ? numerator + " " : '';
-      // return numerator + measurement + i.title;
     };
 
     let checkedIngredients = recipeState.ingredient_groups.map(item => {
@@ -52,8 +37,7 @@ export const bulkAdd = (recipeState, list) => {
           dispatch({type: RecipeConstants.RECIPE_LIST_COMPLETE});
           dispatch({
             type: RecipeConstants.RECIPE_INGREDIENT_UNCHECK_ALL,
-            value: false,
-            recipe: recipeState.id
+            recipeSlug: recipeState.slug
           })
         })
         .catch(err => { dispatch({type: RecipeConstants.RECIPE_LIST_ERROR}); })

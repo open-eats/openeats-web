@@ -29,16 +29,17 @@ export const updateServings = (key, value, recipeSlug) => {
   return (dispatch) => {
     dispatch({
       type: RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE,
-      value,
+      customServings: isNaN(parseInt(value, 10)) ? 0 : parseInt(value, 10),
       recipeSlug
     })
   }
 };
 
-export const resetServings = (event, recipeSlug) => {
+export const resetServings = (servings, event, recipeSlug) => {
   return (dispatch) => {
     dispatch({
-      type: RecipeConstants.RECIPE_INGREDIENT_SERVINGS_RESET,
+      type: RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE,
+      customServings: servings,
       recipeSlug
     })
   }

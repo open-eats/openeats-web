@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import IngredientQuantity from './IngredientQuantity'
 import { Checkbox } from '../../common/components/FormComponents'
 
 const Ingredients = ({ data, check }) => {
