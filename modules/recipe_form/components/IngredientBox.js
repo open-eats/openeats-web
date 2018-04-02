@@ -7,6 +7,8 @@ import {
 import { TextArea } from '../../common/components/FormComponents'
 import IngredientGroups from '../../recipe/components/IngredientGroups'
 import TabbedView from './TabbedView'
+import formatQuantity from '../../recipe/utilts/formatQuantity'
+import parseIngredient from '../utilts/parseIngredient'
 
 class IngredientBox extends React.Component {
   constructor(props) {
@@ -37,7 +39,7 @@ class IngredientBox extends React.Component {
         }
         // eslint-disable-next-line
         ig.ingredients.map(i => {
-          tr += i.quantity ? i.quantity + " " : '';
+          tr += i.numerator ? formatQuantity(1, 1, i.numerator, i.denominator) + " " : '';
           tr += i.measurement ? i.measurement + " " : '';
           tr += i.title + '\n'
         });
@@ -68,28 +70,7 @@ class IngredientBox extends React.Component {
             // eslint-disable-next-line
             ings = dict.find(t => t.title === igTitle).ingredients;
           } else {
-            let tags = line.split(' ');
-            if (tags.length === 1) {
-              ings.push({ title: line });
-            } else if (tags.length === 2) {
-              if (!(isNaN(tags[0]))) {
-                ings.push({ quantity: tags[0], title: tags[1] })
-              } else {
-                ings.push({ title: line });
-              }
-            } else {
-              if (!(isNaN(tags[0]))) {
-                let quantity = tags.splice(0,1)[0];
-                let measurement = tags.splice(0,1)[0];
-                ings.push({
-                  quantity: quantity,
-                  measurement: measurement,
-                  title: tags.join(' ')
-                });
-              } else {
-                ings.push({ title: line });
-              }
-            }
+            ings.push(parseIngredient(line));
           }
         }
       }
@@ -98,13 +79,15 @@ class IngredientBox extends React.Component {
   };
 
   handleChange = (key, value) => {
+    const list = this.arrayify(value);
+
     this.setState({
-      data: this.arrayify(value),
+      data: [ ...list ],
       text: value
     });
 
     if(this.props.change) {
-      this.props.change(key, this.arrayify(value));
+      this.props.change(key, [ ...list ]);
     }
   };
 

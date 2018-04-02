@@ -1,3 +1,4 @@
+import formatQuantity from '../../recipe/utilts/formatQuantity'
 
 const ingRequired = val => {
   let tr = '';
@@ -9,7 +10,7 @@ const ingRequired = val => {
       }
       // eslint-disable-next-line
       ig.ingredients.map(i => {
-        tr += i.quantity ? i.quantity + " " : '';
+        tr += i.numerator ? formatQuantity(1, 1, i.numerator, i.denominator) + " " : '';
         tr += i.measurement ? i.measurement + " " : '';
         tr += i.title + '\n'
       });

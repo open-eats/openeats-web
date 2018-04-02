@@ -6,8 +6,6 @@ const GCD = (a, b) => {
 };
 
 export default (servings, customServings, numerator, denominator) => {
-  console.log(numerator, denominator, servings, customServings);
-
   // If there isn't a denominator.
   // We can assume the user wants to display
   // the recipe ings as decimals.
@@ -24,9 +22,9 @@ export default (servings, customServings, numerator, denominator) => {
 
   // Get the quotient from the mixed fraction
   // so we are only left with a fraction < 1.
-  const quotient = Math.floor(numerator / denominator);
+  let quotient = Math.floor(numerator / denominator);
 
-  // The remainder from  what is left over.
+  // The remainder from what is left over.
   // Set is as the new numerator.
   numerator = numerator % denominator;
 
@@ -45,8 +43,9 @@ export default (servings, customServings, numerator, denominator) => {
 
   // If the denominator is greater than 8.
   // Display as a decimal.
-  if (denominator > 8)
-    return quotient.toString() + " " + numerator.toString() + "/" + denominator.toString()
+  if (denominator > 12)
+    return parseFloat((quotient + (numerator / denominator)).toFixed(3)).toString();
 
-  return parseFloat((quotient + (numerator / denominator)).toFixed(3)).toString()
+  quotient = quotient > 0 ? quotient.toString() + " " : "";
+  return quotient + numerator.toString() + "/" + denominator.toString();
 };
