@@ -1,9 +1,4 @@
-
-// Find the GCD of two numbers
-const GCD = (a, b) => {
-  if (!b) return a;
-  return GCD(b, a % b);
-};
+import { GCD } from './gcd'
 
 export default (servings, customServings, numerator, denominator) => {
   // If there isn't a denominator.

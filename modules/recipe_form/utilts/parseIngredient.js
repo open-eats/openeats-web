@@ -1,18 +1,39 @@
 import formatQuantity from '../../recipe/utilts/formatQuantity'
+import { GCD } from '../../recipe/utilts/gcd'
 
 // Given an array of text values,
 // Convert them into a single Fraction
+// Examples:
+//   1 1/2 sugar -> 3/2
+//   2 3 inch pieces ginger -> 6/1
+//   1/2 3 inch pieces ginger -> 3/2
+//   3 1/2 inch pieces ginger -> 7/2
+//   1/2 1/2 inch pieces ginger -> 1/4
 const buildFraction = (textArray) => {
   let { numerator, denominator } = textArray.reduce((fraction, text) => {
     const split = text.split('/');
-    let n=1, d=1;
-    n = parseFloat(split[0]);
-    d = split.length > 1 ? parseFloat(split[1]) : 1;
-    return {
-      numerator: fraction.numerator * n,
-      denominator: fraction.denominator * d > 0 ? parseFloat(d) : 1
-    };
-  }, { numerator: 1, denominator: 1 });
+    let n = parseFloat(split[0]);
+    let d = split.length > 1 ? parseFloat(split[1]) : 1;
+
+    // If this is the first run of the func
+    // return the n/d,
+    if (fraction.denominator === 0)
+      return { numerator: n, denominator: d };
+
+    // Multiple if the next number is an int
+    if (split.length === 1) {
+      n *= fraction.numerator;
+      d *= fraction.denominator;
+      const gcd = GCD(n, d);
+      return { numerator: n / gcd, denominator: d / gcd };
+    }
+
+    // If given a fraction, add them.
+    n = fraction.numerator * d + fraction.denominator * n;
+    d = fraction.denominator * d;
+    const gcd = GCD(n, d);
+    return { numerator: n / gcd, denominator: d / gcd };
+  }, { numerator: 0, denominator: 0 });
 
   return {
     numerator,
