@@ -32,10 +32,10 @@ const RecipeHeader = ({ cookTime, prepTime, servings, customServings, info, upda
   });
 
   let clearInput = '';
-  if (servings !== customServings && !!customServings) {
+  if (servings !== customServings) {
     clearInput = (
       <span className="input-group-btn">
-        <button className="btn btn-default" type="button" onClick={ clearServings }>
+        <button className="btn btn-default" type="button" onClick={ clearServings.bind(this, servings) }>
           <span className="glyphicon glyphicon-remove" aria-hidden="true"/>
         </button>
       </span>
@@ -61,7 +61,7 @@ const RecipeHeader = ({ cookTime, prepTime, servings, customServings, info, upda
                   type="number"
                   size="servings-textbox"
                   change={ updateServings }
-                  value={ customServings ? customServings : servings } />
+                  value={ customServings!==0 ? customServings : '' } />
                 { clearInput }
               </div>
               <p className="print-only">{ customServings ? customServings : servings }</p>
