@@ -11,9 +11,8 @@ const merge = (state, action) => {
 
   return action.subrecipes.map(i => {
     let checked = list.includes(i.child_recipe_id);
-    let factor = Math.pow(10, 3);
-    let customQuantity = Math.round(i.quantity * factor * action.servings) / factor;
-    return {...i, customQuantity: customQuantity, checked: checked}
+    let custom = action.formatQuantity(i.numerator, i.denominator);
+    return {...i, quantity: custom, checked: checked}
   });
 };
 

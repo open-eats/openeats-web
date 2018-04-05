@@ -31,9 +31,27 @@ const recipes = (state = [], action) => {
           return recipe;
         });
       } else {
+        let subRecipes = subrecipes(
+          [],
+          { subrecipes: action.data.subrecipes,
+            formatQuantity: fq.bind(this, action.data.servings, action.data.servings),
+            type: action.type }
+        );
+        let ingredients = ingredient(
+          [],
+          { ingredient_groups: action.data.ingredient_groups,
+            formatQuantity: fq.bind(this, action.data.servings, action.data.servings),
+            type: action.type }
+        );
+
         return [
           ...state,
-          { ...action.data, customServings: action.data.servings }
+          {
+            ...action.data,
+            subRecipes: subRecipes,
+            ingredient_groups: ingredients,
+            customServings: action.data.servings
+          }
         ]
       }
     case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE:
