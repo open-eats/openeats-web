@@ -7,12 +7,11 @@ exports[`MyLists component test 1`] = `
   <ul
     className="list-group"
   >
-    <a
+    <p
       className="list-group-item disabled"
-      href="#"
     >
       My Lists
-    </a>
+    </p>
     <a
       aria-current={false}
       className="list-group-item"
@@ -30,7 +29,7 @@ exports[`MyLists component test 1`] = `
     <a
       aria-current={false}
       className="list-group-item"
-      href="/list/2"
+      href="/list/sdfsdf"
       onClick={[Function]}
       style={undefined}
     >
@@ -44,7 +43,7 @@ exports[`MyLists component test 1`] = `
     <a
       aria-current={false}
       className="list-group-item"
-      href="/list/3"
+      href="/list/test"
       onClick={[Function]}
       style={undefined}
     >
@@ -75,18 +74,16 @@ exports[`MyLists component test w/ no lists 1`] = `
   <ul
     className="list-group"
   >
-    <a
+    <p
       className="list-group-item disabled"
-      href="#"
     >
       My Lists
-    </a>
-    <a
+    </p>
+    <p
       className="list-group-item disabled"
-      href="#"
     >
       No Lists to display
-    </a>
+    </p>
   </ul>
 </div>
 `;

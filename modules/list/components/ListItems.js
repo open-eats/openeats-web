@@ -1,8 +1,5 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
-import { injectIntl, defineMessages } from 'react-intl'
 
 import { Checkbox } from '../../common/components/FormComponents'
 import ListFooter from './ListFooter'
@@ -15,7 +12,7 @@ import {
   COMPLETED_ITEMS
 } from '../constants/ListStatus'
 
-class ListItems extends React.Component {
+export default class ListItems extends React.Component {
   constructor(props) {
     super(props);
 
@@ -121,9 +118,6 @@ ListItems.propTypes = {
     title: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
   }).isRequired).isRequired,
-  activeListID: PropTypes.string,
+  activeListID: PropTypes.number,
   itemActions: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
 };
-
-export default injectIntl(ListItems)

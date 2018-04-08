@@ -2,7 +2,7 @@ version: '2.3'
 services:
   web:
     build: .
-    command: npm start
+    command: sh tests.sh
     environment:
-      - NODE_ENV=dev
+      - NODE_ENV=development
       - NODE_LOCALE=en

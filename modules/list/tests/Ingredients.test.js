@@ -1,6 +1,6 @@
 import React from 'react';
 import MyLists from '../components/MyLists';
-import createComponentWithIntlAndRouter from '../../../jest_mocks/createComponentWithIntlAndRouter.js';
+import createComponentWithIntlAndRouter from '../../../config/jest/createComponentWithIntlAndRouter';
 
 import listData from './listData';
 

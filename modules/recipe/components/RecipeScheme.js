@@ -41,11 +41,11 @@ class RecipeScheme extends React.Component {
           <div className="recipe-schema" itemType="http://schema.org/Recipe">
             <div className="row">
               <div className="mobile-image">
-                <img className="img-responsive print-hidden" src={ this.props.photo } />
+                <img className="img-responsive print-hidden" src={ this.props.photo } alt={ this.props.title } />
               </div>
               <div className="col-sm-7 col-sm-push-5 col-xs-12">
                 <p className="print-only print-image">
-                  <img className="img-responsive" src={ this.props.photo_thumbnail } />
+                  <img className="img-responsive" src={ this.props.photo_thumbnail } alt={ this.props.title } />
                 </p>
                 <InfoPanel
                   cookTime={ this.props.cook_time }
@@ -85,7 +85,7 @@ class RecipeScheme extends React.Component {
             </div>
           </div>
           <RecipeFooter
-            id={ this.props.id }
+            slug={ this.props.slug }
             source={ this.props.source }
             username={ this.props.username }
             updateDate={ this.props.update_date }

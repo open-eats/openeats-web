@@ -40,11 +40,24 @@ exports[`Long Info Panel 1`] = `
                   onChange={[Function]}
                   placeholder={undefined}
                   type="number"
-                  value={200000}
+                  value=""
                 />
               </div>
             </div>
-            
+            <span
+              className="input-group-btn"
+            >
+              <button
+                className="btn btn-default"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  className="glyphicon glyphicon-remove"
+                />
+              </button>
+            </span>
           </div>
           <p
             className="print-only"
@@ -115,11 +128,24 @@ exports[`Short Info Panel 1`] = `
                   onChange={[Function]}
                   placeholder={undefined}
                   type="number"
-                  value={8}
+                  value=""
                 />
               </div>
             </div>
-            
+            <span
+              className="input-group-btn"
+            >
+              <button
+                className="btn btn-default"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  className="glyphicon glyphicon-remove"
+                />
+              </button>
+            </span>
           </div>
           <p
             className="print-only"

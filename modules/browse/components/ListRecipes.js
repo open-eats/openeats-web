@@ -17,7 +17,7 @@ const ListRecipes = ({ data, format }) => {
   };
 
   const recipes = data.map((recipe) => {
-    const link = '/recipe/' + recipe.id;
+    const link = '/recipe/' + recipe.slug;
     return (
       <div className={ format } key={ recipe.id }>
         <div className="thumbnail recipe">

@@ -1,14 +1,9 @@
 import React from 'react'
-import {
-    injectIntl,
-    IntlProvider,
-    defineMessages,
-    formatMessage
-} from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 
 import '../css/checkbox.scss'
 
-class BaseComponent extends React.Component {
+export class BaseComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -59,11 +54,7 @@ class BaseComponent extends React.Component {
   }
 }
 
-class Input extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
-
+export class Input extends BaseComponent {
   render() {
     return (
       <div className={ this.props.size } key={ this.props.id }>
@@ -82,11 +73,7 @@ class Input extends BaseComponent {
   }
 }
 
-class TextArea extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
-
+export class TextArea extends BaseComponent {
   render() {
     return (
       <div className={ this.props.size } key={ this.props.id }>
@@ -106,11 +93,7 @@ class TextArea extends BaseComponent {
   }
 }
 
-class File extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
-
+export class FileBase extends BaseComponent {
   handleChange(event) {
     this.setState({
       value: event.target.files[0]
@@ -146,7 +129,7 @@ class File extends BaseComponent {
   }
 }
 
-class Checkbox extends BaseComponent {
+export class Checkbox extends BaseComponent {
   constructor(props) {
     super(props);
 
@@ -167,7 +150,7 @@ class Checkbox extends BaseComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.checked != nextProps.checked) {
+    if (this.props.checked !== nextProps.checked) {
       this.setState({
         checked: nextProps.checked
       });
@@ -192,11 +175,7 @@ class Checkbox extends BaseComponent {
   }
 }
 
-class Select extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
-
+export class SelectBase extends BaseComponent {
   render() {
     const options = this.props.data.map(function(option) {
       return (
@@ -222,9 +201,5 @@ class Select extends BaseComponent {
   }
 }
 
-module.exports.BaseComponent = BaseComponent;
-module.exports.Input = Input;
-module.exports.TextArea = TextArea;
-module.exports.File = injectIntl(File);
-module.exports.Checkbox = Checkbox;
-module.exports.Select = Select;
+export const File = injectIntl(FileBase);
+export const Select = injectIntl(SelectBase);

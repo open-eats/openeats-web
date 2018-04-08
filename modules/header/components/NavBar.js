@@ -1,12 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {
-    injectIntl,
-    IntlProvider,
-    defineMessages,
-    formatMessage
-} from 'react-intl';
-import { Image, Navbar, Nav, NavDropdown, MenuItem, NavItem } from 'react-bootstrap'
+import { injectIntl, defineMessages } from 'react-intl';
+import { Image, Navbar, Nav, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 import { CreateRecipeMenuItem } from './CreateRecipeMenuItem'
@@ -108,4 +103,4 @@ class NavBar extends React.Component {
   }
 }
 
-module.exports = injectIntl(NavBar);
+export default injectIntl(NavBar);

@@ -1,6 +1,6 @@
 import React from 'react';
 import TabbedView from '../components/TabbedView';
-import createComponentWithIntl from '../../../jest_mocks/createComponentWithIntl';
+import createComponentWithIntl from '../../../config/jest/createComponentWithIntl';
 
 test('TabbedView component test', () => {
   const component = createComponentWithIntl(

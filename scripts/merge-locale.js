@@ -10,7 +10,7 @@ import {sync as mkdirpSync} from 'mkdirp';
  */
 
 const MESSAGES_PATTERN = './build/messages/**/*.json';
-const LOCALE_DIR       = './locale/';
+const LOCALE_DIR       = './modules/locale/';
 
 let defaultMessages = globSync(MESSAGES_PATTERN)
   .map((filename) => fs.readFileSync(filename, 'utf8'))

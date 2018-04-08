@@ -16,7 +16,7 @@ exports[`Test Footer with Edit Link 1`] = `
         <a
           href="google.com"
         >
-          
+          localhost
         </a>
       </div>
       <div>
@@ -33,7 +33,7 @@ exports[`Test Footer with Edit Link 1`] = `
       className="col-xs-6 pull-right text-right"
     >
       <a
-        href="/recipe/edit/1"
+        href="/recipe/edit/undefined"
         onClick={[Function]}
       >
         <button
@@ -73,7 +73,7 @@ exports[`Test Footer without Edit Link 1`] = `
         <a
           href="google.com"
         >
-          
+          localhost
         </a>
       </div>
       <div>

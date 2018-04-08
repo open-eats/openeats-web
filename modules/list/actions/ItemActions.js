@@ -2,14 +2,14 @@ import { request } from '../../common/CustomSuperagent';
 import { serverURLs } from '../../common/config'
 import ItemConstants from '../constants/ItemConstants';
 
-export const load = (list) => {
+export const load = (listId) => {
   return (dispatch) => {
     request()
-      .get(serverURLs.list_item + '?list=' + list)
+      .get(serverURLs.list_item + '?list=' + listId)
       .then(res => {
         dispatch({
           type: ItemConstants.ITEM_INIT,
-          list: list,
+          listId: listId,
           items: res.body.results
         })
       })
@@ -19,19 +19,19 @@ export const load = (list) => {
   }
 };
 
-export const add = (title, list) => {
+export const add = (title, listId) => {
   return (dispatch) => {
     request()
       .post(serverURLs.list_item)
       .send({
         title: title,
-        list: list
+        list: listId
       })
       .end((err, res) => {
         if (!err && res) {
           dispatch({
             type: ItemConstants.ITEM_ADD,
-            list: list,
+            listId: listId,
             id: res.body.id,
             title: res.body.title
           });
@@ -43,7 +43,7 @@ export const add = (title, list) => {
   }
 };
 
-export const save = (id, title, list) => {
+export const save = (id, title, listId) => {
   return (dispatch) => {
     request()
       .patch(serverURLs.list_item + id + "/")
@@ -52,7 +52,7 @@ export const save = (id, title, list) => {
         if (!err && res) {
           dispatch({
             type: ItemConstants.ITEM_SAVE,
-            list: list,
+            listId: listId,
             id: id,
             title: res.body.title
           });
@@ -64,7 +64,7 @@ export const save = (id, title, list) => {
   }
 };
 
-export const toggle = (id, completed, list) => {
+export const toggle = (id, completed, listId) => {
   return (dispatch) => {
     request()
       .patch(serverURLs.list_item + id + "/")
@@ -73,7 +73,7 @@ export const toggle = (id, completed, list) => {
         if (!err && res) {
           dispatch({
             type: ItemConstants.ITEM_TOGGLE,
-            list: list,
+            listId: listId,
             id: id,
           });
         } else {
@@ -84,7 +84,7 @@ export const toggle = (id, completed, list) => {
   }
 };
 
-export const toggleAll = (items, checked, list) => {
+export const toggleAll = (items, checked, listId) => {
   let ids = items.reduce(function (list, item) {
     if (item.completed !== checked) {
       list.push({
@@ -103,7 +103,7 @@ export const toggleAll = (items, checked, list) => {
         if (!err && res) {
           dispatch({
             type: ItemConstants.ITEM_TOGGLE_ALL,
-            list: list,
+            listId: listId,
             ids: ids
           });
         } else {
@@ -114,7 +114,7 @@ export const toggleAll = (items, checked, list) => {
   }
 };
 
-export const destroy = (id, list) => {
+export const destroy = (id, listId) => {
   return (dispatch) => {
     request()
       .delete(serverURLs.list_item + id + "/")
@@ -123,7 +123,7 @@ export const destroy = (id, list) => {
           dispatch({
             type: ItemConstants.ITEM_DELETE,
             id: id,
-            list: list,
+            listId: listId,
           });
         } else {
           console.error(err.toString());
@@ -133,7 +133,7 @@ export const destroy = (id, list) => {
   }
 };
 
-export const clearCompleted = (items, event, list) => {
+export const clearCompleted = (items, event, listId) => {
   let ids = items.reduce(function (list, item) {
     if (item.completed === true) {
       list.push(item.id);
@@ -149,7 +149,7 @@ export const clearCompleted = (items, event, list) => {
         if (!err && res) {
           dispatch({
             type: ItemConstants.ITEM_DELETE_COMPLETED,
-            list: list,
+            listId: listId,
             ids: ids,
           });
         } else {

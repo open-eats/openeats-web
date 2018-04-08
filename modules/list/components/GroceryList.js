@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, defineMessages } from 'react-intl'
@@ -31,7 +29,7 @@ class GroceryList extends React.Component {
     let { activeListID, lists, listActions, error } = this.props;
 
     let renderList = '';
-    let list = lists.find(t => t.id == activeListID);
+    let list = lists.find(t => t.id === activeListID);
     if (activeListID && list) {
       renderList = (
         <div>
@@ -75,7 +73,7 @@ GroceryList.propTypes = {
     item_count: PropTypes.number.isRequired
   }).isRequired).isRequired,
   error: PropTypes.string,
-  activeListID: PropTypes.string,
+  activeListID: PropTypes.number,
   listActions: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
 };

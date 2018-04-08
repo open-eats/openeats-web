@@ -6,7 +6,6 @@ import { Checkbox } from '../../common/components/FormComponents'
 
 const SubRecipes = ({ data, check }) => {
   let subRecipes = data.map((subRecipe, i) => {
-    let quantity = subRecipe.customQuantity ? subRecipe.customQuantity : subRecipe.quantity;
     return (
       <li className="ingredient" key={ i }>
         <Checkbox
@@ -15,7 +14,7 @@ const SubRecipes = ({ data, check }) => {
           change={ check }
         />
         { (subRecipe.quantity !== 0)
-            ? <span className="quantity">{ quantity } </span>
+            ? <span className="quantity">{ subRecipe.quantity } </span>
             : null
         }
         { (subRecipe.measurement)
@@ -23,7 +22,7 @@ const SubRecipes = ({ data, check }) => {
             : null
         }
         { (subRecipe.title)
-            ? <Link to={ "/recipe/" + subRecipe.child_recipe_id } className="title">{ subRecipe.title }</Link>
+            ? <Link to={ "/recipe/" + subRecipe.slug } className="title">{ subRecipe.title }</Link>
             : null
         }
       </li>
@@ -40,6 +39,7 @@ const SubRecipes = ({ data, check }) => {
 SubRecipes.PropTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({
     child_recipe_id: PropTypes.number.isRequired,
+    slug: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     measurement: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

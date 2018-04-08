@@ -41,7 +41,9 @@
     left: 0;
     li {
       display: inline;
-      a {
+      p {
+        cursor: pointer;
+        display: inline;
         color: inherit;
         margin: 3px;
         padding: 3px 7px;
