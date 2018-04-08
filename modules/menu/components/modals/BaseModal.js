@@ -26,7 +26,7 @@ class BaseModal extends React.Component {
   };
 
   remove = (message) => {
-    if (confirm(message)) {
+    if (window.confirm(message)) {
       this.props.onRemove(this.props.id);
       this.props.onHide();
     }

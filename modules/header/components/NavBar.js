@@ -43,11 +43,6 @@ class NavBar extends React.Component {
         description: 'Open Eats title',
         defaultMessage: 'Open Eats',
       },
-      news: {
-        id: 'nav.news',
-        description: 'Navbar News',
-        defaultMessage: 'News',
-      },
       recipes: {
         id: 'nav.recipes',
         description: 'Navbar Recipes',
@@ -72,9 +67,6 @@ class NavBar extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to="/news">
-              <NavItem>{formatMessage(messages.news)}</NavItem>
-            </LinkContainer>
             <LinkContainer to="/browse">
               <NavItem>{formatMessage(messages.recipes)}</NavItem>
             </LinkContainer>

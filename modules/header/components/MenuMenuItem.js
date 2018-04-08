@@ -1,14 +1,9 @@
 import React from 'react'
-import {
-    injectIntl,
-    IntlProvider,
-    defineMessages,
-    formatMessage
-} from 'react-intl';
+import { injectIntl, defineMessages} from 'react-intl';
 import { MenuItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-class MenuMenuItem extends React.Component {
+class MenuMenuItemBase extends React.Component {
   render () {
     const {formatMessage} = this.props.intl;
     const messages = defineMessages({
@@ -27,4 +22,4 @@ class MenuMenuItem extends React.Component {
   }
 }
 
-module.exports.MenuMenuItem = injectIntl(MenuMenuItem);
+export const MenuMenuItem = injectIntl(MenuMenuItemBase);
