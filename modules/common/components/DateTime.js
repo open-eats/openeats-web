@@ -6,10 +6,6 @@ import { BaseComponent } from './FormComponents'
 require('react-datetime/css/react-datetime.css');
 
 export class DateTime extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
-
   handleChange(date) {
     this.setState({
       value: date

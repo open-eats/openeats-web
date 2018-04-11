@@ -7,7 +7,8 @@ export const fetchRecipeList = (searchTerm) => {
     .then(res => {
       let titles = [];
       res.body.results.map(recipe => {
-        titles.push({ value: recipe.id, label: recipe.title });
+        titles.push({ value: parseInt(recipe.id, 10), label: recipe.title });
+        return recipe;
       });
       return { options: titles };
     })

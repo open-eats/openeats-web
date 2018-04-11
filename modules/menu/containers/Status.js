@@ -20,13 +20,10 @@ class Status extends React.Component {
   }
 }
 
-// Menu.propTypes = {
-//   menus: PropTypes.array,
-//   menuItems: PropTypes.array,
-//   menuActions: PropTypes.object.isRequired,
-//   menuItemActions: PropTypes.object.isRequired,
-//   location: PropTypes.object.isRequired,
-// };
+Status.propTypes = {
+  status: PropTypes.object.isRequired,
+  menuStatusActions: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = state => ({
   status: state.menu.status,

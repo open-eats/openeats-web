@@ -24,7 +24,7 @@ export const save = (id, data) => {
       alert: 'alert-info'
     });
 
-    if (id != 0) {
+    if (parseInt(id, 10) !== 0) {
       request()
         .patch(serverURLs.menu_item + id + '/')
         .send(data)

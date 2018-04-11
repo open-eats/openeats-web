@@ -14,6 +14,7 @@ class BaseModal extends React.Component {
           newState[key] = error;
           this.setState(this.setState(newState))
         }
+        return t;
       });
     }
   };

@@ -16,7 +16,6 @@ import RecipeToolbar from '../components/RecipeToolbar'
 import MenuModal from '../components/modals/MenuModal'
 import MenuCopyModal from '../components/modals/MenuCopyModal'
 import MenuItemModal from '../components/modals/MenuItemModal'
-import MenuList from '../components/MenuList'
 
 import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
@@ -79,7 +78,7 @@ class Menu extends React.Component {
     if (this.props.menus.length > 0) {
       this.setState({
         showItemModal: true,
-        editMenuItemEventId: id,
+        editMenuItemEventId: parseInt(id, 10),
         startDate: startDate,
         endDate: endDate,
       })
@@ -122,7 +121,7 @@ class Menu extends React.Component {
     if (menuItems !== null) {
       let events = (
         query.menu ?
-          menuItems.filter(t => t.menu == query.menu ) :
+          menuItems.filter(t => t.menu === parseInt(query.menu, 10) ) :
           menuItems
       ).map(item => {
         return {
@@ -139,7 +138,7 @@ class Menu extends React.Component {
             id={ editMenuEventId }
             show={ showMenuModal }
             onHide={ () => { this.setState({showMenuModal: false}) } }
-            event={ menus.find(t => t.id == editMenuEventId) }
+            event={ menus.find(t => t.id === editMenuEventId) }
             onSave={ menuActions.save }
             onRemove={ menuActions.remove }
             validation={ menuValidation }
@@ -148,7 +147,7 @@ class Menu extends React.Component {
             id={ editCopyMenuEventId }
             show={ showCopyMenuModal }
             onHide={ () => { this.setState({showCopyMenuModal: false}) } }
-            event={ menus.find(t => t.id == editCopyMenuEventId) }
+            event={ menus.find(t => t.id === editCopyMenuEventId) }
             onSave={ menuActions.copy }
             validation={ copyMenuValidation }
           />
@@ -157,7 +156,7 @@ class Menu extends React.Component {
             menus={ menus }
             show={ showItemModal }
             onHide={ () => { this.setState({showItemModal: false}) } }
-            event={ menuItems.find(t => t.id == editMenuItemEventId) }
+            event={ menuItems.find(t => t.id === editMenuItemEventId) }
             startDate={ startDate }
             endDate={ endDate }
             onSave={ menuItemActions.save }
