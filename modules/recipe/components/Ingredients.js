@@ -12,7 +12,7 @@ const Ingredients = ({ data, check }) => {
           checked={ ingredient.checked ? ingredient.checked : false }
           change={ check }
         />
-        { (ingredient.quantity !== 0)
+        { (ingredient.quantity !== '0')
             ? <span className="quantity">{ ingredient.quantity } </span>
             : null
         }
