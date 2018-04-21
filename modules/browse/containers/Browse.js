@@ -63,6 +63,7 @@ class Browse extends React.Component {
 
   doSearch = (value) => {
     let qs = queryString.parse(this.props.location.search);
+    delete qs['offset'];
     value !== "" ? qs['search'] = value : delete qs['search'];
     let str = queryString.stringify(qs);
     str = str ? '/browse/?' + str : '/browse/';
