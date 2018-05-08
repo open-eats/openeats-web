@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Recipe from '../containers/Recipe'
+import Rating from '../../rating/containers/Rating'
 import MiniBrowse from '../../browse/containers/MiniBrowse'
 
 const RecipeView = ({ match }) => (
@@ -9,6 +10,7 @@ const RecipeView = ({ match }) => (
     <div className="row">
       <div className="col-md-9">
         <Recipe match={ match } />
+        <Rating recipeId={ match } />
       </div>
       <div className="col-md-3">
         <MiniBrowse format="col-md-12 col-sm-6 col-xs-12" qs="?limit=4" />
