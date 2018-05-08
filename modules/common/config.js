@@ -1,11 +1,12 @@
-let apiHost = '';
-if (process.env.API_URL) {
-  apiHost = process.env.API_URL;
+let apiHost = window.location.origin;
+if (process.env.NODE_API_URL) {
+  apiHost = process.env.NODE_API_URL;
 }
 
 const apiUrl = apiHost + '/api/v1';
 
-export var serverURLs = {
+export const serverURLs = {
+  refresh_token: apiUrl + '/accounts/refresh-auth-token/',
   auth_token: apiUrl + '/accounts/obtain-auth-token/',
   browse: apiUrl + '/recipe/recipes/?fields=id,slug,title,pub_date,rating,photo_thumbnail,info',
   mini_browse: apiUrl + '/recipe/mini-browse/',
@@ -24,19 +25,3 @@ export var serverURLs = {
   list_item: apiUrl + '/list/items/',
   bulk_list_item: apiUrl + '/list/bulk_item/',
 };
-
-export var measurements = [
-  'tablespoon',
-  'teaspoon',
-  'cup',
-  'pint',
-  'gallon',
-  'gram',
-  'kilogram',
-];
-
-
-// http://www.bbc.co.uk/food/ingredients/by/letter/b
-export var ingredient = [
-  '',
-];

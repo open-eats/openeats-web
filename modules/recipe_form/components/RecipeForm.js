@@ -190,7 +190,10 @@ class RecipeForm extends React.Component {
               />
             </div>
             <div id="recipe" className="col-lg-4 col-md-5">
-              <img src={ this.getRecipeImage(this.props.form.photo_thumbnail) } />
+              <img
+                src={ this.getRecipeImage(this.props.form.photo_thumbnail) }
+                alt={ formatMessage(messages.photo_placeholder) }
+              />
 
               <File
                 name="photo"

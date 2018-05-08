@@ -13,33 +13,30 @@ exports[`MyLists component test 1`] = `
     className="filters"
   >
     <li>
-      <a
+      <p
         className="selected"
-        href="#"
         onClick={[Function]}
       >
         All
-      </a>
+      </p>
     </li>
      
     <li>
-      <a
+      <p
         className=""
-        href="#"
         onClick={[Function]}
       >
         Active
-      </a>
+      </p>
     </li>
      
     <li>
-      <a
+      <p
         className=""
-        href="#"
         onClick={[Function]}
       >
         Completed
-      </a>
+      </p>
     </li>
   </ul>
   <button
@@ -64,33 +61,30 @@ exports[`MyLists component test w/ active filter 1`] = `
     className="filters"
   >
     <li>
-      <a
+      <p
         className=""
-        href="#"
         onClick={[Function]}
       >
         All
-      </a>
+      </p>
     </li>
      
     <li>
-      <a
+      <p
         className="selected"
-        href="#"
         onClick={[Function]}
       >
         Active
-      </a>
+      </p>
     </li>
      
     <li>
-      <a
+      <p
         className=""
-        href="#"
         onClick={[Function]}
       >
         Completed
-      </a>
+      </p>
     </li>
   </ul>
   <button
@@ -115,33 +109,30 @@ exports[`MyLists component test w/ completed filter 1`] = `
     className="filters"
   >
     <li>
-      <a
+      <p
         className=""
-        href="#"
         onClick={[Function]}
       >
         All
-      </a>
+      </p>
     </li>
      
     <li>
-      <a
+      <p
         className=""
-        href="#"
         onClick={[Function]}
       >
         Active
-      </a>
+      </p>
     </li>
      
     <li>
-      <a
+      <p
         className="selected"
-        href="#"
         onClick={[Function]}
       >
         Completed
-      </a>
+      </p>
     </li>
   </ul>
   <button

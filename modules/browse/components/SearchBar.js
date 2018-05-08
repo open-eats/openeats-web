@@ -1,12 +1,7 @@
 import React from 'react'
 import DebounceInput from 'react-debounce-input';
 import PropTypes from 'prop-types'
-import {
-    injectIntl,
-    IntlProvider,
-    defineMessages,
-    formatMessage
-} from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 
 class SearchBar extends React.Component {
   constructor(props) {

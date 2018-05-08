@@ -5,9 +5,8 @@ import RecipeConstants from '../constants/RecipeConstants';
 export const bulkAdd = (recipeState, list) => {
   return (dispatch) => {
     const format = (i) => {
-      let quantity = i.customQuantity ? i.customQuantity : i.quantity;
-      quantity = quantity ? quantity + " " : '';
-      let measurement = i.measurement ? i.measurement + " " : '';
+      const quantity = i.quantity && i.quantity !== '0' ? i.quantity + " " : '';
+      const measurement = i.measurement ? i.measurement + " " : '';
       return quantity + measurement + i.title;
     };
 
@@ -38,8 +37,7 @@ export const bulkAdd = (recipeState, list) => {
           dispatch({type: RecipeConstants.RECIPE_LIST_COMPLETE});
           dispatch({
             type: RecipeConstants.RECIPE_INGREDIENT_UNCHECK_ALL,
-            value: false,
-            recipe: recipeState.id
+            recipeSlug: recipeState.slug
           })
         })
         .catch(err => { dispatch({type: RecipeConstants.RECIPE_LIST_ERROR}); })

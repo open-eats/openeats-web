@@ -5,7 +5,6 @@ import { Checkbox } from '../../common/components/FormComponents'
 
 const Ingredients = ({ data, check }) => {
   let ingredients = data.map((ingredient, i) => {
-    let quantity = ingredient.customQuantity ? ingredient.customQuantity : ingredient.quantity;
     return (
       <li className="ingredient" key={ i }>
         <Checkbox
@@ -13,8 +12,8 @@ const Ingredients = ({ data, check }) => {
           checked={ ingredient.checked ? ingredient.checked : false }
           change={ check }
         />
-        { (ingredient.quantity !== 0)
-            ? <span className="quantity">{ quantity } </span>
+        { (ingredient.quantity !== '0')
+            ? <span className="quantity">{ ingredient.quantity } </span>
             : null
         }
         { (ingredient.measurement)

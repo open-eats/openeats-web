@@ -63,6 +63,7 @@ class Browse extends React.Component {
 
   doSearch = (value) => {
     let qs = queryString.parse(this.props.location.search);
+    delete qs['offset'];
     value !== "" ? qs['search'] = value : delete qs['search'];
     let str = queryString.stringify(qs);
     str = str ? '/browse/?' + str : '/browse/';
@@ -83,6 +84,7 @@ class Browse extends React.Component {
             delete qs[name];
           } else {
             let str = '';
+            // eslint-disable-next-line
             query.map(val => { val != value ? str += val + ',' : ''});
             qs[name] = str.substring(0, str.length - 1);
           }

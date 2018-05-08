@@ -5,7 +5,7 @@ const browserSupportsAllFeatures = () => {
 
 const loadPolyFills = (callback) => {
   let js = document.createElement('script');
-  js.src = 'https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.' + process.env.LOCALE;
+  js.src = 'https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.' + process.env.NODE_LOCALE;
   js.onload = function() {
     callback();
   };

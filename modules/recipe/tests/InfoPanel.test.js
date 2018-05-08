@@ -1,9 +1,10 @@
 import React from 'react';
 import InfoPanel from '../components/InfoPanel';
-import createComponentWithIntl from '../../../jest_mocks/createComponentWithIntl';
+import createComponentWithIntl from '../../../config/jest/createComponentWithIntl';
 
 test('Short Info Panel', () => {
   const mockUpdateServings = jest.fn();
+  const mockClearServings = jest.fn();
   const component = createComponentWithIntl(
     <InfoPanel
         cookTime={ 20 }
@@ -11,6 +12,7 @@ test('Short Info Panel', () => {
         servings={ 8 }
         info={ 'This is a test!' }
         updateServings={ mockUpdateServings }
+        clearServings={ mockClearServings }
     />
   );
   let tree = component.toJSON();
@@ -19,6 +21,7 @@ test('Short Info Panel', () => {
 
 test('Long Info Panel', () => {
   const mockUpdateServings = jest.fn();
+  const mockClearServings = jest.fn();
   const longString = 'Lorem ipsum dolor sit amet, odio sem vel ' +
       'nulla aliquam, vestibulum pellentesque at risus eros, at ' +
       'leo mi urna quam, magna nunc vestibulum nibh condimentum ' +
@@ -51,6 +54,7 @@ test('Long Info Panel', () => {
         servings={ 200000 }
         info={ longString }
         updateServings={ mockUpdateServings }
+        clearServings={ mockClearServings }
     />
   );
   let tree = component.toJSON();

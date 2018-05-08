@@ -4,9 +4,9 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
 const Pagination = ({ offset, limit, count, buildUrl }) => {
-  offset = offset ? parseInt(offset) : 0;
-  limit = limit ? parseInt(limit) : 0;
-  count = count ? parseInt(count) : 0;
+  offset = offset ? parseInt(offset, 10) : 0;
+  limit = limit ? parseInt(limit, 10) : 0;
+  count = count ? parseInt(count, 10) : 0;
   let next = offset + limit;
   let previous = offset - limit;
 
@@ -33,7 +33,7 @@ const Pagination = ({ offset, limit, count, buildUrl }) => {
     start = start < 1 ? 1 : start;
 
     for (let i = start; i < floor && i < max + start; i++) {
-      numbers.push(link(i+1, limit*i, i+1, offset==limit*i))
+      numbers.push(link(i+1, limit*i, i+1, offset===limit*i))
     }
     return numbers
   };
@@ -42,7 +42,7 @@ const Pagination = ({ offset, limit, count, buildUrl }) => {
     <div className="text-center">
       <ul className="pagination">
         { (previous >= 0) ? link('←', previous, 'previous') : '' }
-        { link('1', 0, 'first', offset==0) }
+        { link('1', 0, 'first', offset===0) }
         { numbers(offset, limit, count) }
         { (next < count) ? link('→', next, 'next') : '' }
       </ul>

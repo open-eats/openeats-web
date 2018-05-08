@@ -1,6 +1,6 @@
 import React from 'react';
 import NoResults from '../components/NoResults';
-import createComponentWithIntl from '../../../jest_mocks/createComponentWithIntl';
+import createComponentWithIntl from '../../../config/jest/createComponentWithIntl';
 
 test('NoResults component test', () => {
   const component = createComponentWithIntl(

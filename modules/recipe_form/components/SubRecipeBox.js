@@ -7,6 +7,8 @@ import ReactTextareaAutocomplete from "@webscopeio/react-textarea-autocomplete";
 
 import SubRecipes from '../../recipe/components/SubRecipes'
 import TabbedView from './TabbedView'
+import formatQuantity from '../../recipe/utilts/formatQuantity'
+import parseIngredient from '../utilts/parseIngredient'
 
 require('../css/smart-text-box.scss');
 
@@ -21,7 +23,7 @@ class SubRecipeBox extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.id != this.props.id) {
+    if (nextProps.id !== this.props.id) {
       this.setState({
         data: nextProps.data || [],
         text: this.unarrayify(nextProps.data || []),
@@ -32,8 +34,9 @@ class SubRecipeBox extends React.Component {
   unarrayify = value => {
     let tr = '';
     if (value) {
+      // eslint-disable-next-line
       value.map(i => {
-        tr += i.quantity ? i.quantity + " " : '';
+        tr += i.numerator ? formatQuantity(1, 1, i.numerator, i.denominator) + " " : '';
         tr += i.measurement ? i.measurement + " " : '';
         tr += i.title + '\n'
       });
@@ -47,43 +50,22 @@ class SubRecipeBox extends React.Component {
     for (let index in subRecipes) {
       let line = subRecipes[index];
       if (line.length > 0) {
-        let subRecipes = line.split(' ');
-        if (subRecipes.length === 1) {
-          ings.push({ title: line });
-        } else if (subRecipes.length === 2) {
-          if (!(isNaN(subRecipes[0]))) {
-            ings.push({ quantity: subRecipes[0], title: subRecipes[1] })
-          } else {
-            ings.push({ title: line });
-          }
-        } else {
-          if (!(isNaN(subRecipes[0]))) {
-            let quantity = subRecipes.splice(0, 1)[0];
-            let measurement = subRecipes.splice(0, 1)[0];
-            ings.push({
-              quantity: quantity,
-              measurement: measurement,
-              title: subRecipes.join(' ')
-            });
-          } else {
-            ings.push({ title: line });
-          }
-        }
+        ings.push(parseIngredient(line));
       }
     }
     return ings
   };
 
   handleChange = event => {
-    let value = event.target.value;
+    const list = this.arrayify(event.target.value);
 
     this.setState({
-      data: this.arrayify(value),
-      text: value
+      data: [ ...list ],
+      text: event.target.value
     });
 
     if(this.props.change) {
-      this.props.change(this.props.name, this.arrayify(value));
+      this.props.change(this.props.name, [ ...list ]);
     }
   };
 

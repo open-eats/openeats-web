@@ -39,7 +39,7 @@ const RecipeFooter = ({ slug, source, username, updateDate, showEditLink, delete
   }
 
   const handleDelete = () => {
-    if (confirm(intl.formatMessage(messages.confirm_delete))) {
+    if (window.confirm(intl.formatMessage(messages.confirm_delete))) {
       deleteRecipe(slug)
     }
   };

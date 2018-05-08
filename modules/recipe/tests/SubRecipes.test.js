@@ -1,6 +1,6 @@
 import React from 'react';
 import SubRecipes from '../components/SubRecipes';
-import createComponentWithIntlAndRouter from '../../../jest_mocks/createComponentWithIntlAndRouter.js';
+import createComponentWithIntlAndRouter from '../../../config/jest/createComponentWithIntlAndRouter';
 
 import data from './data';
 

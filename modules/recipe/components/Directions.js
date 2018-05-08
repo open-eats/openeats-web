@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Directions = ({ data }) => {
-  let directions = [];
-  data.split("\n").map((direction, i) => {
+  const directions = data.split("\n").reduce((filtered, direction, i) => {
     if (direction.length > 0) {
-      directions.push(
-        <li className="direction" key={ i }>
-          { direction }
-        </li>
-      );
+       filtered.push(
+         <li className="direction" key={ i }>
+           { direction }
+         </li>
+       );
     }
-  });
+    return filtered;
+  }, []);
 
   return (
     <ol className="directions" >
