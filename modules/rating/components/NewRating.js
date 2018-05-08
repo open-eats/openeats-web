@@ -1,8 +1,6 @@
 import React from 'react'
-import {
-  injectIntl,
-  defineMessages,
-} from 'react-intl';
+import { injectIntl, defineMessages, } from 'react-intl';
+
 
 import {
   Input,
