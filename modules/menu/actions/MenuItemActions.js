@@ -10,9 +10,6 @@ export const load = () => {
       .then(res => dispatch({
         type: MenuItemConstants.MENU_ITEM_LOAD, data: res.body.results
       }))
-      .catch(err => {
-        dispatch({ type: StatusConstants.MENU_ITEM_ERROR });
-      })
   }
 };
 

@@ -46,12 +46,12 @@ class NavBar extends React.Component {
       recipes: {
         id: 'nav.recipes',
         description: 'Navbar Recipes',
-        defaultMessage: 'Browse Recipes',
+        defaultMessage: 'Browse',
       },
       randomRecipe: {
         id: 'nav.randomRecipe',
         description: 'Random Recipe',
-        defaultMessage: 'Random Recipe',
+        defaultMessage: 'Random',
       },
     });
 

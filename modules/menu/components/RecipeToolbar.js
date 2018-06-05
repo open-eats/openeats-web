@@ -31,12 +31,13 @@ class Toolbar extends React.Component {
             onClick={onMenuShow.bind(this, qs.menu)}
           />
         </span>
-        <span className="menu-edit-buttons">
-          <span
-            className="glyphicon glyphicon-copy"
-            onClick={onCopyMenuShow.bind(this, qs.menu)}
-          />
-        </span>
+        {/*TODO: Copying is disabled until there is better control over managing the menus*/}
+        {/*<span className="menu-edit-buttons">*/}
+          {/*<span*/}
+            {/*className="glyphicon glyphicon-copy"*/}
+            {/*onClick={onCopyMenuShow.bind(this, qs.menu)}*/}
+          {/*/>*/}
+        {/*</span>*/}
       </span>
     );
 
