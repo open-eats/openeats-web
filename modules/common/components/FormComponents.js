@@ -183,15 +183,6 @@ export class SelectBase extends BaseComponent {
       );
     });
 
-    const {formatMessage} = this.props.intl;
-    const messages = defineMessages({
-      header: {
-        id: 'select_widget.header',
-        description: 'Select widget default message',
-        defaultMessage: 'Please select a {label}',
-      }
-    });
-
     return (
       <div className={ this.props.size } key={ this.props.id }>
         <div className={ "form-group " + (this.hasErrors() ? 'has-error' : null) }>
@@ -200,7 +191,7 @@ export class SelectBase extends BaseComponent {
                   className="form-control"
                   value={ this.state.value }
                   onChange={ this.handleChange }>
-            <option key={0} value="">{ formatMessage(messages.header, { label: this.props.label }) }</option>
+            <option key={0} value="">{ this.props.default }</option>
             { options }
           </select>
           { this.getErrorMessage() }

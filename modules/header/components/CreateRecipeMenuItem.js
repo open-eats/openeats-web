@@ -10,7 +10,7 @@ class CreateRecipeMenuItemBase extends React.Component {
       create_recipe: {
         id: 'nav.create_recipe',
         description: 'Create recipe title',
-        defaultMessage: 'Create recipe',
+        defaultMessage: 'Create',
       },
     });
 

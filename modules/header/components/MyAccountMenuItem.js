@@ -29,7 +29,7 @@ class AccountMenuMenuItemBase extends React.Component {
       title: {
         id: 'nav.accountmenu.title',
         description: 'Account menu title',
-        defaultMessage: 'My Account',
+        defaultMessage: 'Account',
       },
       logout: {
         id: 'nav.accountmenu.logout',
