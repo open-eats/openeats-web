@@ -5,7 +5,7 @@ import RecipeConstants from '../constants/RecipeConstants';
 export const bulkAdd = (recipeState, list) => {
   return (dispatch) => {
     const format = (i) => {
-      const quantity = i.quantity ? i.quantity + " " : '';
+      const quantity = i.quantity && i.quantity !== '0' ? i.quantity + " " : '';
       const measurement = i.measurement ? i.measurement + " " : '';
       return quantity + measurement + i.title;
     };
