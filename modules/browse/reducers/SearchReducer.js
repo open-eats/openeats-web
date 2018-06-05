@@ -15,6 +15,8 @@ function search(state = { results: {}, loading: true }, action) {
         results: { ...state.results, ...newSearch },
         loading: false
       };
+    case SearchConstants.BROWSE_RESET_SEARCH_RESULTS:
+      return { results: {}, loading: false };
     default:
       return state;
   }

@@ -12,7 +12,7 @@ const ListRecipes = ({ data, format }) => {
       return recipe.photo_thumbnail;
     } else {
       const images = ['fish', 'fried-eggs', 'pizza', 'soup', 'steak'];
-      return '/images/' + images[Math.floor(Math.random(0) * images.length)] + '.png';
+      return '/images/' + images[Math.floor(Math.random(0) * images.length)] + '.jpg';
     }
   };
 
