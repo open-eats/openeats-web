@@ -1,6 +1,0 @@
-export default {
-  MENU_LOAD: 'MENU_LOAD',
-  MENU_ADD: 'MENU_ADD',
-  MENU_SAVE: 'MENU_SAVE',
-  MENU_DELETE: 'MENU_DELETE',
-};

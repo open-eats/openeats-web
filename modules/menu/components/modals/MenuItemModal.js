@@ -15,7 +15,6 @@ class MenuItemModal extends BaseModal {
     super(props);
 
     this.state = {
-      menu: '',
       recipe: '',
       title: '',
       start_date: '',
@@ -29,14 +28,12 @@ class MenuItemModal extends BaseModal {
 
     let title = '';
     let placeholder = this.props.intl.messages['men_item_event_model.new_menu_item'];
-    let menu = '';
     let recipe = '';
     let start_date = startDate || new Date();
     let end_date = endDate || new Date();
     let all_day = false;
 
     if (event) {
-      menu = event.menu;
       recipe = event.recipe;
       title = event.recipe_title;
       placeholder = event.recipe_title;
@@ -46,7 +43,6 @@ class MenuItemModal extends BaseModal {
     }
 
     this.setState({
-      menu: menu,
       recipe: recipe,
       placeholder: placeholder,
       title: title,
@@ -134,15 +130,6 @@ class MenuItemModal extends BaseModal {
               change={ this.change }
               loadOptions={ fetchRecipeList }
               errors={ this.state['error_recipe'] }
-            />
-            <Select
-              class="col-xs-12"
-              data={ menus.map(t => { return {value: t.id, label: t.title} }) }
-              value={ menu }
-              name="menu"
-              label={ intl.formatMessage(messages.menu) }
-              change={ this.change }
-              errors={ this.state['error_menu'] }
             />
             <DateTime
               class="col-xs-6"

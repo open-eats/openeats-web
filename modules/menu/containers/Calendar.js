@@ -13,14 +13,11 @@ import documentTitle from '../../common/documentTitle'
 import Loading from '../../base/components/Loading'
 import RecipeEvent from '../components/RecipeEvent'
 import RecipeToolbar from '../components/RecipeToolbar'
-import MenuModal from '../components/modals/MenuModal'
-import MenuCopyModal from '../components/modals/MenuCopyModal'
 import MenuItemModal from '../components/modals/MenuItemModal'
 
-import * as MenuActions from '../actions/MenuActions'
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
-import { menuItemValidation, menuValidation, copyMenuValidation } from '../actions/validation'
+import { menuItemValidation } from '../actions/validation'
 
 BigCalendar.momentLocalizer(moment);
 
@@ -43,7 +40,6 @@ class Menu extends React.Component {
   componentDidMount() {
     authCheckRedirect();
     documentTitle('Menu');
-    this.props.menuActions.load();
     this.props.menuItemActions.load();
   }
 
@@ -74,21 +70,17 @@ class Menu extends React.Component {
   };
 
   onMenuItemShow = (id, startDate=null, endDate=null) => {
-    // TODO add message saying to create a menu
-    if (this.props.menus.length > 0) {
-      this.setState({
-        showItemModal: true,
-        editMenuItemEventId: parseInt(id, 10),
-        startDate: startDate,
-        endDate: endDate,
-      })
-    }
+    this.setState({
+      showItemModal: true,
+      editMenuItemEventId: parseInt(id, 10),
+      startDate: startDate,
+      endDate: endDate,
+    })
   };
 
   getComponents = () => {
     const query = qs.parse(this.props.location.search);
     const mapStateToProps = state => ({
-      menus: state.menu.menus,
       qs: query,
     });
 
@@ -111,19 +103,15 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { menus, menuItems, location } = this.props;
-    const { menuActions, menuItemActions } = this.props;
-    const { showMenuModal, editMenuEventId } = this.state;
-    const { showCopyMenuModal, editCopyMenuEventId } = this.state;
+    const { menuItems, location } = this.props;
+    const { menuItemActions } = this.props;
+    // const { showMenuModal, editMenuEventId } = this.state;
+    // const { showCopyMenuModal, editCopyMenuEventId } = this.state;
     const { showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
     const query = qs.parse(location.search);
 
     if (menuItems !== null) {
-      let events = (
-        query.menu ?
-          menuItems.filter(t => t.menu === parseInt(query.menu, 10) ) :
-          menuItems
-      ).map(item => {
+      let events = menuItems.map(item => {
         return {
           ...item,
           allDay: item.all_day,
@@ -134,26 +122,8 @@ class Menu extends React.Component {
 
       return (
         <div>
-          <MenuModal
-            id={ editMenuEventId }
-            show={ showMenuModal }
-            onHide={ () => { this.setState({showMenuModal: false}) } }
-            event={ menus.find(t => t.id === editMenuEventId) }
-            onSave={ menuActions.save }
-            onRemove={ menuActions.remove }
-            validation={ menuValidation }
-          />
-          <MenuCopyModal
-            id={ editCopyMenuEventId }
-            show={ showCopyMenuModal }
-            onHide={ () => { this.setState({showCopyMenuModal: false}) } }
-            event={ menus.find(t => t.id === editCopyMenuEventId) }
-            onSave={ menuActions.copy }
-            validation={ copyMenuValidation }
-          />
           <MenuItemModal
             id={ editMenuItemEventId }
-            menus={ menus }
             show={ showItemModal }
             onHide={ () => { this.setState({showItemModal: false}) } }
             event={ menuItems.find(t => t.id === editMenuItemEventId) }
@@ -168,7 +138,7 @@ class Menu extends React.Component {
             popup
             selectable
             showMultiDayTimes
-            components={ this.getComponents() }
+            // components={ this.getComponents() }
             events={ events }
             views={{
               month: true,
@@ -205,20 +175,16 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  menus: PropTypes.array,
   menuItems: PropTypes.array,
-  menuActions: PropTypes.object.isRequired,
   menuItemActions: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  menus: state.menu.menus,
   menuItems: state.menu.items,
 });
 
 const mapDispatchToProps = dispatch => ({
-  menuActions: bindActionCreators(MenuActions, dispatch),
   menuItemActions: bindActionCreators(MenuItemActions, dispatch),
 });
 
