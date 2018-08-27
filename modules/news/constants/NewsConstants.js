@@ -1,3 +1,4 @@
 export default {
   NEWS_LOAD: 'NEWS_LOAD',
+  NEWS_MENU_ITEM_LOAD: 'NEWS_MENU_ITEM_LOAD',
 };

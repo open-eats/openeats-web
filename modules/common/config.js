@@ -27,4 +27,5 @@ export const serverURLs = {
   menu: apiUrl + '/menu/menu/',
   menuCopy: apiUrl + '/menu/menu-copy/',
   menu_item: apiUrl + '/menu/menu-item/',
+  menu_recipe: apiUrl + '/menu/menu-recipes/',
 };
