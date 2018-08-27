@@ -12,7 +12,6 @@ import documentTitle from '../../common/documentTitle'
 
 import Loading from '../../base/components/Loading'
 import RecipeEvent from '../components/RecipeEvent'
-import RecipeToolbar from '../components/RecipeToolbar'
 import MenuItemModal from '../components/modals/MenuItemModal'
 
 import * as MenuItemActions from '../actions/MenuItemActions'
@@ -79,26 +78,26 @@ class Menu extends React.Component {
   };
 
   getComponents = () => {
-    const query = qs.parse(this.props.location.search);
-    const mapStateToProps = state => ({
-      qs: query,
-    });
+    // const query = qs.parse(this.props.location.search);
+    // const mapStateToProps = state => ({
+    //   qs: query,
+    // });
 
-    const mapDispatchToProps = dispatch => ({
-      buildVisibilityUrl: this.buildVisibilityUrl,
-      onMenuShow: id => this.setState({
-        showMenuModal: true,
-        editMenuEventId: id,
-      }),
-      onCopyMenuShow: id => this.setState({
-        showCopyMenuModal: true,
-        editCopyMenuEventId: id,
-      })
-    });
+    // const mapDispatchToProps = dispatch => ({
+    //   buildVisibilityUrl: this.buildVisibilityUrl,
+    //   onMenuShow: id => this.setState({
+    //     showMenuModal: true,
+    //     editMenuEventId: id,
+    //   }),
+    //   onCopyMenuShow: id => this.setState({
+    //     showCopyMenuModal: true,
+    //     editCopyMenuEventId: id,
+    //   })
+    // });
 
     return {
       event: RecipeEvent, // used by each view (Month, Day, Week)
-      toolbar: connect(mapStateToProps, mapDispatchToProps)(RecipeToolbar),
+      // toolbar: connect(mapStateToProps, mapDispatchToProps)(RecipeToolbar),
     };
   };
 
@@ -138,17 +137,13 @@ class Menu extends React.Component {
             popup
             selectable
             showMultiDayTimes
-            // components={ this.getComponents() }
+            components={ this.getComponents() }
             events={ events }
             views={{
               month: true,
               week: true,
               day: true,
               agenda: true,
-              // The MenuList doesn't have a great direction right now.
-              // I'm thinking this should be treated like an admin resource for older menu items.
-              // This means that we will need to add pagination to it to make it effective.
-              // menu: MenuList,
             }}
 
             view={ query.view || 'month' }
