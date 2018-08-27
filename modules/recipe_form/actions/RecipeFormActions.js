@@ -1,5 +1,6 @@
 import { request } from '../../common/CustomSuperagent';
 import RecipeFormConstants from '../constants/RecipeFormConstants';
+import SearchConstants from '../../browse/constants/SearchConstants';
 import StatusConstants from '../constants/StatusConstants';
 import { serverURLs } from '../../common/config'
 import validation from './validation'
@@ -109,6 +110,7 @@ export const save = (data, event) => {
                   message: 'Recipe save!',
                   alert: 'alert-success'
                 });
+                dispatch({ type: SearchConstants.BROWSE_RESET_SEARCH_RESULTS });
                 if (typeof event === 'function') event(res.body);
               })
               .catch(err => {
@@ -129,6 +131,7 @@ export const save = (data, event) => {
               message: 'Recipe save!',
               alert: 'alert-success'
             });
+            dispatch({ type: SearchConstants.BROWSE_RESET_SEARCH_RESULTS });
             if (typeof event === 'function') event(res.body);
           }
         })
