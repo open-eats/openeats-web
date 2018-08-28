@@ -6,7 +6,7 @@ import Ratings from '../../recipe/components/Ratings';
 
 require("./../css/list-recipes.scss");
 
-const ListRecipes = ({ data, format }) => {
+const ListRecipes = ({ data, format, footer }) => {
   const getRecipeImage = (recipe) => {
     if (recipe.photo_thumbnail) {
       return recipe.photo_thumbnail;
@@ -42,6 +42,7 @@ const ListRecipes = ({ data, format }) => {
               </div>
             </div>
           </div>
+            { footer ? footer(recipe) : '' }
         </div>
       </div>
     );

@@ -25,3 +25,15 @@ export const loadUpcomingMenuItems = () => {
       }))
   }
 };
+
+export const completeMenuItem = (id) => {
+  return (dispatch) => {
+    request()
+      .patch(serverURLs.menu_item + id + '/' )
+      .send({complete: true})
+      .then(res => dispatch({
+        type: NewsConstants.NEWS_MENU_ITEM_COMPLETE,
+        id: id
+      }))
+  }
+};

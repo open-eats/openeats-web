@@ -56,18 +56,28 @@ class News extends React.Component {
         </Carousel>
         <div className="container">
           <div className="row">
-            { this.props.news.menuItems ?
-              <div>
+            { this.props.news.menuItems && this.props.news.menuItems.length > 0 ?
+              <div className="menu-items">
                 <h3 className="page-header">On the Menu</h3>
                 <ListRecipes
                   format="col-xs-12 col-sm-6 col-md-3"
                   data={this.props.news.menuItems.map(x => x.recipe_data)}
+                  footer={(recipe) => (
+                    <div className="col-xs-12">
+                      <button
+                        className="btn btn-success complete-btn"
+                        onClick={this.props.newsActions.completeMenuItem.bind(this, this.props.news.menuItems.find(x => x.recipe_data.id === recipe.id).id)}
+                      >
+                          Make As Complete <span className="glyphicon glyphicon-ok" aria-hidden="true"/>
+                      </button>
+                    </div>
+                  )}
                 />
               </div> : ''
             }
           </div>
-          <h3 className="page-header">Recommended Recipes</h3>
           <div className="row">
+            <h3 className="page-header">Recommended Recipes</h3>
             <MiniBrowse format="col-xs-12 col-sm-6 col-md-3" qs="?limit=4" />
           </div>
           <div className="row home-buttons">

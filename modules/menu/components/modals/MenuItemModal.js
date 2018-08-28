@@ -6,7 +6,7 @@ import { injectIntl, defineMessages } from 'react-intl';
 import BaseModal from './BaseModal'
 import { Checkbox } from '../../../common/components/FormComponents'
 import { DateTime } from '../../../common/components/DateTime'
-import { Async, Select } from '../../../common/components/Select'
+import { Async } from '../../../common/components/Select'
 
 require('../../css/rbc-calendar-modal.scss');
 
@@ -15,8 +15,8 @@ class MenuItemModal extends BaseModal {
     super(props);
 
     this.state = {
-      recipe: '',
-      title: '',
+      recipe: this.props.recipe || '',
+      title: this.props.recipe || '',
       start_date: '',
       end_date: '',
       all_day: '',
