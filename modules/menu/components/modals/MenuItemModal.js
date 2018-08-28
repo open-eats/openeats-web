@@ -16,7 +16,7 @@ class MenuItemModal extends BaseModal {
 
     this.state = {
       recipe: this.props.recipe || '',
-      title: this.props.recipe || '',
+      title: this.props.title || '',
       start_date: '',
       end_date: '',
       all_day: '',
@@ -26,9 +26,9 @@ class MenuItemModal extends BaseModal {
   componentWillReceiveProps(nextProps) {
     let { event, startDate, endDate } = nextProps;
 
-    let title = '';
+    let title = this.props.title;
     let placeholder = this.props.intl.messages['men_item_event_model.new_menu_item'];
-    let recipe = '';
+    let recipe = this.props.recipe;
     let start_date = startDate || new Date();
     let end_date = endDate || new Date();
     let all_day = false;
@@ -68,7 +68,7 @@ class MenuItemModal extends BaseModal {
   };
 
   render () {
-    let { show, onHide, fetchRecipeList, intl } = this.props;
+    let { id, show, onHide, fetchRecipeList, intl } = this.props;
     let { recipe, title, placeholder, start_date, end_date, all_day, complete } = this.state;
     const messages = defineMessages({
       start_date: {
@@ -117,14 +117,16 @@ class MenuItemModal extends BaseModal {
       <Modal show={ show } onHide={ onHide } className="rbc-calendar-modal">
         <Modal.Header>
           <Modal.Title>{ placeholder }</Modal.Title>
-          <div
-            className="btn btn-danger pull-right"
-            onClick={
-              this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
-            }
-          >
-            <span className="glyphicon glyphicon-trash"/>
-          </div>
+          {id !== 0 ?
+            <div
+              className="btn btn-danger pull-right"
+              onClick={
+                this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
+              }
+            >
+              <span className="glyphicon glyphicon-trash"/>
+            </div> : ''
+          }
         </Modal.Header>
 
         <Modal.Body>

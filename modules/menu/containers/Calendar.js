@@ -27,10 +27,6 @@ class Menu extends React.Component {
     this.state = {
       showMenuModal: false,
       editMenuEventId: 0,
-      showCopyMenuModal: false,
-      editCopyMenuEventId: 0,
-      showItemModal: false,
-      editMenuItemEventId: 0,
       startDate: null,
       endDate: null,
     };
@@ -78,26 +74,8 @@ class Menu extends React.Component {
   };
 
   getComponents = () => {
-    // const query = qs.parse(this.props.location.search);
-    // const mapStateToProps = state => ({
-    //   qs: query,
-    // });
-
-    // const mapDispatchToProps = dispatch => ({
-    //   buildVisibilityUrl: this.buildVisibilityUrl,
-    //   onMenuShow: id => this.setState({
-    //     showMenuModal: true,
-    //     editMenuEventId: id,
-    //   }),
-    //   onCopyMenuShow: id => this.setState({
-    //     showCopyMenuModal: true,
-    //     editCopyMenuEventId: id,
-    //   })
-    // });
-
     return {
       event: RecipeEvent, // used by each view (Month, Day, Week)
-      // toolbar: connect(mapStateToProps, mapDispatchToProps)(RecipeToolbar),
     };
   };
 

@@ -56,6 +56,7 @@ class RecipeScheme extends React.Component {
                   updateServings={ this.props.recipeActions.updateServings }
                   clearServings={ this.props.recipeActions.resetServings }
                 />
+                <button onClick={this.props.addToMenu}>menu</button>
               </div>
               <div className="col-sm-5 col-sm-pull-7 col-xs-12">
                 <h4>{ formatMessage(messages.ingredients) }</h4>
