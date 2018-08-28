@@ -10,7 +10,7 @@ class MenuMenuItemBase extends React.Component {
       menu: {
         id: 'nav.menu',
         description: 'menus',
-        defaultMessage: 'Menu (Beta)',
+        defaultMessage: 'Menu',
       },
     });
 

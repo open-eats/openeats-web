@@ -32,12 +32,14 @@ class MenuItemModal extends BaseModal {
     let start_date = startDate || new Date();
     let end_date = endDate || new Date();
     let all_day = false;
+    let complete = false;
 
     if (event) {
-      recipe = event.recipe;
-      title = event.recipe_title;
-      placeholder = event.recipe_title;
+      recipe = event.recipe_data.id;
+      title = event.recipe_data.title;
+      placeholder = event.recipe_data.title;
       start_date = event.start_date;
+      complete = event.complete;
       end_date = event.end_date;
       all_day = event.all_day;
     }
@@ -49,6 +51,7 @@ class MenuItemModal extends BaseModal {
       start_date: start_date,
       end_date: end_date,
       all_day: all_day,
+      complete: complete,
     });
   }
 
@@ -65,8 +68,8 @@ class MenuItemModal extends BaseModal {
   };
 
   render () {
-    let { show, onHide, fetchRecipeList, menus, intl } = this.props;
-    let { menu, recipe, title, placeholder, start_date, end_date, all_day } = this.state;
+    let { show, onHide, fetchRecipeList, intl } = this.props;
+    let { recipe, title, placeholder, start_date, end_date, all_day, complete } = this.state;
     const messages = defineMessages({
       start_date: {
         id: 'men_item_event_model.start_date',
@@ -92,6 +95,11 @@ class MenuItemModal extends BaseModal {
         id: 'men_item_event_model.all_day',
         description: 'Anytime today',
         defaultMessage: 'Anytime today',
+      },
+      complete: {
+        id: 'men_item_event_model.complete',
+        description: 'Complete',
+        defaultMessage: 'Complete',
       },
       new_menu_item: {
         id: 'men_item_event_model.new_menu_item',
@@ -150,10 +158,17 @@ class MenuItemModal extends BaseModal {
               errors={ this.state['error_end_date'] }
             />
             <Checkbox
-              size="col-xs-12"
+              size="col-xs-6"
               label={ intl.formatMessage(messages.all_day) }
               name="all_day"
               checked={ all_day }
+              change={ this.change }
+            />
+            <Checkbox
+              size="col-xs-6"
+              label={ intl.formatMessage(messages.complete) }
+              name="complete"
+              checked={ complete }
               change={ this.change }
             />
           </div>

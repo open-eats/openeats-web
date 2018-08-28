@@ -58,15 +58,15 @@ class News extends React.Component {
           <div className="row">
             { this.props.news.menuItems ?
               <div>
-                <h3>On the Menu</h3>
+                <h3 className="page-header">On the Menu</h3>
                 <ListRecipes
                   format="col-xs-12 col-sm-6 col-md-3"
-                  data={this.props.news.menuItems}
+                  data={this.props.news.menuItems.map(x => x.recipe_data)}
                 />
               </div> : ''
             }
           </div>
-          <h3>Recommended Recipes</h3>
+          <h3 className="page-header">Recommended Recipes</h3>
           <div className="row">
             <MiniBrowse format="col-xs-12 col-sm-6 col-md-3" qs="?limit=4" />
           </div>

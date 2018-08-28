@@ -18,7 +18,7 @@ export const load = () => {
 export const loadUpcomingMenuItems = () => {
   return (dispatch) => {
     request()
-      .get(serverURLs.menu_item + '?date=2018/01/01')
+      .get(serverURLs.menu_item + '?complete=false')
       .then(res => dispatch({
         type: NewsConstants.NEWS_MENU_ITEM_LOAD,
         items: res.body.results
