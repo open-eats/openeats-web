@@ -28,7 +28,10 @@
     .options {
       position: absolute;
       bottom: 5%;
-      left: 93%;
+      left: 85%;
+      .btn {
+        margin-left: 7px;
+      }
     }
   }
   .banner-img {
@@ -208,6 +211,7 @@
         background: transparent;
         bottom: 5%;
         right: 2%;
+        left: 0;
         vertical-align: text-bottom;
         button {
           float: right;

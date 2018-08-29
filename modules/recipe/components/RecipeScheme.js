@@ -37,6 +37,7 @@ class RecipeScheme extends React.Component {
             photo={ this.props.photo }
             rating={ this.props.rating }
             title={ this.props.title }
+            addToMenu={ this.props.addToMenu }
           />
           <div className="recipe-schema" itemType="http://schema.org/Recipe">
             <div className="row">
@@ -56,7 +57,6 @@ class RecipeScheme extends React.Component {
                   updateServings={ this.props.recipeActions.updateServings }
                   clearServings={ this.props.recipeActions.resetServings }
                 />
-                <button onClick={this.props.addToMenu}>menu</button>
               </div>
               <div className="col-sm-5 col-sm-pull-7 col-xs-12">
                 <h4>{ formatMessage(messages.ingredients) }</h4>
