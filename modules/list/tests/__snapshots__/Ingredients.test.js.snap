@@ -13,7 +13,7 @@ exports[`MyLists component test 1`] = `
       My Lists
     </p>
     <a
-      aria-current={null}
+      aria-current={false}
       className="list-group-item"
       href="/list/1"
       onClick={[Function]}
@@ -27,7 +27,7 @@ exports[`MyLists component test 1`] = `
       The first test
     </a>
     <a
-      aria-current={null}
+      aria-current={false}
       className="list-group-item"
       href="/list/sdfsdf"
       onClick={[Function]}
@@ -41,7 +41,7 @@ exports[`MyLists component test 1`] = `
       another test
     </a>
     <a
-      aria-current={null}
+      aria-current={false}
       className="list-group-item"
       href="/list/test"
       onClick={[Function]}
@@ -55,7 +55,7 @@ exports[`MyLists component test 1`] = `
       test
     </a>
     <a
-      aria-current={null}
+      aria-current={false}
       className="list-group-item"
       href="/list/"
       onClick={[Function]}
