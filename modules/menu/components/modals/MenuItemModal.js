@@ -6,7 +6,7 @@ import { injectIntl, defineMessages } from 'react-intl';
 import BaseModal from './BaseModal'
 import { Checkbox } from '../../../common/components/FormComponents'
 import { DateTime } from '../../../common/components/DateTime'
-import { Async, Select } from '../../../common/components/Select'
+import { Async } from '../../../common/components/Select'
 
 require('../../css/rbc-calendar-modal.scss');
 
@@ -15,9 +15,8 @@ class MenuItemModal extends BaseModal {
     super(props);
 
     this.state = {
-      menu: '',
-      recipe: '',
-      title: '',
+      recipe: this.props.recipe || '',
+      title: this.props.title || '',
       start_date: '',
       end_date: '',
       all_day: '',
@@ -27,32 +26,32 @@ class MenuItemModal extends BaseModal {
   componentWillReceiveProps(nextProps) {
     let { event, startDate, endDate } = nextProps;
 
-    let title = '';
+    let title = this.props.title;
     let placeholder = this.props.intl.messages['men_item_event_model.new_menu_item'];
-    let menu = '';
-    let recipe = '';
+    let recipe = this.props.recipe;
     let start_date = startDate || new Date();
     let end_date = endDate || new Date();
     let all_day = false;
+    let complete = false;
 
     if (event) {
-      menu = event.menu;
-      recipe = event.recipe;
-      title = event.recipe_title;
-      placeholder = event.recipe_title;
+      recipe = event.recipe_data.id;
+      title = event.recipe_data.title;
+      placeholder = event.recipe_data.title;
       start_date = event.start_date;
+      complete = event.complete;
       end_date = event.end_date;
       all_day = event.all_day;
     }
 
     this.setState({
-      menu: menu,
       recipe: recipe,
       placeholder: placeholder,
       title: title,
       start_date: start_date,
       end_date: end_date,
       all_day: all_day,
+      complete: complete,
     });
   }
 
@@ -69,8 +68,8 @@ class MenuItemModal extends BaseModal {
   };
 
   render () {
-    let { show, onHide, fetchRecipeList, menus, intl } = this.props;
-    let { menu, recipe, title, placeholder, start_date, end_date, all_day } = this.state;
+    let { id, show, onHide, fetchRecipeList, intl } = this.props;
+    let { recipe, title, placeholder, start_date, end_date, all_day, complete } = this.state;
     const messages = defineMessages({
       start_date: {
         id: 'men_item_event_model.start_date',
@@ -97,6 +96,11 @@ class MenuItemModal extends BaseModal {
         description: 'Anytime today',
         defaultMessage: 'Anytime today',
       },
+      complete: {
+        id: 'men_item_event_model.complete',
+        description: 'Complete',
+        defaultMessage: 'Complete',
+      },
       new_menu_item: {
         id: 'men_item_event_model.new_menu_item',
         description: 'Create a new Menu Item',
@@ -113,14 +117,16 @@ class MenuItemModal extends BaseModal {
       <Modal show={ show } onHide={ onHide } className="rbc-calendar-modal">
         <Modal.Header>
           <Modal.Title>{ placeholder }</Modal.Title>
-          <div
-            className="btn btn-danger pull-right"
-            onClick={
-              this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
-            }
-          >
-            <span className="glyphicon glyphicon-trash"/>
-          </div>
+          {id !== 0 ?
+            <div
+              className="btn btn-danger pull-right"
+              onClick={
+                this.remove.bind(this, intl.formatMessage(messages.confirmDelete))
+              }
+            >
+              <span className="glyphicon glyphicon-trash"/>
+            </div> : ''
+          }
         </Modal.Header>
 
         <Modal.Body>
@@ -134,15 +140,6 @@ class MenuItemModal extends BaseModal {
               change={ this.change }
               loadOptions={ fetchRecipeList }
               errors={ this.state['error_recipe'] }
-            />
-            <Select
-              class="col-xs-12"
-              data={ menus.map(t => { return {value: t.id, label: t.title} }) }
-              value={ menu }
-              name="menu"
-              label={ intl.formatMessage(messages.menu) }
-              change={ this.change }
-              errors={ this.state['error_menu'] }
             />
             <DateTime
               class="col-xs-6"
@@ -163,10 +160,17 @@ class MenuItemModal extends BaseModal {
               errors={ this.state['error_end_date'] }
             />
             <Checkbox
-              size="col-xs-12"
+              size="col-xs-6"
               label={ intl.formatMessage(messages.all_day) }
               name="all_day"
               checked={ all_day }
+              change={ this.change }
+            />
+            <Checkbox
+              size="col-xs-6"
+              label={ intl.formatMessage(messages.complete) }
+              name="complete"
+              checked={ complete }
               change={ this.change }
             />
           </div>

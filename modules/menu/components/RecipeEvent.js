@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const RecipeEvent = ({ event, title, isAllDay }) => (
   <div className="calender-recipe-event">
-    <Link to={ '/recipe/' + event.recipe_slug }>
-      { event.recipe_title  }
+    <Link to={ '/recipe/' + event.recipe_data.slug }>
+      { event.recipe_data.title  }
     </Link>
     <span className="glyphicon glyphicon-pencil pull-right"/>
   </div>

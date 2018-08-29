@@ -13,8 +13,8 @@ export class Async extends BaseComponent {
     });
 
     if(this.props.change) {
-      this.props.change(this.props.name, data.value);
-      this.props.change(this.props.title, data.label);
+      this.props.change(this.props.name, data ? data.value : '');
+      this.props.change(this.props.title, data ? data.label : '');
     }
   }
 
