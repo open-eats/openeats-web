@@ -103,7 +103,8 @@ export const save = (data, event) => {
                 dispatch({
                   type: RecipeFormConstants.RECIPE_FORM_SUBMIT,
                   oldRecipeId: data.id,
-                  newRecipeId: res.body.id
+                  newRecipeId: res.body.id,
+                  slug: res.body.slug
                 });
                 dispatch({
                   type: StatusConstants.RECIPE_FROM_STATUS_DISPLAY,
@@ -124,7 +125,8 @@ export const save = (data, event) => {
             dispatch({
               type: RecipeFormConstants.RECIPE_FORM_SUBMIT,
               oldRecipeId: data.id,
-              newRecipeId: res.body.id
+              newRecipeId: res.body.id,
+              slug: res.body.slug
             });
             dispatch({
               type: StatusConstants.RECIPE_FROM_STATUS_DISPLAY,

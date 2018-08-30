@@ -59,7 +59,7 @@
   "select_widget.header": "Please select a {label}",
   "widget_error.title": "Form error!",
   "widget_error.message": "Please confirm that all the data is there.",
-  "nav.menu": "Menu (Beta)",
+  "nav.menu": "Menu",
   "nav.randomRecipe": "Random",
   "list.new-input-placeholder": "What else do you need?",
   "list.error.message": "Something went wrong!",
