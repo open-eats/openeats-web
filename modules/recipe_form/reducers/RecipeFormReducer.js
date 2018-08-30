@@ -3,7 +3,19 @@ import RecipeFormConstants from '../constants/RecipeFormConstants'
 function form(state = [], action) {
   switch (action.type) {
     case RecipeFormConstants.RECIPE_FORM_INIT:
-      return [...state, { ...action.data, errors: [] }];
+      let newRecipe = true;
+      const recipes = state.map(recipe => {
+        if (recipe.slug === action.data.slug) {
+          newRecipe = false;
+          return { ...recipe, ...action.data, errors: [] };
+        }
+        return recipe;
+      });
+
+      if (newRecipe) {
+        return [...state, { ...action.data, errors: [] }];
+      }
+      return [ ...recipes ];
     case RecipeFormConstants.RECIPE_FORM_UPDATE:
       return state.map(recipe => {
         if (recipe.slug === action.recipeSlug) {
@@ -27,7 +39,7 @@ function form(state = [], action) {
       if (action.newRecipeId !== action.oldRecipeId) {
         return state.map(recipe => {
           if (recipe.id === action.oldRecipeId) {
-            return {...recipe, id: action.newRecipeId };
+            return {...recipe, id: action.newRecipeId, slug: action.slug };
           }
           return recipe;
         });

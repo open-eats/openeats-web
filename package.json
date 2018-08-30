@@ -73,7 +73,7 @@
     "react-spinkit": "2.1.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "superagent": "^2.3.0",
+    "superagent": "^3.8.3",
     "superagent-defaults": "^0.1.14"
   },
   "devDependencies": {
