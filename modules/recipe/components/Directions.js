@@ -2,21 +2,41 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Directions = ({ data }) => {
-  const directions = data.split("\n").reduce((filtered, direction, i) => {
+  let tmp = [];
+  let filtered = [];
+  const directions = data.split("\n").map((direction, i) => {
     if (direction.length > 0) {
-       filtered.push(
-         <li className="direction" key={ i }>
-           { direction }
-         </li>
-       );
+      if (direction === '---') {
+        filtered.push(
+          <div>
+            <ol className="directions">
+              {tmp}
+            </ol>
+            <h5>direction</h5>
+          </div>
+        );
+        tmp = [];
+      } else {
+        tmp.push(
+          <li className="direction" key={i}>
+            {direction}
+          </li>
+        );
+      }
     }
-    return filtered;
-  }, []);
+  });
+  filtered.push(
+    <div>
+      <ol className="directions" key='last'>
+        {tmp}
+      </ol>
+    </div>
+  );
 
   return (
-    <ol className="directions" >
-      { directions }
-    </ol>
+    <div>
+      { filtered }
+    </div>
   );
 };
 
