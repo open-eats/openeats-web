@@ -42,6 +42,23 @@ const buildFraction = (textArray) => {
   };
 };
 
+const numberSplit = number => {
+  let last = -1;
+  let length = number.length;
+  let numbers = ['1','2','3','4','5','6','7','8','9','0'];
+  numbers.map(n => {
+    console.log(number.lastIndexOf(n))
+    if (number.lastIndexOf(n) > last) {
+      last = number.lastIndexOf(n)
+    }
+  });
+  console.log(last, length)
+  if (length === (last + 1)) {
+    return {amount: number, measurement: ''}
+  }
+  return {amount: number.substring(0, last+1), measurement: number.substring(last+1, length)}
+};
+
 // Given an Ingredient as text, parse it into an Ingredient object
 export default (line) => {
   // Split the line by the space char
@@ -56,9 +73,14 @@ export default (line) => {
     // or a quantity and a title.
     // If the first word is not a number,
     // then the whole thing is the title.
-    if (isNaN(parseFloat(tags[0]))) {
+    if (isNaN(parseFloat(tags[0][0]))) {
       return { title: line };
     } else {
+      let { amount, measurement } = numberSplit(tags[0]);
+      console.log(amount, measurement)
+      if (measurement) {
+        return { ...buildFraction([amount]), ...{ measurement: measurement, title: tags[1] } }
+      }
       return { ...buildFraction([tags[0]]), ...{ title: tags[1] } }
     }
   } else {
