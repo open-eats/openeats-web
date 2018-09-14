@@ -47,12 +47,10 @@ const numberSplit = number => {
   let length = number.length;
   let numbers = ['1','2','3','4','5','6','7','8','9','0'];
   numbers.map(n => {
-    console.log(number.lastIndexOf(n))
     if (number.lastIndexOf(n) > last) {
       last = number.lastIndexOf(n)
     }
   });
-  console.log(last, length)
   if (length === (last + 1)) {
     return {amount: number, measurement: ''}
   }
@@ -77,7 +75,6 @@ export default (line) => {
       return { title: line };
     } else {
       let { amount, measurement } = numberSplit(tags[0]);
-      console.log(amount, measurement)
       if (measurement) {
         return { ...buildFraction([amount]), ...{ measurement: measurement, title: tags[1] } }
       }
