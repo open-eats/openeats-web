@@ -46,7 +46,8 @@ const ListFooter = ({activeFilter, completedCount, itemCount, onClearCompleted, 
       <button
         className="clear-completed clear-button"
         onClick={ onClearCompleted }>
-        { formatMessage(messages.clearCompleted) }
+        <span className="glyphicon glyphicon-trash visible-xs" />
+        <span className="hidden-xs">{ formatMessage(messages.clearCompleted) }</span>
       </button>
     );
   }
@@ -54,7 +55,10 @@ const ListFooter = ({activeFilter, completedCount, itemCount, onClearCompleted, 
   return (
     <div className="list-footer">
       <span className="list-count">
-        { formatMessage(messages.itemsLeft, {itemCount: itemCount}) }
+        <span className="hidden-xs">
+          { formatMessage(messages.itemsLeft, {itemCount: itemCount}) }
+        </span>
+        <span className="visible-xs">{itemCount}</span>
       </span>
       <ul className="filters">
         <li>
