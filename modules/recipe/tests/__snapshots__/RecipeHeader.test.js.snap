@@ -46,7 +46,16 @@ exports[`Test Header 1`] = `
       className="col-xs-12"
     >
       <button
-        className="btn btn-primary btn-sm"
+        className="btn btn-primary"
+        onClick={undefined}
+      >
+        <span
+          aria-hidden="true"
+          className="glyphicon glyphicon-calendar"
+        />
+      </button>
+      <button
+        className="btn btn-primary"
         onClick={[Function]}
       >
         <span

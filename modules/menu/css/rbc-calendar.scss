@@ -1,0 +1,53 @@
+.rbc-calendar {
+  margin-top: 20px;
+  min-height: 600px;
+  .calender-recipe-event {
+    a {
+      color: #ffffff;
+    }
+  }
+  .rbc-agenda-event-cell {
+    div {
+      a {
+        color: #337ab7;
+      }
+    }
+  }
+  .rbc-toolbar-label {
+    .menus-group {
+      display: inline-block;
+      .menu-filter {
+        border-radius: 0 !important;
+      }
+      .menu-edit-buttons {
+        padding: 6px 0 8px 0;
+        border-right: solid 1px #ccc;
+        border-top: solid 1px #ccc;
+        border-bottom: solid 1px #ccc;
+      }
+      .new-menu {
+        padding: 6px 0 8px 0;
+        border-left: solid 1px #ccc;
+        border-top: solid 1px #ccc;
+        border-bottom: solid 1px #ccc;
+      }
+      .glyphicon {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 10px;
+        &.glyphicon-space {
+          margin: 0 36px;
+        }
+      }
+      .menu-selector {
+        display: inline-block;
+        .form-group {
+          width: 200px;
+          select {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}

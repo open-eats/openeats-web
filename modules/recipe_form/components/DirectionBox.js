@@ -37,7 +37,11 @@ class DirectionBox extends React.Component {
           change={ this.props.change }
           value={ this.props.data }
         />
-        <Directions data={ this.props.data }/>
+        <div className="recipe-details">
+          <div className="recipe-schema">
+            <Directions data={ this.props.data }/>
+          </div>
+        </div>
       </TabbedView>
     )
   }

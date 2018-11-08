@@ -6,13 +6,13 @@ import Ratings from '../../recipe/components/Ratings';
 
 require("./../css/list-recipes.scss");
 
-const ListRecipes = ({ data, format }) => {
+const ListRecipes = ({ data, format, footer }) => {
   const getRecipeImage = (recipe) => {
     if (recipe.photo_thumbnail) {
       return recipe.photo_thumbnail;
     } else {
       const images = ['fish', 'fried-eggs', 'pizza', 'soup', 'steak'];
-      return '/images/' + images[Math.floor(Math.random(0) * images.length)] + '.png';
+      return '/images/' + images[Math.floor(Math.random(0) * images.length)] + '.jpg';
     }
   };
 
@@ -42,6 +42,7 @@ const ListRecipes = ({ data, format }) => {
               </div>
             </div>
           </div>
+            { footer ? footer(recipe) : '' }
         </div>
       </div>
     );

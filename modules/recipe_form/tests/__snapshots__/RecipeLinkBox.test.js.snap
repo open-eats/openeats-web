@@ -46,12 +46,15 @@ exports[`SubRecipeBox component test 1`] = `
       className="form-group"
     >
       <div
-        className="rta "
+        className="rta  "
         style={undefined}
       >
         <textarea
           className="rta__textarea form-control"
+          onBlur={[Function]}
           onChange={[Function]}
+          onClick={[Function]}
+          onSelect={[Function]}
           rows="4"
           style={undefined}
           value=""

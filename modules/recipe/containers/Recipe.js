@@ -4,15 +4,26 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import Loading from '../../base/components/Loading'
+import MenuItemModal from '../../menu/components/modals/MenuItemModal'
 import RecipeScheme from '../components/RecipeScheme'
 import * as RecipeActions from '../actions/RecipeActions'
 import * as RecipeItemActions from '../actions/RecipeItemActions'
+import * as MenuItemActions from '../../menu/actions/MenuItemActions'
 import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
 import documentTitle from '../../common/documentTitle'
+import {fetchRecipeList} from "../../menu/actions/RecipeListActions";
+import {menuItemValidation} from "../../menu/actions/validation";
 
 require("./../css/recipe.scss");
 
 class Recipe extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showMenuModal: false,
+    };
+  }
   componentDidMount() {
     this.props.recipeActions.load(this.props.match.params.recipe);
   }
@@ -32,19 +43,33 @@ class Recipe extends React.Component {
   render() {
     let { lists, recipes, match, status, user } = this.props;
     let { recipeActions, recipeItemActions } = this.props;
+    let { showItemModal } = this.state;
     let data = recipes.find(t => t.slug === match.params.recipe);
     if (data) {
       let showEditLink = (user !== null && user.id === data.author);
       documentTitle(data.title);
       return (
+        <div>
+          <MenuItemModal
+            id={ 0 }
+            show={ showItemModal }
+            onHide={ () => { this.setState({showItemModal: false}) } }
+            recipe={data.id}
+            title={data.title}
+            onSave={ this.props.menuItemActions.save }
+            fetchRecipeList={ fetchRecipeList }
+            validation={ menuItemValidation }
+          />
           <RecipeScheme
             { ...data }
             listStatus={ status }
             lists={ lists }
+            addToMenu={ () => { this.setState({showItemModal: true}) } }
             showEditLink={ showEditLink }
             recipeActions={ recipeActions }
             recipeItemActions={ recipeItemActions }
           />
+        </div>
       );
     } else {
       return ( <Loading message="Loading"/> )
@@ -71,6 +96,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   recipeItemActions: bindActionCreators(RecipeItemActions, dispatch),
+  menuItemActions: bindActionCreators(MenuItemActions, dispatch),
   recipeActions: bindActionCreators(
     bindIndexToActionCreators(RecipeActions, props.match.params.recipe),
     dispatch

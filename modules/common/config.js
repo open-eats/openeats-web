@@ -24,4 +24,5 @@ export const serverURLs = {
   list: apiUrl + '/list/lists/',
   list_item: apiUrl + '/list/items/',
   bulk_list_item: apiUrl + '/list/bulk_item/',
+  menu_item: apiUrl + '/menu/menu-item/',
 };

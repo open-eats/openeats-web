@@ -37,6 +37,7 @@ class RecipeScheme extends React.Component {
             photo={ this.props.photo }
             rating={ this.props.rating }
             title={ this.props.title }
+            addToMenu={ this.props.addToMenu }
           />
           <div className="recipe-schema" itemType="http://schema.org/Recipe">
             <div className="row">
