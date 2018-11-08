@@ -11,6 +11,7 @@ const RatingComments = ({ data, remove }) => {
         <div onClick={() => remove(rating.id, rating.recipe)}>x</div>
         <Ratings stars={ rating.rating || 0 }/>
         { rating.comment || '' }
+        by: {rating.username}
       </div>
     )
   });
