@@ -7,12 +7,18 @@ import RatingWrapper from '../components/RatingWrapper'
 import * as RatingsActions from "../actions/RatingsActions";
 
 class Rating extends React.Component {
+  componentDidMount() {
+    this.props.ratingActions.load(this.props.match.params.recipe);
+  }
+
   render() {
-    let { rating, recipeId, ratingActions } = this.props;
+    let { ratings, match, ratingActions } = this.props;
+    let recipeSlug = match.params.recipe;
+    let data =  ratings.hasOwnProperty(recipeSlug) ? ratings[recipeSlug] : [];
     return (
       <RatingWrapper
-        recipeId={ recipeId }
-        data={ rating.filter(r => r.recipeId === this.props.recipeId) }
+        recipeId={ recipeSlug }
+        data={ data }
         ratingActions={ ratingActions }
       />
     );
@@ -20,13 +26,13 @@ class Rating extends React.Component {
 }
 
 Rating.propTypes = {
-  rating: PropTypes.array.isRequired,
-  recipeId: PropTypes.number.isRequired,
+  ratings: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
   ratingActions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  rating: state.rating.ratings,
+  ratings: state.rating.ratings,
 });
 
 const mapDispatchToProps = dispatch => ({

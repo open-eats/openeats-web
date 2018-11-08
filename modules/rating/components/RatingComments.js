@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 
 import Ratings from './Ratings'
 
-const RatingComments = ({ data }) => {
-  let ratings = data.map((rating, i)=> {
+const RatingComments = ({ data, remove }) => {
+  let ratings = data.map(rating=> {
     return (
-      <div key={i}>
+      <div key={rating.id}>
         <hr/>
+        <div onClick={() => remove(rating.id, rating.recipe)}>x</div>
         <Ratings stars={ rating.rating || 0 }/>
         { rating.comment || '' }
       </div>
@@ -22,7 +23,8 @@ const RatingComments = ({ data }) => {
 };
 
 RatingComments.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  remove: PropTypes.func.isRequired,
 };
 
 export default RatingComments;

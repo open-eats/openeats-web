@@ -12,7 +12,7 @@ const RatingWrapper = ({ recipeId, data, ratingActions }) => (
       <h3>Comments</h3>
     </div>
     <div className="panel-body">
-      <RatingComments data={ data } />
+      <RatingComments data={ data } {...ratingActions} />
     </div>
     <div className="panel-footer">
       <NewRating recipeId={ recipeId } ratingActions={ ratingActions }/>

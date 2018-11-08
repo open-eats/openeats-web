@@ -14,7 +14,7 @@ export const serverURLs = {
   cuisine: apiUrl + '/recipe_groups/cuisine/',
   course_count: apiUrl + '/recipe_groups/course-count/',
   course: apiUrl + '/recipe_groups/course/',
-  ratings: apiUrl + '/recipe/rating/',
+  ratings: apiUrl + '/rating/rating/',
   tag: apiUrl + '/recipe_groups/tag/',
   ingredient: apiUrl + '/ingredient/ingredient/',
   direction: apiUrl + '/recipe/direction/',

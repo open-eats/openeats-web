@@ -10,7 +10,7 @@ const RecipeView = ({ match }) => (
     <div className="row">
       <div className="col-md-9">
         <Recipe match={ match } />
-        <Rating recipeId={ match } />
+        <Rating match={ match } />
       </div>
       <div className="col-md-3">
         <MiniBrowse format="col-md-12 col-sm-6 col-xs-12" qs="?limit=4" />
