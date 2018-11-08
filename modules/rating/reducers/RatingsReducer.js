@@ -1,22 +1,22 @@
 import RC from '../constants/RatingsConstants'
 
 function ratings(state = {}, action) {
+  let comments =  state.hasOwnProperty(action.recipe) ? [...state[action.recipe]] : [];
   switch (action.type) {
     case RC.LOAD:
-      return {[action.recipeSlug]: action.data, ...state};
+      return {[action.recipeSlug]: [...comments, ...action.data], ...state};
     case RC.ADD:
-      let comments =  state.hasOwnProperty(action.recipe) ? [...state[action.recipe]] : [];
       comments = [...comments, {
         id: action.id,
         recipe: action.recipe,
         rating: action.rating,
         comment: action.comment,
+        username: action.username,
       }];
       return {...state, [action.recipe]: [...comments]};
     case RC.DELETE:
-      let safeComments =  state.hasOwnProperty(action.recipe) ? [...state[action.recipe]] : [];
-      safeComments = safeComments.filter(c => c.id !== action.id);
-      return { ...state, [action.recipe]: [...safeComments] };
+      comments = comments.filter(c => c.id !== action.id);
+      return { ...state, [action.recipe]: [...comments] };
     default:
       return state;
   }

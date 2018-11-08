@@ -8,9 +8,15 @@ const RatingComments = ({ data, remove }) => {
     return (
       <div key={rating.id}>
         <hr/>
-        <div onClick={() => remove(rating.id, rating.recipe)}>x</div>
+        <button
+          className="btn btn-danger btn-sm"
+          onClick={ () => remove(rating.id, rating.recipe) }
+        >
+          <span className="glyphicon glyphicon-trash"/>
+        </button>
         <Ratings stars={ rating.rating || 0 }/>
         { rating.comment || '' }
+        <br/>
         by: {rating.username}
       </div>
     )

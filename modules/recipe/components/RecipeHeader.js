@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Ratings from './Ratings'
+import Ratings from '../../rating/components/Ratings'
 
 const RecipeHeader = ({ photo, title, rating, addToMenu }) => {
   if (photo) {

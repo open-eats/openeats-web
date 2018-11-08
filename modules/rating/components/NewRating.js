@@ -69,7 +69,7 @@ class RecipeForm extends React.Component {
     });
 
     return (
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col-lg-4 col-md-5 col-md-12">
             <Input

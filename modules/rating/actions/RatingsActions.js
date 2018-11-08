@@ -38,12 +38,15 @@ export const add = (rating, comment, recipeSlug) => {
         rating: rating,
         comment: comment,
         recipe: recipeSlug,
+        //TODO: change this to a var
         author: 1,
       })
       .then(res => dispatch({
         type: RC.ADD,
+        id: res.body.id,
         recipe: recipeSlug,
         comment: comment,
+        username: res.body.username,
         rating: parseInt(rating)
       }))
       // .catch(() => {
