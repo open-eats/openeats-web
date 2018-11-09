@@ -12,12 +12,13 @@ class Rating extends React.Component {
   }
 
   render() {
-    let { ratings, match, ratingActions } = this.props;
+    let { ratings, user, match, ratingActions } = this.props;
     let recipeSlug = match.params.recipe;
     let data =  ratings.hasOwnProperty(recipeSlug) ? ratings[recipeSlug] : [];
     return (
       <RatingWrapper
-        recipeId={ recipeSlug }
+        recipeSlug={ recipeSlug }
+        user={ user }
         data={ data }
         ratingActions={ ratingActions }
       />
@@ -27,12 +28,14 @@ class Rating extends React.Component {
 
 Rating.propTypes = {
   ratings: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   ratingActions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   ratings: state.rating.ratings,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({

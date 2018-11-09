@@ -1,11 +1,11 @@
 import React from 'react'
 import { injectIntl, defineMessages, } from 'react-intl';
 
-
 import {
   Input,
   TextArea,
 } from '../../common/components/FormComponents'
+import PropTypes from "prop-types";
 
 class RecipeForm extends React.Component {
   constructor(props) {
@@ -28,7 +28,8 @@ class RecipeForm extends React.Component {
     this.props.ratingActions.add(
         this.state.rating,
         this.state.comment,
-        this.props.recipeId
+        this.props.recipeSlug,
+        this.props.userId,
     );
     this.setState({ rating: '', comment: '' })
   };
@@ -107,5 +108,12 @@ class RecipeForm extends React.Component {
     )
   }
 }
+
+RecipeForm.propTypes = {
+  recipeSlug: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
+  intl: PropTypes.object.isRequired,
+  ratingActions: PropTypes.object.isRequired
+};
 
 export default injectIntl(RecipeForm);

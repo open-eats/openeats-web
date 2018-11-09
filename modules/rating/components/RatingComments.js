@@ -3,21 +3,32 @@ import PropTypes from 'prop-types'
 
 import Ratings from './Ratings'
 
-const RatingComments = ({ data, remove }) => {
+const RatingComments = ({ data, userId, remove }) => {
   let ratings = data.map(rating=> {
     return (
-      <div key={rating.id}>
-        <hr/>
-        <button
-          className="btn btn-danger btn-sm"
-          onClick={ () => remove(rating.id, rating.recipe) }
-        >
-          <span className="glyphicon glyphicon-trash"/>
-        </button>
-        <Ratings stars={ rating.rating || 0 }/>
-        { rating.comment || '' }
-        <br/>
-        by: {rating.username}
+      <div key={rating.id}  className="row">
+        <div className="col-xs-12">
+          <hr/>
+        </div>
+        <div className="col-xs-11">
+          <Ratings stars={ rating.rating || 0 }/>
+        </div>
+        <div className="col-xs-1">
+          {userId === rating.user_id ?
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => remove(rating.id, rating.recipe)}
+            >
+              <span className="glyphicon glyphicon-trash"/>
+            </button>
+          : null }
+        </div>
+        <div className="col-xs-12">
+          { rating.comment || '' }
+        </div>
+        <div className="col-xs-12">
+        - {rating.username}
+        </div>
       </div>
     )
   });

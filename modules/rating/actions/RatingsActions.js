@@ -30,7 +30,7 @@ export const remove = (id, recipeSlug) => {
   }
 };
 
-export const add = (rating, comment, recipeSlug) => {
+export const add = (rating, comment, recipeSlug, userId) => {
   return dispatch => {
     request()
       .post(serverURLs.ratings)
@@ -38,8 +38,7 @@ export const add = (rating, comment, recipeSlug) => {
         rating: rating,
         comment: comment,
         recipe: recipeSlug,
-        //TODO: change this to a var
-        author: 1,
+        author: userId,
       })
       .then(res => dispatch({
         type: RC.ADD,
@@ -47,7 +46,7 @@ export const add = (rating, comment, recipeSlug) => {
         recipe: recipeSlug,
         comment: comment,
         username: res.body.username,
-        rating: parseInt(rating)
+        rating: parseInt(rating, 10)
       }))
       // .catch(() => {
       //    if (process.env.NODE_ENV !== 'demo') history.replace('/notfound');
