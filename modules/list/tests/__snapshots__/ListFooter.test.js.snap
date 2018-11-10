@@ -7,7 +7,16 @@ exports[`MyLists component test 1`] = `
   <span
     className="list-count"
   >
-    6 items left
+    <span
+      className="hidden-xs"
+    >
+      6 items left
+    </span>
+    <span
+      className="visible-xs"
+    >
+      6
+    </span>
   </span>
   <ul
     className="filters"
@@ -43,7 +52,14 @@ exports[`MyLists component test 1`] = `
     className="clear-completed clear-button"
     onClick={[Function]}
   >
-    Clear completed
+    <span
+      className="glyphicon glyphicon-trash visible-xs"
+    />
+    <span
+      className="hidden-xs"
+    >
+      Clear completed
+    </span>
   </button>
 </div>
 `;
@@ -55,7 +71,16 @@ exports[`MyLists component test w/ active filter 1`] = `
   <span
     className="list-count"
   >
-    6 items left
+    <span
+      className="hidden-xs"
+    >
+      6 items left
+    </span>
+    <span
+      className="visible-xs"
+    >
+      6
+    </span>
   </span>
   <ul
     className="filters"
@@ -91,7 +116,14 @@ exports[`MyLists component test w/ active filter 1`] = `
     className="clear-completed clear-button"
     onClick={[Function]}
   >
-    Clear completed
+    <span
+      className="glyphicon glyphicon-trash visible-xs"
+    />
+    <span
+      className="hidden-xs"
+    >
+      Clear completed
+    </span>
   </button>
 </div>
 `;
@@ -103,7 +135,16 @@ exports[`MyLists component test w/ completed filter 1`] = `
   <span
     className="list-count"
   >
-    6 items left
+    <span
+      className="hidden-xs"
+    >
+      6 items left
+    </span>
+    <span
+      className="visible-xs"
+    >
+      6
+    </span>
   </span>
   <ul
     className="filters"
@@ -139,7 +180,14 @@ exports[`MyLists component test w/ completed filter 1`] = `
     className="clear-completed clear-button"
     onClick={[Function]}
   >
-    Clear completed
+    <span
+      className="glyphicon glyphicon-trash visible-xs"
+    />
+    <span
+      className="hidden-xs"
+    >
+      Clear completed
+    </span>
   </button>
 </div>
 `;

@@ -5,7 +5,7 @@ import { IntlProvider, addLocaleData } from 'react-intl'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import history from './common/history'
 import store from './common/store'
-// import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 // Load components
 import Header from './header/containers/Header'
@@ -87,3 +87,5 @@ if (browserSupportsAllFeatures()) {
   // All other browsers loads polyfills and then run `entryPoint()`.
   loadPolyFills(entryPoint);
 }
+
+registerServiceWorker();

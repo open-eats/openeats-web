@@ -1,0 +1,7 @@
+
+export default {
+  ADD: 'RATINGS_ADD',
+  LOAD: 'RATINGS_LOAD',
+  DELETE: 'RATINGS_DELETE',
+  UPDATE: 'RATINGS_UPDATE',
+};
