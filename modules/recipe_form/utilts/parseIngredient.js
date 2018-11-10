@@ -42,6 +42,21 @@ const buildFraction = (textArray) => {
   };
 };
 
+const numberSplit = number => {
+  let last = -1;
+  let length = number.length;
+  let numbers = ['1','2','3','4','5','6','7','8','9','0'];
+  numbers.map(n => {
+    if (number.lastIndexOf(n) > last) {
+      last = number.lastIndexOf(n)
+    }
+  });
+  if (length === (last + 1)) {
+    return {amount: number, measurement: ''}
+  }
+  return {amount: number.substring(0, last+1), measurement: number.substring(last+1, length)}
+};
+
 // Given an Ingredient as text, parse it into an Ingredient object
 export default (line) => {
   // Split the line by the space char
@@ -56,9 +71,13 @@ export default (line) => {
     // or a quantity and a title.
     // If the first word is not a number,
     // then the whole thing is the title.
-    if (isNaN(parseFloat(tags[0]))) {
+    if (isNaN(parseFloat(tags[0][0]))) {
       return { title: line };
     } else {
+      let { amount, measurement } = numberSplit(tags[0]);
+      if (measurement) {
+        return { ...buildFraction([amount]), ...{ measurement: measurement, title: tags[1] } }
+      }
       return { ...buildFraction([tags[0]]), ...{ title: tags[1] } }
     }
   } else {
@@ -69,10 +88,10 @@ export default (line) => {
     // TODO: We should add a check here to try and guess if a value
     // should be a measurement or a part of a title.
     // IE: 1 cup orange juice -> measurement
+    // IE: 1g salt -> measurement
     // IE: 2 chicken wings -> no measurement
-
-    if (isNaN(parseFloat(tags[0]))) {
-      // If the first word is not a number,
+    if (isNaN(parseFloat(tags[0][0]))) {
+      // If the first char is not a number,
       // then the whole thing is the title.
       return { title: line };
     } else if (isNaN(parseFloat(tags[1]))) {
@@ -80,11 +99,13 @@ export default (line) => {
       // then the first word is the quantity,
       // the second word is the measurement,
       // the last word(s) are the title.
-      let quantity = tags.splice(0,1);
-      let measurement = tags.splice(0,1)[0];
+      let { amount, measurement } = numberSplit(tags.splice(0,1)[0]);
+      if (!measurement) {
+        measurement = tags.splice(0,1)[0];
+      }
       return {
         ...{ measurement: measurement, title: tags.join(' ') },
-        ...buildFraction(quantity)
+        ...buildFraction([amount])
       };
     } else {
       // If the second word is a number,
