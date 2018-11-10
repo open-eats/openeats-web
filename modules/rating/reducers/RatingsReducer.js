@@ -11,6 +11,7 @@ function ratings(state = {}, action) {
         recipe: action.recipe,
         rating: action.rating,
         comment: action.comment,
+        user_id: action.user_id,
         username: action.username,
       }];
       return {...state, [action.recipe]: [...comments]};

@@ -41,6 +41,7 @@ export const add = (rating, comment, recipeSlug, userId) => {
         id: res.body.id,
         recipe: recipeSlug,
         comment: comment,
+        user_id: res.body.user_id,
         username: res.body.username,
         rating: parseInt(rating, 10)
       }))
