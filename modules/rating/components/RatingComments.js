@@ -24,7 +24,11 @@ const RatingComments = ({ data, userId, remove }) => {
           : null }
         </div>
         <div className="col-xs-12">
-          { rating.comment || '' }
+          <span
+            dangerouslySetInnerHTML={{
+              __html: rating.comment ? rating.comment.replace(new RegExp('\n', 'g'), '<br />') : ''
+            }}
+          />
         </div>
         <div className="col-xs-12">
         - {rating.username}
