@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 
-import Ratings from '../../recipe/components/Ratings';
+import Ratings from '../../rating/components/Ratings'
 
 require("./../css/list-recipes.scss");
 

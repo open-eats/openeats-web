@@ -76,7 +76,7 @@ export const loadRatings = (filter) => {
     });
 
     request()
-      .get(serverURLs.ratings)
+      .get(serverURLs.rating_count)
       .query(parsedFilter(filter))
       .then(res => (
         dispatch({
