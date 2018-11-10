@@ -88,6 +88,7 @@ export default (line) => {
     // TODO: We should add a check here to try and guess if a value
     // should be a measurement or a part of a title.
     // IE: 1 cup orange juice -> measurement
+    // IE: 1g salt -> measurement
     // IE: 2 chicken wings -> no measurement
     if (isNaN(parseFloat(tags[0][0]))) {
       // If the first char is not a number,
