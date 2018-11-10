@@ -26,6 +26,7 @@ const RatingComments = ({ data, userId, remove }) => {
         <div className="col-xs-12">
           <span
             dangerouslySetInnerHTML={{
+              // eslint-disable-next-line
               __html: rating.comment ? rating.comment.replace(new RegExp('\n', 'g'), '<br />') : ''
             }}
           />

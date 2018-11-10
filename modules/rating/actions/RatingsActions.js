@@ -1,7 +1,6 @@
 import RC from '../constants/RatingsConstants'
 import {request} from "../../common/CustomSuperagent";
 import {serverURLs} from "../../common/config";
-import history from "../../common/history";
 
 export const load = (recipeSlug) => {
   return (dispatch) => {
