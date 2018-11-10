@@ -12,9 +12,6 @@ export const load = (recipeSlug) => {
         recipeSlug: recipeSlug,
         data: res.body.results,
       }))
-      .catch(() => {
-         if (process.env.NODE_ENV !== 'demo') history.replace('/notfound');
-      })
   }
 };
 
@@ -48,8 +45,5 @@ export const add = (rating, comment, recipeSlug, userId) => {
         username: res.body.username,
         rating: parseInt(rating, 10)
       }))
-      // .catch(() => {
-      //    if (process.env.NODE_ENV !== 'demo') history.replace('/notfound');
-      // });
   }
 };
