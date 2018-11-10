@@ -89,9 +89,8 @@ export default (line) => {
     // should be a measurement or a part of a title.
     // IE: 1 cup orange juice -> measurement
     // IE: 2 chicken wings -> no measurement
-
-    if (isNaN(parseFloat(tags[0]))) {
-      // If the first word is not a number,
+    if (isNaN(parseFloat(tags[0][0]))) {
+      // If the first char is not a number,
       // then the whole thing is the title.
       return { title: line };
     } else if (isNaN(parseFloat(tags[1]))) {
@@ -99,11 +98,13 @@ export default (line) => {
       // then the first word is the quantity,
       // the second word is the measurement,
       // the last word(s) are the title.
-      let quantity = tags.splice(0,1);
-      let measurement = tags.splice(0,1)[0];
+      let { amount, measurement } = numberSplit(tags.splice(0,1)[0]);
+      if (!measurement) {
+        measurement = tags.splice(0,1)[0];
+      }
       return {
         ...{ measurement: measurement, title: tags.join(' ') },
-        ...buildFraction(quantity)
+        ...buildFraction([amount])
       };
     } else {
       // If the second word is a number,
