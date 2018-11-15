@@ -49,6 +49,9 @@ class Browse extends React.Component {
     window.scrollTo(0, 0);
     if (!this.props.search.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
       this.props.searchActions.loadRecipes(this.mergeDefaultFilters(qs));
+      this.props.filterActions.loadCourses(this.mergeDefaultFilters(qs));
+      this.props.filterActions.loadCuisines(this.mergeDefaultFilters(qs));
+      this.props.filterActions.loadRatings(this.mergeDefaultFilters(qs));
     }
     if (!this.props.courses.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
       this.props.filterActions.loadCourses(this.mergeDefaultFilters(qs));
