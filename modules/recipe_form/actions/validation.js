@@ -41,8 +41,8 @@ const double = val => {
 };
 
 export default [
-  { name: 'course', validators: [required, double] },
-  { name: 'cuisine', validators: [required, double] },
+  { name: 'course', validators: [required] },
+  { name: 'cuisine', validators: [required] },
   { name: 'tags', validators: [] },
   { name: 'prep_time', validators: [required, double] },
   { name: 'cook_time', validators: [required, double] },
