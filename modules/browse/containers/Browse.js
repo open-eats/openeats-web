@@ -53,14 +53,16 @@ class Browse extends React.Component {
       this.props.filterActions.loadCuisines(this.mergeDefaultFilters(qs));
       this.props.filterActions.loadRatings(this.mergeDefaultFilters(qs));
     }
-    if (!this.props.courses.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
-      this.props.filterActions.loadCourses(this.mergeDefaultFilters(qs));
-    }
-    if (!this.props.cuisines.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
-      this.props.filterActions.loadCuisines(this.mergeDefaultFilters(qs));
-    }
-    if (!this.props.ratings.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
-      this.props.filterActions.loadRatings(this.mergeDefaultFilters(qs));
+    else {
+      if (!this.props.courses.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
+        this.props.filterActions.loadCourses(this.mergeDefaultFilters(qs));
+      }
+      if (!this.props.cuisines.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
+        this.props.filterActions.loadCuisines(this.mergeDefaultFilters(qs));
+      }
+      if (!this.props.ratings.results[queryString.stringify(this.mergeDefaultFilters(qs))]) {
+        this.props.filterActions.loadRatings(this.mergeDefaultFilters(qs));
+      }
     }
   }
 
