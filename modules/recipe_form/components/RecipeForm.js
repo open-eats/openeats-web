@@ -261,20 +261,10 @@ class RecipeForm extends React.Component {
                   type="number"
                   label={ formatMessage(messages.servings_label) }
                   placeholder={ formatMessage(messages.servings_placeholder) }
-                  size="col-sm-6 col-xs-12"
+                  size="col-sm-12 col-xs-12"
                   change={ this.props.recipeFormActions.update }
                   value={ this.props.form.servings || '' }
                   errors={ this.props.form.errors.servings }
-                />
-                <Input
-                  name="rating"
-                  type="number"
-                  label={ formatMessage(messages.rating_label) + " (" + formatMessage(messages.optional) + ")" }
-                  placeholder={ formatMessage(messages.rating_placeholder) }
-                  size="col-sm-6 col-xs-12"
-                  change={ this.props.recipeFormActions.update }
-                  value={ this.props.form.rating || '' }
-                  errors={ this.props.form.errors.rating }
                 />
               </div>
               <div className="row">
