@@ -38,7 +38,6 @@ const buildFraction = (textArray) => {
   return {
     numerator,
     denominator,
-    quantity: formatQuantity(1,1,numerator,denominator)
   };
 };
 
