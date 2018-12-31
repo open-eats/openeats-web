@@ -29,12 +29,6 @@ export default function register() {
       return;
     }
 
-    window.addEventListener('fetch', function(event) {
-      if (event.request.url.match('^.*(\/admin\/).*$')) {
-        return false;
-      }
-    });
-
     window.addEventListener('load', (event) => {
       if (window.location.pathname.match('^.*(\/admin\/).*$')) {
         return false;
