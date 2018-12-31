@@ -30,7 +30,7 @@ export default function register() {
     }
 
     window.addEventListener('load', (event) => {
-      if (event.request.url.match('^.*(\/admin\/).*$')) {
+      if (window.location.pathname.match('^.*(\/admin\/).*$')) {
         return false;
       }
 
