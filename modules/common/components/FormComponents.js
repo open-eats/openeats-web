@@ -111,6 +111,11 @@ export class FileBase extends BaseComponent {
         id: 'file_widget.help_block',
         description: 'File upload widget help message',
         defaultMessage: 'Please upload a picture of the finished recipe!',
+      },
+      note: {
+        id: 'file_widget.note',
+        description: 'Note: the photo must be smaller than 500kB',
+        defaultMessage: 'Note: the photo must be smaller than 500kB',
       }
     });
 
@@ -122,7 +127,11 @@ export class FileBase extends BaseComponent {
                  name={ this.props.name }
                  accept={ this.props.accept }
                  onChange={ this.handleChange }/>
-          <p className="help-block">{ formatMessage(messages.help_block) }</p>
+          <p className="help-block">
+            { formatMessage(messages.help_block) }
+            <br/>
+            { formatMessage(messages.note) }
+          </p>
         </div>
       </div>
     )

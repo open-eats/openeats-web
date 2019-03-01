@@ -10,13 +10,13 @@ exports[`Ingredient Buttons Complete 1`] = `
   >
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Check All
     </button>
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Clear
     </button>
@@ -48,7 +48,6 @@ exports[`Ingredient Buttons Complete 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
@@ -63,7 +62,6 @@ exports[`Ingredient Buttons Complete 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
@@ -94,13 +92,13 @@ exports[`Ingredient Buttons Default 1`] = `
   >
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Check All
     </button>
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Clear
     </button>
@@ -132,7 +130,6 @@ exports[`Ingredient Buttons Default 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
@@ -147,7 +144,6 @@ exports[`Ingredient Buttons Default 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
@@ -176,13 +172,13 @@ exports[`Ingredient Buttons Error 1`] = `
   >
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Check All
     </button>
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Clear
     </button>
@@ -214,7 +210,6 @@ exports[`Ingredient Buttons Error 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
@@ -229,7 +224,6 @@ exports[`Ingredient Buttons Error 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
@@ -260,13 +254,13 @@ exports[`Ingredient Buttons Loading 1`] = `
   >
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Check All
     </button>
     <button
       className="btn btn-default"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Clear
     </button>
@@ -298,7 +292,6 @@ exports[`Ingredient Buttons Loading 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
@@ -313,7 +306,6 @@ exports[`Ingredient Buttons Loading 1`] = `
         <li
           className=""
           role="presentation"
-          style={undefined}
         >
           <a
             href="#"
