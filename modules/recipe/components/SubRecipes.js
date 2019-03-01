@@ -13,7 +13,7 @@ const SubRecipes = ({ data, check }) => {
           checked={ subRecipe.checked ? subRecipe.checked : false }
           change={ check }
         />
-        { (subRecipe.quantity !== 0)
+        { (subRecipe.quantity !== '0')
             ? <span className="quantity">{ subRecipe.quantity } </span>
             : null
         }

@@ -7,16 +7,17 @@ const recipes = (state = [], action) => {
   switch (action.type) {
     case RecipeConstants.RECIPE_LOAD:
       let recipe = state.find(t => t.id === action.data.id);
+      let subRecipes, ingredients;
       if (recipe) {
         return state.map(recipe => {
           if (recipe.id === action.data.id) {
-            let subRecipes = subrecipes(
+            subRecipes = subrecipes(
               recipe.subrecipes,
               { subrecipes: action.data.subrecipes,
                 formatQuantity: fq.bind(this, recipe.servings, action.data.servings),
                 type: action.type }
             );
-            let ingredients = ingredient(
+            ingredients = ingredient(
               recipe.ingredient_groups,
               { ingredient_groups: action.data.ingredient_groups,
                 formatQuantity: fq.bind(this, recipe.servings, action.data.servings),
@@ -31,13 +32,13 @@ const recipes = (state = [], action) => {
           return recipe;
         });
       } else {
-        let subRecipes = subrecipes(
+        subRecipes = subrecipes(
           [],
           { subrecipes: action.data.subrecipes,
             formatQuantity: fq.bind(this, action.data.servings, action.data.servings),
             type: action.type }
         );
-        let ingredients = ingredient(
+        ingredients = ingredient(
           [],
           { ingredient_groups: action.data.ingredient_groups,
             formatQuantity: fq.bind(this, action.data.servings, action.data.servings),
@@ -48,7 +49,7 @@ const recipes = (state = [], action) => {
           ...state,
           {
             ...action.data,
-            subRecipes: subRecipes,
+            subrecipes: subRecipes,
             ingredient_groups: ingredients,
             customServings: action.data.servings
           }
