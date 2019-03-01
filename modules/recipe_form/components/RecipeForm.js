@@ -25,7 +25,7 @@ class RecipeForm extends React.Component {
     if (photo_thumbnail) {
       return photo_thumbnail;
     } else {
-      return '/images/fried-eggs.png';
+      return '/images/fried-eggs.jpg';
     }
   };
 
