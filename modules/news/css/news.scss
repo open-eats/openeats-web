@@ -35,12 +35,12 @@
 }
 
 .menu-items {
+  .recipe-card-news-footer {
+    width: 100%;
+  }
   .recipe {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     .complete-btn {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      border-radius: 0 0 2px 2px;
       width: 100%;
       .glyphicon-ok {
         margin-left: 10px;

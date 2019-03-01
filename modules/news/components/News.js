@@ -63,13 +63,15 @@ class News extends React.Component {
                   format="col-xs-12 col-sm-6 col-md-3"
                   data={this.props.news.menuItems.map(x => x.recipe_data)}
                   footer={(recipe) => (
-                    <div className="col-xs-12">
-                      <button
-                        className="btn btn-success complete-btn"
-                        onClick={this.props.newsActions.completeMenuItem.bind(this, this.props.news.menuItems.find(x => x.recipe_data.id === recipe.id).id)}
-                      >
-                          Make As Complete <span className="glyphicon glyphicon-ok" aria-hidden="true"/>
-                      </button>
+                    <div className="row recipe-card-news-footer">
+                      <div className="col-xs-12">
+                        <button
+                          className="btn btn-success complete-btn"
+                          onClick={this.props.newsActions.completeMenuItem.bind(this, this.props.news.menuItems.find(x => x.recipe_data.id === recipe.id).id)}
+                        >
+                            Make As Complete <span className="glyphicon glyphicon-ok" aria-hidden="true"/>
+                        </button>
+                      </div>
                     </div>
                   )}
                 />

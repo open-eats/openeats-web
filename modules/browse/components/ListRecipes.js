@@ -42,7 +42,7 @@ const ListRecipes = ({ data, format, footer }) => {
               </div>
             </div>
           </div>
-            { footer ? footer(recipe) : '' }
+          { footer ? footer(recipe) : '' }
         </div>
       </div>
     );
