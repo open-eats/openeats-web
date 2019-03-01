@@ -50,7 +50,7 @@ exports[`MyLists component test 1`] = `
   </ul>
   <button
     className="clear-completed clear-button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="glyphicon glyphicon-trash visible-xs"
@@ -114,7 +114,7 @@ exports[`MyLists component test w/ active filter 1`] = `
   </ul>
   <button
     className="clear-completed clear-button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="glyphicon glyphicon-trash visible-xs"
@@ -178,7 +178,7 @@ exports[`MyLists component test w/ completed filter 1`] = `
   </ul>
   <button
     className="clear-completed clear-button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="glyphicon glyphicon-trash visible-xs"

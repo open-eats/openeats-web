@@ -56,6 +56,7 @@
   "filter.hide_filters": "Hide Filters",
   "filter.filter_ordering": "Ordering",
   "file_widget.help_block": "Please upload a picture of the finished recipe!",
+  "file_widget.note": "Note: the photo must be smaller than 500kB",
   "select_widget.header": "Please select a {label}",
   "widget_error.title": "Form error!",
   "widget_error.message": "Please confirm that all the data is there.",

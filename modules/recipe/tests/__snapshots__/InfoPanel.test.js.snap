@@ -38,7 +38,6 @@ exports[`Long Info Panel 1`] = `
                   className="form-control"
                   name="servings"
                   onChange={[Function]}
-                  placeholder={undefined}
                   type="number"
                   value=""
                 />
@@ -126,7 +125,6 @@ exports[`Short Info Panel 1`] = `
                   className="form-control"
                   name="servings"
                   onChange={[Function]}
-                  placeholder={undefined}
                   type="number"
                   value=""
                 />

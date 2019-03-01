@@ -16,9 +16,7 @@ exports[`Ingredient Group component test 1`] = `
       <li
         className="ingredient"
       >
-        <div
-          className={undefined}
-        >
+        <div>
           <label
             className="check-container"
           >
@@ -65,9 +63,7 @@ exports[`Ingredient Group component test 1`] = `
       <li
         className="ingredient"
       >
-        <div
-          className={undefined}
-        >
+        <div>
           <label
             className="check-container"
           >
@@ -111,9 +107,7 @@ exports[`Ingredient Group component test 1`] = `
       <li
         className="ingredient"
       >
-        <div
-          className={undefined}
-        >
+        <div>
           <label
             className="check-container"
           >
