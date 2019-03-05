@@ -3,7 +3,17 @@ import { serverURLs } from '../../common/config'
 import MenuItemConstants from '../constants/MenuItemConstants';
 import StatusConstants from '../constants/StatusConstants';
 
-export const load = () => {
+export const loadStats = () => {
+  return (dispatch) => {
+    request()
+      .get(serverURLs.menu_stats)
+      .then(res => dispatch({
+        type: MenuItemConstants.MENU_ITEM_LOAD_STATS, data: res.body
+      }))
+  }
+};
+
+export const loadItems = () => {
   return (dispatch) => {
     request()
       .get(serverURLs.menu_item)

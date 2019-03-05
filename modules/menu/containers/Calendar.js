@@ -3,28 +3,31 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import qs from 'query-string'
-import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 
 import history from '../../common/history'
 import authCheckRedirect from '../../common/authCheckRedirect'
 import documentTitle from '../../common/documentTitle'
 
+import TC from '../constants/TabConstants.js'
+
 import Loading from '../../base/components/Loading'
-import RecipeEvent from '../components/RecipeEvent'
 import MenuItemModal from '../components/modals/MenuItemModal'
+import Tabs from '../components/Tabs'
+import Stats from '../components/Stats'
+import NextWeek from '../components/NextWeek'
+import ThisWeek from '../components/ThisWeek'
 
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
 import { menuItemValidation } from '../actions/validation'
-
-BigCalendar.momentLocalizer(moment);
 
 class Menu extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      tab: TC.ThisWeek,
       showMenuModal: false,
       editMenuEventId: 0,
       startDate: null,
@@ -32,59 +35,25 @@ class Menu extends React.Component {
     };
   }
 
+  changeTab = (tab) => {
+    this.setState({tab});
+  };
+
   componentDidMount() {
     authCheckRedirect();
     documentTitle('Menu');
-    this.props.menuItemActions.load();
+    this.props.menuItemActions.loadItems();
+    this.props.menuItemActions.loadStats();
   }
 
   componentWillUnmount() {
     documentTitle();
   }
 
-  buildViewUrl = value => {
-    let parsed = qs.parse(this.props.location.search);
-    parsed['view'] = value;
-    history.push('/menu/?' + qs.stringify(parsed));
-  };
-
-  buildDateUrl = value => {
-    let parsed = qs.parse(this.props.location.search);
-    parsed['date'] = moment(value).format('YYYY-MM-DD');
-    history.push('/menu/?' + qs.stringify(parsed));
-  };
-
-  buildVisibilityUrl = (name, value) => {
-    let parsed = qs.parse(this.props.location.search);
-    if (value) {
-      parsed['menu'] = value;
-    } else {
-      delete parsed['menu'];
-    }
-    history.push('/menu/?' + qs.stringify(parsed));
-  };
-
-  onMenuItemShow = (id, startDate=null, endDate=null) => {
-    this.setState({
-      showItemModal: true,
-      editMenuItemEventId: parseInt(id, 10),
-      startDate: startDate,
-      endDate: endDate,
-    })
-  };
-
-  getComponents = () => {
-    return {
-      event: RecipeEvent, // used by each view (Month, Day, Week)
-    };
-  };
-
   render() {
-    const { menuItems, location } = this.props;
+    const { menuItems, location, stats } = this.props;
     const { menuItemActions } = this.props;
-    // const { showMenuModal, editMenuEventId } = this.state;
-    // const { showCopyMenuModal, editCopyMenuEventId } = this.state;
-    const { showItemModal, editMenuItemEventId, startDate, endDate } = this.state;
+    const { showItemModal, editMenuItemEventId, startDate, endDate, tab } = this.state;
     const query = qs.parse(location.search);
 
     if (menuItems !== null) {
@@ -111,34 +80,10 @@ class Menu extends React.Component {
             fetchRecipeList={ fetchRecipeList }
             validation={ menuItemValidation }
           />
-          <BigCalendar
-            popup
-            selectable
-            showMultiDayTimes
-            components={ this.getComponents() }
-            events={ events }
-            views={{
-              month: true,
-              week: true,
-              day: true,
-              agenda: true,
-            }}
-
-            view={ query.view || 'month' }
-            defaultView={ 'month' }
-            onView={ this.buildViewUrl }
-
-            date={ moment(query.date).toDate() }
-            defaultDate={ moment(query.date).toDate() || new Date() }
-            onNavigate={ this.buildDateUrl }
-
-            onSelectEvent={ event => this.onMenuItemShow(event.id) }
-            onSelectSlot={ slotInfo => this.onMenuItemShow(
-                0,
-                moment(slotInfo.start),
-                moment(slotInfo.end).add(1, 'h')
-            )}
-          />
+          <Tabs activeTab={this.state.tab} changeTab={this.changeTab}/>
+          {tab === TC.Stats ? <Stats stats={stats}/> : ''}
+          {tab === TC.ThisWeek ? <ThisWeek menuItems={events}/> : ''}
+          {tab === TC.NextWeek ? <NextWeek menuItems={events}/> : ''}
         </div>
       );
     } else {
@@ -149,12 +94,14 @@ class Menu extends React.Component {
 
 Menu.propTypes = {
   menuItems: PropTypes.array,
+  stats: PropTypes.array,
   menuItemActions: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   menuItems: state.menu.items,
+  stats: state.menu.stats,
 });
 
 const mapDispatchToProps = dispatch => ({

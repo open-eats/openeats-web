@@ -38,14 +38,13 @@
   .recipe-card-news-footer {
     width: 100%;
   }
-  .recipe {
-    .complete-btn {
-      border-radius: 0 0 2px 2px;
-      width: 100%;
-      .glyphicon-ok {
-        margin-left: 10px;
-      }
-    }
+}
+
+.complete-btn {
+  border-radius: 0 0 2px 2px;
+  width: 100%;
+  .glyphicon-ok {
+    margin-left: 10px;
   }
 }
 
