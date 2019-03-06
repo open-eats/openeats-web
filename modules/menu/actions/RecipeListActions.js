@@ -10,7 +10,7 @@ export const fetchRecipeList = (searchTerm) => {
         titles.push({ value: parseInt(recipe.id, 10), label: recipe.title });
         return recipe;
       });
-      return { options: titles };
+      return titles;
     })
     .catch(err => [])
 };
