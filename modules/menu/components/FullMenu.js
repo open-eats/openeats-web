@@ -15,7 +15,7 @@ const FullMenu = ({ menuItems, completeMenuItem, editMenuItem }) => {
   }, {});
 
   return (
-    <div>
+    <div className="col-xs-12">
       { Object.keys(groups).map((key) => (
         <div key={key} className="row">
           <h3 className="page-header">{key}</h3>

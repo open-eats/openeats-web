@@ -3,6 +3,8 @@ import React from 'react'
 import Tabs from '../components/Tabs'
 import Status from '../containers/Status'
 
+require("../css/menu.scss");
+
 class MenuLayout extends React.Component {
   render() {
     return (
@@ -13,15 +15,14 @@ class MenuLayout extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12">
-            <Tabs activeTab={this.props.tab} changeTab={this.props.changeTab}/>
+          <div className="col-sm-12 col-md-2">
+            <Tabs
+              activeTab={this.props.tab}
+              changeTab={this.props.changeTab}
+              onMenuItemShow={this.props.onMenuItemShow}
+            />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <button onClick={() => this.props.onMenuItemShow(0)}>New Menu Item</button>
-          </div>
-          <div className="col-xs-12">
+          <div className="col-sm-12 col-md-10">
             {this.props.children}
           </div>
         </div>

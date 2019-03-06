@@ -8,8 +8,6 @@ import { Checkbox } from '../../../common/components/FormComponents'
 import { DateTime } from '../../../common/components/DateTime'
 import { Async } from '../../../common/components/Select'
 
-require('../../css/rbc-calendar-modal.scss');
-
 class MenuItemModal extends BaseModal {
   constructor(props) {
     super(props);

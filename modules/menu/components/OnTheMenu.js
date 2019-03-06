@@ -4,7 +4,7 @@ import ListRecipes from '../../browse/components/ListRecipes'
 
 const OnTheMenu = ({ menuItems, completeMenuItem, editMenuItem }) => (
   <ListRecipes
-    format="col-xs-12 col-sm-6 col-md-3"
+    format="col-xs-12 col-sm-6 col-md-4 col-lg-3"
     data={menuItems.map(x => {return {...x.recipe_data, menuItemId: x.id}})}
     footer={(recipe) => (
       <div className="row recipe-card-news-footer">
