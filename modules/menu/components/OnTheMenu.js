@@ -9,13 +9,13 @@ const OnTheMenu = ({ menuItems, completeMenuItem, editMenuItem }) => (
     footer={(recipe) => (
       <div className="row recipe-card-news-footer">
         <div className="col-xs-6">
-          <button className="btn btn-success complete-btn" onClick={() => completeMenuItem(recipe.menuItemId)}>
-              Complete <span className="glyphicon glyphicon-ok" aria-hidden="true"/>
+          <button className="menu-complete-btn btn btn-success" title="Complete the Recipe" onClick={() => completeMenuItem(recipe.menuItemId)}>
+            <span className="glyphicon glyphicon-ok" aria-hidden="true"/>
           </button>
         </div>
         <div className="col-xs-6">
-          <button className="btn btn-warning complete-btn" onClick={() => editMenuItem(recipe.menuItemId)}>
-              Edit <span className="glyphicon glyphicon-pencil" aria-hidden="true"/>
+          <button className="menu-edit-btn btn btn-warning" title="Edit the Menu Item" onClick={() => editMenuItem(recipe.menuItemId)}>
+            <span className="glyphicon glyphicon-pencil" aria-hidden="true"/>
           </button>
         </div>
       </div>

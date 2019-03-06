@@ -8,7 +8,7 @@ require("../css/menu.scss");
 class MenuLayout extends React.Component {
   render() {
     return (
-      <div className="container calendar">
+      <div className="container menu-planner">
         <div className="row">
           <div className="col-xs-12">
             <Status/>
@@ -22,7 +22,7 @@ class MenuLayout extends React.Component {
               onMenuItemShow={this.props.onMenuItemShow}
             />
           </div>
-          <div className="col-sm-12 col-md-10">
+          <div className="col-sm-12 col-md-10 content">
             {this.props.children}
           </div>
         </div>
