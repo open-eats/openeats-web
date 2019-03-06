@@ -4,13 +4,28 @@ import moment from 'moment'
 import OnTheMenu from './OnTheMenu'
 
 const FullMenu = ({ menuItems, completeMenuItem, editMenuItem }) => {
+  let nextWeek = moment().add(1, 'week').startOf('week').format('MMMM D');
+  let thisWeek = moment().startOf('week').format('MMMM D');
+  let lastWeek = moment().subtract(1, 'week').startOf('week').format('MMMM D');
+
   let groups = menuItems.reduce((acc, menuItem) => {
     let date = menuItem.start_date;
-    let yearWeek = moment(date).year()+'-'+moment(date).week();
-    if (typeof acc[yearWeek] === 'undefined') {
-      acc[yearWeek] = [];
+    let weekStart = moment(date).subtract(1, 'week').startOf('week').format('MMMM D');
+    let weekEnd = moment(date).subtract(1, 'week').endOf('week').format('MMMM D');
+
+    let title = weekStart + ' - ' + weekEnd;
+    if (thisWeek === weekStart) {
+      title = 'This Week (' + title + ')'
+    } else if (nextWeek === weekStart) {
+      title = 'Next Week (' + title + ')'
+    } else if (lastWeek === weekStart) {
+      title = 'Last Week (' + title + ')'
     }
-    acc[yearWeek].push(menuItem);
+
+    if (typeof acc[title] === 'undefined') {
+      acc[title] = [];
+    }
+    acc[title].push(menuItem);
     return acc;
   }, {});
 
