@@ -89,7 +89,14 @@ class Menu extends React.Component {
             validation={ menuItemValidation }
           />
           {tab === TC.Stats ? <Stats stats={stats}/> : ''}
-          {tab === TC.OnTheMenu ? <FullMenu menuItems={events}/> : ''}
+          {tab === TC.OnTheMenu
+            ? <FullMenu
+              menuItems={events}
+              editMenuItem={this.onMenuItemShow}
+              completeMenuItem={menuItemActions.completeMenuItem}
+            />
+            : ''
+          }
         </MenuLayout>
       );
     } else {
