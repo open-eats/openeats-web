@@ -1,5 +1,4 @@
 export default {
-  'ThisWeek':'MENU_TAB_THIS_WEEK',
-  'NextWeek':'MENU_TAB_NEXT_WEEK',
+  'OnTheMenu':'MENU_TAB_MENU',
   'Stats':'MENU_TAB_STATS',
 };

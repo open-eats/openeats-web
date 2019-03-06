@@ -5,13 +5,10 @@ import TC from '../constants/TabConstants.js'
 const Tab = ({ changeTab, activeTab }) => (
   <ul className="nav nav-pills nav-justified">
     <li role="presentation" onClick={() => changeTab(TC.Stats)} className={activeTab === TC.Stats ? "active" : ""}>
-      <a>Stats</a>
+      <a>History</a>
     </li>
-    <li role="presentation" onClick={() => changeTab(TC.ThisWeek)} className={activeTab === TC.ThisWeek ? "active" : ""}>
-      <a>This Week</a>
-    </li>
-    <li role="presentation" onClick={() => changeTab(TC.NextWeek)} className={activeTab === TC.NextWeek ? "active" : ""}>
-      <a>Next Week</a>
+    <li role="presentation" onClick={() => changeTab(TC.OnTheMenu)} className={activeTab === TC.OnTheMenu ? "active" : ""}>
+      <a>On The Menu</a>
     </li>
   </ul>
 );

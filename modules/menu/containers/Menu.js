@@ -13,10 +13,9 @@ import TC from '../constants/TabConstants.js'
 
 import Loading from '../../base/components/Loading'
 import MenuItemModal from '../components/modals/MenuItemModal'
-import Tabs from '../components/Tabs'
 import Stats from '../components/Stats'
-import NextWeek from '../components/NextWeek'
-import ThisWeek from '../components/ThisWeek'
+import MenuLayout from '../components/MenuLayout'
+import OnTheMenu from '../components/OnTheMenu'
 
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
@@ -27,7 +26,7 @@ class Menu extends React.Component {
     super(props);
 
     this.state = {
-      tab: TC.ThisWeek,
+      tab: TC.OnTheMenu,
       showMenuModal: false,
       editMenuEventId: 0,
       startDate: null,
@@ -67,7 +66,7 @@ class Menu extends React.Component {
       });
 
       return (
-        <div>
+        <MenuLayout tab={tab} changeTab={this.changeTab}>
           <MenuItemModal
             id={ editMenuItemEventId }
             show={ showItemModal }
@@ -80,11 +79,9 @@ class Menu extends React.Component {
             fetchRecipeList={ fetchRecipeList }
             validation={ menuItemValidation }
           />
-          <Tabs activeTab={this.state.tab} changeTab={this.changeTab}/>
           {tab === TC.Stats ? <Stats stats={stats}/> : ''}
-          {tab === TC.ThisWeek ? <ThisWeek menuItems={events}/> : ''}
-          {tab === TC.NextWeek ? <NextWeek menuItems={events}/> : ''}
-        </div>
+          {tab === TC.OnTheMenu ? <OnTheMenu menuItems={events}/> : ''}
+        </MenuLayout>
       );
     } else {
       return ( <Loading message="Loading"/> )
