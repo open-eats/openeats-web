@@ -15,7 +15,7 @@ import Loading from '../../base/components/Loading'
 import MenuItemModal from '../components/modals/MenuItemModal'
 import Stats from '../components/Stats'
 import MenuLayout from '../components/MenuLayout'
-import OnTheMenu from '../components/OnTheMenu'
+import FullMenu from '../components/FullMenu'
 
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
@@ -34,10 +34,6 @@ class Menu extends React.Component {
     };
   }
 
-  changeTab = (tab) => {
-    this.setState({tab});
-  };
-
   componentDidMount() {
     authCheckRedirect();
     documentTitle('Menu');
@@ -48,6 +44,19 @@ class Menu extends React.Component {
   componentWillUnmount() {
     documentTitle();
   }
+
+  changeTab = (tab) => {
+    this.setState({tab});
+  };
+
+  onMenuItemShow = (id, startDate=null, endDate=null) => {
+    this.setState({
+      showItemModal: true,
+      editMenuItemEventId: parseInt(id, 10),
+      startDate: startDate,
+      endDate: endDate,
+    })
+  };
 
   render() {
     const { menuItems, location, stats } = this.props;
@@ -66,7 +75,7 @@ class Menu extends React.Component {
       });
 
       return (
-        <MenuLayout tab={tab} changeTab={this.changeTab}>
+        <MenuLayout tab={tab} changeTab={this.changeTab} onMenuItemShow={this.onMenuItemShow}>
           <MenuItemModal
             id={ editMenuItemEventId }
             show={ showItemModal }
@@ -80,7 +89,7 @@ class Menu extends React.Component {
             validation={ menuItemValidation }
           />
           {tab === TC.Stats ? <Stats stats={stats}/> : ''}
-          {tab === TC.OnTheMenu ? <OnTheMenu menuItems={events}/> : ''}
+          {tab === TC.OnTheMenu ? <FullMenu menuItems={events}/> : ''}
         </MenuLayout>
       );
     } else {

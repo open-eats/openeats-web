@@ -8,9 +8,14 @@ const OnTheMenu = ({ menuItems }) => (
     data={menuItems.map(x => x.recipe_data)}
     footer={(recipe) => (
       <div className="row recipe-card-news-footer">
-        <div className="col-xs-12">
+        <div className="col-xs-6">
           <button className="btn btn-success complete-btn" >
-              Make As Complete <span className="glyphicon glyphicon-ok" aria-hidden="true"/>
+              Complete <span className="glyphicon glyphicon-ok" aria-hidden="true"/>
+          </button>
+        </div>
+        <div className="col-xs-6">
+          <button className="btn btn-warning complete-btn" >
+              Edit <span className="glyphicon glyphicon-pencil" aria-hidden="true"/>
           </button>
         </div>
       </div>
@@ -19,7 +24,7 @@ const OnTheMenu = ({ menuItems }) => (
 );
 
 OnTheMenu.propTypes = {
-  menuItems: PropTypes.object.isRequired,
+  menuItems: PropTypes.array.isRequired,
 };
 
 export default OnTheMenu

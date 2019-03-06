@@ -13,7 +13,7 @@ const RecipeEvent = ({ stats }) => (
     </thead>
     <tbody>
       {stats.map(row => (
-        <tr>
+        <tr key={row.slug}>
           <th><Link to={'/recipe/' + row.slug}>{row.title}</Link></th>
           <th>{row.num_menuitems}</th>
           <th>{row.last_made}</th>

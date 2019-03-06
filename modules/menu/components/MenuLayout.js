@@ -19,6 +19,9 @@ class MenuLayout extends React.Component {
         </div>
         <div className="row">
           <div className="col-xs-12">
+            <button onClick={() => this.props.onMenuItemShow(0)}>New Menu Item</button>
+          </div>
+          <div className="col-xs-12">
             {this.props.children}
           </div>
         </div>
