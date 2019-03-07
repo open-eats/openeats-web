@@ -41,6 +41,12 @@ class Menu extends React.Component {
     this.props.menuItemActions.loadStats();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.tab !== prevState.tab && this.state.tab === TC.Stats) {
+      this.props.menuItemActions.loadStats();
+    }
+  }
+
   componentWillUnmount() {
     documentTitle();
   }

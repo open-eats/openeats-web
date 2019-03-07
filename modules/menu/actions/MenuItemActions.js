@@ -2,7 +2,6 @@ import { request } from '../../common/CustomSuperagent';
 import { serverURLs } from '../../common/config'
 import MenuItemConstants from '../constants/MenuItemConstants';
 import StatusConstants from '../constants/StatusConstants';
-import NewsConstants from "../../news/constants/NewsConstants";
 
 export const loadStats = () => {
   return (dispatch) => {
@@ -17,7 +16,7 @@ export const loadStats = () => {
 export const loadItems = () => {
   return (dispatch) => {
     request()
-      .get(serverURLs.menu_item)
+      .get(serverURLs.menu_item + '?complete=false')
       .then(res => dispatch({
         type: MenuItemConstants.MENU_ITEM_LOAD, data: res.body.results
       }))
@@ -86,7 +85,7 @@ export const completeMenuItem = (id) => {
       .patch(serverURLs.menu_item + id + '/' )
       .send({complete: true})
       .then(res => dispatch({
-        type: NewsConstants.NEWS_MENU_ITEM_COMPLETE,
+        type: MenuItemConstants.MENU_ITEM_COMPLETE,
         id: id
       }))
   }
