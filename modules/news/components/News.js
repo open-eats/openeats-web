@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { injectIntl, defineMessages } from 'react-intl'
 
 import MiniBrowse from '../../browse/containers/MiniBrowse'
-import ListRecipes from '../../browse/components/ListRecipes'
 import OnTheMenu from '../../menu/components/OnTheMenu'
 import documentTitle from '../../common/documentTitle'
 import * as NewsActions from "../actions/NewsActions";

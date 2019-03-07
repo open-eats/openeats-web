@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import qs from 'query-string'
 import moment from 'moment'
 
-import history from '../../common/history'
 import authCheckRedirect from '../../common/authCheckRedirect'
 import documentTitle from '../../common/documentTitle'
 
@@ -65,10 +64,9 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { menuItems, location, stats } = this.props;
+    const { menuItems, stats } = this.props;
     const { menuItemActions } = this.props;
     const { showItemModal, editMenuItemEventId, startDate, endDate, tab } = this.state;
-    const query = qs.parse(location.search);
 
     if (menuItems !== null) {
       let events = menuItems.map(item => {

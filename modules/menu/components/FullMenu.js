@@ -10,8 +10,8 @@ const FullMenu = ({ menuItems, completeMenuItem, editMenuItem }) => {
 
   let groups = menuItems.reduce((acc, menuItem) => {
     let date = menuItem.start_date;
-    let weekStart = moment(date).subtract(1, 'week').startOf('week').format('MMMM D');
-    let weekEnd = moment(date).subtract(1, 'week').endOf('week').format('MMMM D');
+    let weekStart = moment(date).startOf('week').format('MMMM D');
+    let weekEnd = moment(date).endOf('week').format('MMMM D');
 
     let title = weekStart + ' - ' + weekEnd;
     if (thisWeek === weekStart) {
@@ -29,20 +29,31 @@ const FullMenu = ({ menuItems, completeMenuItem, editMenuItem }) => {
     return acc;
   }, {});
 
+  if (menuItems.length > 0) {
+    return (
+      <div className="col-xs-12 recipes">
+        {Object.keys(groups).map((key) => (
+          <div key={key} className="row">
+            <h3 className="page-header">{key}</h3>
+            <OnTheMenu
+              completeMenuItem={completeMenuItem}
+              editMenuItem={editMenuItem}
+              menuItems={groups[key]}
+            />
+          </div>
+        ))}
+      </div>
+    )
+  }
+
   return (
-    <div className="col-xs-12 recipes">
-      { Object.keys(groups).map((key) => (
-        <div key={key} className="row">
-          <h3 className="page-header">{key}</h3>
-          <OnTheMenu
-            completeMenuItem={completeMenuItem}
-            editMenuItem={editMenuItem}
-            menuItems={groups[key]}
-          />
+      <div className="col-xs-12 recipes">
+        <div className="row">
+          <h3 className="page-header">Nothings on the Menu</h3>
+          <a onClick={() => editMenuItem(0)}>Add one now</a>
         </div>
-      ))}
-    </div>
-  )
+      </div>
+    )
 };
 
 FullMenu.propTypes = {
