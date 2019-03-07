@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const RecipeEvent = ({ stats }) => (
   <table className="table table-hover">
@@ -16,7 +17,7 @@ const RecipeEvent = ({ stats }) => (
         <tr key={row.slug}>
           <th><Link to={'/recipe/' + row.slug}>{row.title}</Link></th>
           <th>{row.num_menuitems}</th>
-          <th>{row.last_made}</th>
+          <th>{moment(row.last_made).format('ddd, MMMM D, YYYY')}</th>
         </tr>
       ))}
     </tbody>
