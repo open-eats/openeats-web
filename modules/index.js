@@ -18,7 +18,7 @@ import List from './list/containers/List'
 import Browse from './browse/containers/Browse'
 import Form from './recipe_form/containers/Form'
 import RecipeView from './recipe/components/RecipeView'
-import MenuLayout from './menu/containers/Menu'
+import Menu from './menu/containers/Menu'
 
 // Load required polyfills
 import {
@@ -60,7 +60,7 @@ const main = (
                 <Route path='/list/:list' component={ List } />
                 <Route path='/list' component={ List } />
 
-                <Route path='/Menu' component={ MenuLayout } />
+                <Route path='/Menu' component={ Menu } />
 
                 <Route path='/NotFound' component={ NotFound } />
                 <Redirect path="*" to="/NotFound" />

@@ -47,13 +47,13 @@ const FullMenu = ({ menuItems, completeMenuItem, editMenuItem }) => {
   }
 
   return (
-      <div className="col-xs-12 recipes">
-        <div className="row">
-          <h3 className="page-header">Nothings on the Menu</h3>
-          <a onClick={() => editMenuItem(0)}>Add one now</a>
-        </div>
+    <div className="col-xs-12 recipes">
+      <div className="row">
+        <h3 className="page-header">Nothings on the Menu</h3>
+        <a onClick={() => editMenuItem(0)}>Add one now</a>
       </div>
-    )
+    </div>
+  )
 };
 
 FullMenu.propTypes = {

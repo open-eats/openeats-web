@@ -17,7 +17,6 @@ import FullMenu from '../components/FullMenu'
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
 import { menuItemValidation } from '../actions/validation'
-import OnTheMenu from "../../news/components/News";
 
 class Menu extends React.Component {
   constructor(props) {
