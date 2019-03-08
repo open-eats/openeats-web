@@ -30,6 +30,7 @@ export default function register() {
     }
 
     window.addEventListener('load', (event) => {
+      // eslint-disable-next-line
       if (window.location.pathname.match('^.*(\/admin\/).*$')) {
         return false;
       }

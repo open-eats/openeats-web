@@ -1,4 +1,3 @@
-import formatQuantity from '../../recipe/utilts/formatQuantity'
 import { GCD } from '../../recipe/utilts/gcd'
 
 // Given an array of text values,
@@ -45,6 +44,8 @@ const numberSplit = number => {
   let last = -1;
   let length = number.length;
   let numbers = ['1','2','3','4','5','6','7','8','9','0'];
+
+  // eslint-disable-next-line
   numbers.map(n => {
     if (number.lastIndexOf(n) > last) {
       last = number.lastIndexOf(n)
