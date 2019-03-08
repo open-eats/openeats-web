@@ -17,6 +17,7 @@ import FullMenu from '../components/FullMenu'
 import * as MenuItemActions from '../actions/MenuItemActions'
 import { fetchRecipeList } from '../actions/RecipeListActions'
 import { menuItemValidation } from '../actions/validation'
+import OnTheMenu from "../../news/components/News";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -62,11 +63,33 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { menuItems, stats } = this.props;
+    const { menuItems, stats, SimpleLayout } = this.props;
     const { menuItemActions } = this.props;
     const { showItemModal, editMenuItemEventId, startDate, tab } = this.state;
 
     if (menuItems !== null) {
+      if (SimpleLayout) {
+        return (
+          <div>
+            <MenuItemModal
+              id={ editMenuItemEventId }
+              show={ showItemModal }
+              onHide={ () => { this.setState({showItemModal: false}) } }
+              event={ menuItems.find(t => t.id === editMenuItemEventId) }
+              startDate={ startDate }
+              onSave={ menuItemActions.save }
+              onRemove={ menuItemActions.remove }
+              fetchRecipeList={ fetchRecipeList }
+              validation={ menuItemValidation }
+            />
+            <SimpleLayout
+              menuItems={menuItems}
+              editMenuItem={this.onMenuItemShow}
+              completeMenuItem={menuItemActions.completeMenuItem}
+            />
+          </div>
+        );
+      }
       return (
         <MenuLayout tab={tab} changeTab={this.changeTab} onMenuItemShow={this.onMenuItemShow}>
           <MenuItemModal
@@ -101,7 +124,6 @@ Menu.propTypes = {
   menuItems: PropTypes.array,
   stats: PropTypes.array,
   menuItemActions: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
