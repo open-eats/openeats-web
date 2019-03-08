@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import OnTheMenu from './OnTheMenu'
-import Menu from "../../news/components/News";
 
 const FullMenu = ({ menuItems, completeMenuItem, editMenuItem }) => {
   let nextWeek = moment().add(1, 'week').startOf('week').format('MMMM D');
