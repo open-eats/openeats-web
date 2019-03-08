@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
-import { default as items } from './MenuItemsReducer'
-import { default as status } from './status'
+import items from './MenuItemsReducer'
+import status from './status'
+import stats from './StatsReducer'
 
 const menu = combineReducers({
   items,
+  stats,
   status
 });
 

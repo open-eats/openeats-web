@@ -12,5 +12,4 @@ export const menuItemValidation = [
   { name: 'menu', validators: [double] },
   { name: 'recipe', validators: [double] },
   { name: 'start_date', validators: [isDate] },
-  { name: 'end_date', validators: [isDate] },
 ];

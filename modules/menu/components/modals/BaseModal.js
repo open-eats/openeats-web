@@ -1,7 +1,5 @@
 import React from 'react'
 
-require('../../css/rbc-calendar-modal.scss');
-
 class BaseModal extends React.Component {
   validate = (name, value) => {
     let v = this.props.validation.find(t => t.name === name);

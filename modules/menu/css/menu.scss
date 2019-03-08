@@ -1,0 +1,28 @@
+.menu-planner {
+  margin-top: 20px;
+  .content {
+    border-left: #eeeeee 1px solid;
+    .recipes{
+      margin-top: 0;
+      .page-header {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.menu-complete-btn {
+  border-radius: 0 0 0 2px !important;
+  width: 100%;
+  .glyphicon-ok {
+    margin-left: 10px;
+  }
+}
+
+.menu-edit-btn {
+  border-radius: 0 0 2px 0 !important;
+  width: 100%;
+  .glyphicon-ok {
+    margin-left: 10px;
+  }
+}
