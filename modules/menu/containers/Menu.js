@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import qs from 'query-string'
-import moment from 'moment'
 
 import authCheckRedirect from '../../common/authCheckRedirect'
 import documentTitle from '../../common/documentTitle'
@@ -66,18 +64,9 @@ class Menu extends React.Component {
   render() {
     const { menuItems, stats } = this.props;
     const { menuItemActions } = this.props;
-    const { showItemModal, editMenuItemEventId, startDate, endDate, tab } = this.state;
+    const { showItemModal, editMenuItemEventId, startDate, tab } = this.state;
 
     if (menuItems !== null) {
-      let events = menuItems.map(item => {
-        return {
-          ...item,
-          allDay: item.all_day,
-          start: moment(item.start_date).toDate(),
-          end: moment(item.end_date).toDate(),
-        }
-      });
-
       return (
         <MenuLayout tab={tab} changeTab={this.changeTab} onMenuItemShow={this.onMenuItemShow}>
           <MenuItemModal
@@ -86,7 +75,6 @@ class Menu extends React.Component {
             onHide={ () => { this.setState({showItemModal: false}) } }
             event={ menuItems.find(t => t.id === editMenuItemEventId) }
             startDate={ startDate }
-            endDate={ endDate }
             onSave={ menuItemActions.save }
             onRemove={ menuItemActions.remove }
             fetchRecipeList={ fetchRecipeList }
@@ -95,7 +83,7 @@ class Menu extends React.Component {
           {tab === TC.Stats ? <Stats stats={stats}/> : ''}
           {tab === TC.OnTheMenu
             ? <FullMenu
-              menuItems={events}
+              menuItems={menuItems}
               editMenuItem={this.onMenuItemShow}
               completeMenuItem={menuItemActions.completeMenuItem}
             />

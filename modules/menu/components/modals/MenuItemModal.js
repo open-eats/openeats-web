@@ -16,20 +16,16 @@ class MenuItemModal extends BaseModal {
       recipe: this.props.recipe || '',
       title: this.props.title || '',
       start_date: '',
-      end_date: '',
-      all_day: '',
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    let { event, startDate, endDate } = nextProps;
+    let { event, startDate } = nextProps;
 
     let title = this.props.title;
     let placeholder = this.props.intl.messages['men_item_event_model.new_menu_item'];
     let recipe = this.props.recipe;
     let start_date = startDate || new Date();
-    let end_date = endDate || new Date();
-    let all_day = false;
     let complete = false;
 
     if (event) {
@@ -38,8 +34,6 @@ class MenuItemModal extends BaseModal {
       placeholder = event.recipe_data.title;
       start_date = event.start_date;
       complete = event.complete;
-      end_date = event.end_date;
-      all_day = event.all_day;
     }
 
     this.setState({
@@ -47,8 +41,6 @@ class MenuItemModal extends BaseModal {
       placeholder: placeholder,
       title: title,
       start_date: start_date,
-      end_date: end_date,
-      all_day: all_day,
       complete: complete,
     });
   }
@@ -58,26 +50,17 @@ class MenuItemModal extends BaseModal {
     value = moment(value);
     let newState = {};
     newState[name] = value;
-
-    if (value >= moment(this.state.end_date)) {
-      newState['end_date'] = moment(value).add(1, 'h');
-    }
     this.setState(newState)
   };
 
   render () {
     let { id, show, onHide, fetchRecipeList, intl } = this.props;
-    let { recipe, title, placeholder, start_date, end_date, all_day, complete } = this.state;
+    let { recipe, title, placeholder, start_date, complete } = this.state;
     const messages = defineMessages({
       start_date: {
         id: 'men_item_event_model.start_date',
         description: 'Start Date',
         defaultMessage: 'Start Date',
-      },
-      end_date: {
-        id: 'men_item_event_model.end_date',
-        description: 'End Date',
-        defaultMessage: 'End Date',
       },
       recipe: {
         id: 'men_item_event_model.recipe',
@@ -88,11 +71,6 @@ class MenuItemModal extends BaseModal {
         id: 'men_item_event_model.menu',
         description: 'Menu',
         defaultMessage: 'Menu',
-      },
-      all_day: {
-        id: 'men_item_event_model.all_day',
-        description: 'Anytime today',
-        defaultMessage: 'Anytime today',
       },
       complete: {
         id: 'men_item_event_model.complete',
@@ -140,32 +118,16 @@ class MenuItemModal extends BaseModal {
               errors={ this.state['error_recipe'] }
             />
             <DateTime
-              class="col-xs-6"
+              class="col-xs-12"
               label={ intl.formatMessage(messages.start_date) }
               name="start_date"
               value={ start_date }
               change={ this.onStateDateChange }
-              timeFormat={ !all_day }
+              timeFormat={ false }
               errors={ this.state['error_start_date'] }
             />
-            <DateTime
-              class="col-xs-6"
-              label={ intl.formatMessage(messages.end_date) }
-              name="end_date"
-              value={ end_date }
-              change={ this.change }
-              timeFormat={ !all_day }
-              errors={ this.state['error_end_date'] }
-            />
             <Checkbox
-              size="col-xs-6"
-              label={ intl.formatMessage(messages.all_day) }
-              name="all_day"
-              checked={ all_day }
-              change={ this.change }
-            />
-            <Checkbox
-              size="col-xs-6"
+              size="col-xs-12"
               label={ intl.formatMessage(messages.complete) }
               name="complete"
               checked={ complete }
