@@ -54,7 +54,10 @@ class News extends React.Component {
         </Carousel>
         <div className="container">
           <div className="row">
-            <Menu SimpleLayout={UpComingRecipes} />
+            { this.props.user && this.props.user.id !== 0
+              ? <Menu SimpleLayout={UpComingRecipes} public />
+              : ''
+            }
           </div>
           <div className="row">
             <h3 className="page-header">Recommended Recipes</h3>
