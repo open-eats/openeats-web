@@ -42,7 +42,7 @@
   "searchbar.label": "Buscar recetas",
   "searchbar.mobile.label": "Buscar",
   "filter.recipes": "Recetas",
-  "searchbar.placeholder": "Introduzca un titlo, etiqueta o ingrediente.",
+  "searchbar.placeholder": "Introduzca una receta, etiqueta o ingrediente.",
   "filter.reset": "Restablecer",
   "filter.filter_course": "Platos",
   "filter.filter_cuisine": "Cocinas",
