@@ -56,6 +56,7 @@
   "filter.hide_filters": "Filter ausblenden",
   "filter.filter_ordering": "Sortierung",
   "file_widget.help_block": "Bitte laden Sie ein Foto des fertigen Gerichts hoch!",
+  "file_widget.note": "Hinweis: Das Foto muss kleiner sein als 500kB",
   "select_widget.header": "Bitte wählen Sie ein {label} aus.",
   "widget_error.title": "Formular fehlerhaft!",
   "widget_error.message": "Bitte bestätigen Sie die Vollständigkeit der Daten.",
