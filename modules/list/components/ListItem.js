@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { sortableHandle } from 'react-sortable-hoc'
 
 import {
   ENTER_KEY,
@@ -60,6 +61,14 @@ export default class ListItem extends React.Component {
   };
 
   render() {
+    const DragHandle = sortableHandle(() =>
+      <div
+        className="handle"
+        style={ this.props.sortable ? null : {display: 'none'} }
+        tabIndex="0"
+      />
+    );
+
     return (
       <li className={classNames({
         completed: this.props.item.completed,
@@ -76,6 +85,7 @@ export default class ListItem extends React.Component {
             { this.props.item.title }
           </label>
           <button className="destroy" onClick={ this.handleDestroy } />
+          <DragHandle />
         </div>
         <input
           ref="editField"
@@ -94,7 +104,8 @@ ListItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired
+    completed: PropTypes.bool.isRequired,
+    sortable: PropTypes.bool.isRequired,
   }).isRequired,
   onSave: PropTypes.func.isRequired,
   onDestroy: PropTypes.func.isRequired,

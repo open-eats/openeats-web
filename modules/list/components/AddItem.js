@@ -27,7 +27,7 @@ class AddItem extends React.Component {
     event.preventDefault();
     let val = this.state.title.trim();
     if (val) {
-      this.props.addItem(val);
+      this.props.addItem(val, this.props.listLength);
       this.setState({title: ''});
     }
   };
@@ -57,7 +57,8 @@ class AddItem extends React.Component {
 
 AddItem.propTypes = {
   addItem: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
+  listLength: PropTypes.number.isRequired,
 };
 
 export default injectIntl(AddItem)

@@ -102,11 +102,9 @@
           border-bottom: none;
         }
         &.editing {
-          padding: 0;
+          padding: 0 0 0 53px;
           .edit {
             display: block;
-            width: 506px;
-            margin: 0 0 0 43px;
           }
           .view {
             display: none;
@@ -125,15 +123,23 @@
           display: block;
         }
         .view {
-          margin-left: 50px;
-          line-height: 30px;
+          display: flex;
+          line-height: 40px;
           .toggle {
-            display: inline;
+            order: 1;
+            margin: auto 20px;
+            .check-container {
+              margin: 0;
+            }
             .checkmark {
-              margin-top: 3px;
+              display: block;
+              position: relative;
             }
           }
           .item {
+            order: 2;
+            flex-grow: 1;
+            margin: auto 0;
             white-space: pre-line;
             word-break: break-all;
             transition: color 0.4s;
@@ -142,16 +148,10 @@
         }
         .destroy {
           display: none;
-          position: absolute;
-          top: 0;
-          right: 10px;
-          bottom: 0;
-          width: 40px;
-          height: 25px;
-          margin: auto 0;
+          order: 3;
+          margin: auto 15px;
           font-size: 30px;
           color: #cc9a9a;
-          margin-bottom: 11px;
           transition: color 0.2s ease-out;
           &:hover {
             color: #af5b5e;
@@ -159,6 +159,16 @@
           &:after {
             content: '×';
           }
+        }
+        .handle {
+          order: 4;
+          width: 18px;
+          height: 12px;
+          margin: auto 15px;
+          opacity: .25;
+          cursor: row-resize;
+          background: -webkit-linear-gradient(top,#000,#000 20%,#fff 0,#fff 40%,#000 0,#000 60%,#fff 0,#fff 80%,#000 0,#000);
+          background: linear-gradient(180deg,#000,#000 20%,#fff 0,#fff 40%,#000 0,#000 60%,#fff 0,#fff 80%,#000 0,#000);
         }
         .edit {
           display: none;

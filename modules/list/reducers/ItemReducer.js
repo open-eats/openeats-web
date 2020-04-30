@@ -34,6 +34,19 @@ const items = (state = [], action) => {
           { ...item, completed: !item.completed } :
           item
       );
+    case ItemConstants.ITEM_ORDER_ALL:
+      let order_ids = new Map();
+      for (let i in action.ids) {
+        order_ids.set(action.ids[i].id, action.ids[i].order);
+      }
+
+      return state.map(item =>
+        order_ids.has(item.id) ?
+          { ...item, order: order_ids.get(item.id) } :
+          item
+      ).sort((first, second) =>
+        first.order - second.order
+      );
     case ItemConstants.ITEM_DELETE:
       return state.filter(t => t.id !== action.id);
     case ItemConstants.ITEM_DELETE_COMPLETED:
