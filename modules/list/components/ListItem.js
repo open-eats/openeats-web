@@ -80,6 +80,7 @@ export default class ListItem extends React.Component {
         <input
           ref="editField"
           className="edit"
+          autoFocus
           value={ this.state.title }
           onBlur={ this.handleSubmit }
           onChange={ this.handleChange }
