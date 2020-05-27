@@ -121,7 +121,15 @@ class IngredientBox extends React.Component {
         />
         <div className="recipe-details">
           <div className="recipe-schema">
-            <IngredientGroups data={ this.state.data }/>
+            <IngredientGroups data={ [...this.state.data].map(x => {
+              // Add the quantity for each ingredient so the preview will display properly
+              const ings = [...x.ingredients].map(i => {return {
+                quantity: i.numerator ? formatQuantity(1, 1, i.numerator, i.denominator) + " " : '',
+                ...i
+              }})
+
+              return { ...x, ingredients: ings }
+            })}/>
           </div>
         </div>
       </TabbedView>
