@@ -122,27 +122,32 @@ export const toggleAll = (items, checked, listId) => {
  */
 export const orderAll = (items, listId) => {
   let order = 0;
-  let ids = items.map(item => ({
+  let orderedListItems = [...items].map(item => ({
     id: item.id,
     order: order++,
   }));
 
   return (dispatch) => {
+    // Update the list before we send teh request, so there is no weird delay or jumpy items
+    dispatch({
+      type: ItemConstants.ITEM_ORDER_ALL,
+      listId: listId,
+      ids: orderedListItems
+    });
+
     request()
       .patch(serverURLs.bulk_list_item)
-      .send(ids)
-      .end((err, res) => {
-        if (!err && res) {
-          dispatch({
-            type: ItemConstants.ITEM_ORDER_ALL,
-            listId: listId,
-            ids: ids
-          });
-        } else {
-          console.error(err.toString());
-          console.error(res.body);
-        }
-      });
+      .send(orderedListItems)
+      .catch(err => {
+        console.error(err.toString());
+        console.error(err.body);
+        // If the API throws an error, reset the order of the items
+        dispatch({
+          type: ItemConstants.ITEM_ORDER_ALL,
+          listId: listId,
+          ids: items
+        });
+      })
   }
 };
 

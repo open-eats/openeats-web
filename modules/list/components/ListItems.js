@@ -1,7 +1,7 @@
 import React from 'react'
 import {
-  sortableContainer,
-  sortableElement,
+  SortableContainer,
+  SortableElement,
 } from 'react-sortable-hoc'
 import PropTypes from 'prop-types'
 
@@ -72,7 +72,7 @@ export default class ListItems extends React.Component {
       }
     }, this);
 
-    const SortableItem = sortableElement(({ item }) =>
+    const SortableItem = SortableElement(({ item }) =>
       <ListItem
         key={ item.id }
         item={ item }
@@ -85,7 +85,7 @@ export default class ListItems extends React.Component {
       />
     );
 
-    const SortableList = sortableContainer(({ children }) =>
+    const SortableList = SortableContainer(({ children }) =>
       <ul className="item-list">
         { children }
       </ul>
@@ -127,8 +127,8 @@ export default class ListItems extends React.Component {
             onSortEnd={ this.onSortEnd }
             axis="y"
             lockAxis="y"
-            useDragHandle="true"
-            lockToContainerEdges="true"
+            useDragHandle
+            lockToContainerEdges
             helperContainer={ () => this.slidingList }
           >
             { shownItems.map((item, index) =>

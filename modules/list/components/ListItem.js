@@ -1,13 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { sortableHandle } from 'react-sortable-hoc'
+import { SortableHandle } from 'react-sortable-hoc'
 
 import {
   ENTER_KEY,
   ESCAPE_KEY
 } from '../constants/ListStatus'
 import { Checkbox } from '../../common/components/FormComponents'
+
+const DragHandle = SortableHandle(({sortable}) =>
+  <div
+    className="handle"
+    style={ sortable ? null : {display: 'none'} }
+    tabIndex="0"
+  />
+);
 
 export default class ListItem extends React.Component {
   constructor(props) {
@@ -61,14 +69,6 @@ export default class ListItem extends React.Component {
   };
 
   render() {
-    const DragHandle = sortableHandle(() =>
-      <div
-        className="handle"
-        style={ this.props.sortable ? null : {display: 'none'} }
-        tabIndex="0"
-      />
-    );
-
     return (
       <li className={classNames({
         completed: this.props.item.completed,
@@ -85,7 +85,7 @@ export default class ListItem extends React.Component {
             { this.props.item.title }
           </label>
           <button className="destroy" onClick={ this.handleDestroy } />
-          <DragHandle />
+          <DragHandle sortable={this.props.sortable} />
         </div>
         <input
           ref="editField"
@@ -105,8 +105,8 @@ ListItem.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
-    sortable: PropTypes.bool.isRequired,
   }).isRequired,
+  sortable: PropTypes.bool.isRequired,
   onSave: PropTypes.func.isRequired,
   onDestroy: PropTypes.func.isRequired,
   onToggleEdit: PropTypes.func.isRequired,
