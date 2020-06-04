@@ -11,7 +11,7 @@ import { Checkbox } from '../../common/components/FormComponents'
 
 const DragHandle = SortableHandle(({sortable}) =>
   <div
-    className="handle"
+    className="drag-handle"
     style={ sortable ? null : {display: 'none'} }
     tabIndex="0"
   />
