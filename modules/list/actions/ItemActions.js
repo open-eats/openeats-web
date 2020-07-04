@@ -19,13 +19,16 @@ export const load = (listId) => {
   }
 };
 
-export const add = (title, listId) => {
+/* Add a new object, with it's order at the end of the list
+ */
+export const add = (title, listLength, listId) => {
   return (dispatch) => {
     request()
       .post(serverURLs.list_item)
       .send({
         title: title,
-        list: listId
+        list: listId,
+        order: listLength,
       })
       .end((err, res) => {
         if (!err && res) {
@@ -33,7 +36,8 @@ export const add = (title, listId) => {
             type: ItemConstants.ITEM_ADD,
             listId: listId,
             id: res.body.id,
-            title: res.body.title
+            title: res.body.title,
+            order: res.body.order,
           });
         } else {
           console.error(err.toString());
@@ -111,6 +115,39 @@ export const toggleAll = (items, checked, listId) => {
           console.error(res.body);
         }
       });
+  }
+};
+
+/* Order all items in the order that they were passed in
+ */
+export const orderAll = (items, listId) => {
+  let order = 0;
+  let orderedListItems = [...items].map(item => ({
+    id: item.id,
+    order: order++,
+  }));
+
+  return (dispatch) => {
+    // Update the list before we send teh request, so there is no weird delay or jumpy items
+    dispatch({
+      type: ItemConstants.ITEM_ORDER_ALL,
+      listId: listId,
+      ids: orderedListItems
+    });
+
+    request()
+      .patch(serverURLs.bulk_list_item)
+      .send(orderedListItems)
+      .catch(err => {
+        console.error(err.toString());
+        console.error(err.body);
+        // If the API throws an error, reset the order of the items
+        dispatch({
+          type: ItemConstants.ITEM_ORDER_ALL,
+          listId: listId,
+          ids: items
+        });
+      })
   }
 };
 

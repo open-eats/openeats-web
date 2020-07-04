@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  SortableContainer,
+  SortableElement,
+} from 'react-sortable-hoc'
 import PropTypes from 'prop-types'
 
 import { Checkbox } from '../../common/components/FormComponents'
@@ -13,6 +17,9 @@ import {
 } from '../constants/ListStatus'
 
 export default class ListItems extends React.Component {
+
+  slidingList: ?HTMLElement;
+
   constructor(props) {
     super(props);
 
@@ -32,6 +39,17 @@ export default class ListItems extends React.Component {
         checked,
         this.props.activeListID
     )
+  };
+
+  onSortEnd = ({oldIndex, newIndex}) => {
+    let items = [...this.props.items];
+    let item = items.splice(oldIndex, 1)[0];
+    items.splice(newIndex, 0, item);
+
+    this.props.itemActions.orderAll(
+        items,
+        this.props.activeListID
+    );
   };
 
   filterStatus = (status) =>  {
@@ -54,19 +72,24 @@ export default class ListItems extends React.Component {
       }
     }, this);
 
-    let listItems = shownItems.map(function (item) {
-      return (
-        <ListItem
-          key={ item.id }
-          item={ item }
-          editing={ this.state.editing === item.id }
-          onToggleEdit={ this.toggleEdit }
-          onToggle={ this.props.itemActions.toggle }
-          onDestroy={ this.props.itemActions.destroy }
-          onSave={ this.props.itemActions.save }
-        />
-      );
-    }, this);
+    const SortableItem = SortableElement(({ item }) =>
+      <ListItem
+        key={ item.id }
+        item={ item }
+        sortable={ this.state.nowShowing === ALL_ITEMS }
+        editing={ this.state.editing === item.id }
+        onToggleEdit={ this.toggleEdit }
+        onToggle={ this.props.itemActions.toggle }
+        onDestroy={ this.props.itemActions.destroy }
+        onSave={ this.props.itemActions.save }
+      />
+    );
+
+    const SortableList = SortableContainer(({ children }) =>
+      <ul className="item-list">
+        { children }
+      </ul>
+    );
 
     let activeListCount = items.reduce(function (accum, item) {
       return item.completed ? accum : accum + 1;
@@ -85,6 +108,9 @@ export default class ListItems extends React.Component {
         />;
     }
 
+    /* Include a second list tag that we can attach the cloned list items to
+     * so that it will have the same styling.
+     */
     if (items.length) {
       main = (
         <section className="main">
@@ -93,9 +119,26 @@ export default class ListItems extends React.Component {
             checked={ activeListCount === 0 }
             change={ this.toggleAll }
           />
-          <ul className="item-list">
-            { listItems }
-          </ul>
+          <ul
+            ref={ ref => this.slidingList = ref }
+            className="item-list"
+          />
+          <SortableList
+            onSortEnd={ this.onSortEnd }
+            axis="y"
+            lockAxis="y"
+            useDragHandle
+            lockToContainerEdges
+            helperContainer={ () => this.slidingList }
+          >
+            { shownItems.map((item, index) =>
+              <SortableItem
+                key={ item.id }
+                index={ index }
+                item={ item }
+              />
+            )}
+          </SortableList>
         </section>
       );
     }
@@ -103,7 +146,10 @@ export default class ListItems extends React.Component {
     return (
       <div>
         <header className="header">
-          <AddItem addItem={ this.props.itemActions.add }/>
+          <AddItem
+            addItem={ this.props.itemActions.add }
+            listLength={ this.props.items.length }
+          />
         </header>
         { main }
         { footer }
@@ -116,7 +162,8 @@ ListItems.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired
+    completed: PropTypes.bool.isRequired,
+    order: PropTypes.number.isRequired,
   }).isRequired).isRequired,
   activeListID: PropTypes.number,
   itemActions: PropTypes.object.isRequired,
