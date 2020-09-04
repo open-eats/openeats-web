@@ -102,7 +102,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "^24.1.0",
-    "node-sass": "4.5.3",
+    "node-sass": "4.13.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
     "raf": "3.4.0",
