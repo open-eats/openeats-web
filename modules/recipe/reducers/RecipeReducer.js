@@ -5,56 +5,27 @@ import fq from '../utilts/formatQuantity'
 
 const recipes = (state = [], action) => {
   switch (action.type) {
-    case RecipeConstants.RECIPE_LOAD:
-      let recipe = state.find(t => t.id === action.data.id);
-      let subRecipes, ingredients;
-      if (recipe) {
-        return state.map(recipe => {
-          if (recipe.id === action.data.id) {
-            subRecipes = subrecipes(
-              recipe.subrecipes,
-              { subrecipes: action.data.subrecipes,
-                formatQuantity: fq.bind(this, recipe.servings, action.data.servings),
-                type: action.type }
-            );
-            ingredients = ingredient(
-              recipe.ingredient_groups,
-              { ingredient_groups: action.data.ingredient_groups,
-                formatQuantity: fq.bind(this, recipe.servings, action.data.servings),
-                type: action.type }
-            );
-            return {
-              ...action.data,
-              subrecipes: subRecipes,
-              ingredient_groups: ingredients
-            };
-          }
-          return recipe;
-        });
-      } else {
-        subRecipes = subrecipes(
-          [],
-          { subrecipes: action.data.subrecipes,
-            formatQuantity: fq.bind(this, action.data.servings, action.data.servings),
-            type: action.type }
-        );
-        ingredients = ingredient(
-          [],
-          { ingredient_groups: action.data.ingredient_groups,
-            formatQuantity: fq.bind(this, action.data.servings, action.data.servings),
-            type: action.type }
-        );
-
-        return [
-          ...state,
-          {
-            ...action.data,
-            subrecipes: subRecipes,
-            ingredient_groups: ingredients,
-            customServings: action.data.servings
-          }
-        ]
-      }
+    case RecipeConstants.RECIPE_LOAD: {
+      // A loaded recipe is always shown at its own servings, also when it was loaded before:
+      // amounts as saved, and no reset button until the servings are changed by hand.
+      const old = state.find(t => t.id === action.data.id);
+      const formatQuantity = fq.bind(this, action.data.servings, action.data.servings);
+      const loaded = {
+        ...action.data,
+        subrecipes: subrecipes(
+          old ? old.subrecipes : [],
+          { subrecipes: action.data.subrecipes, formatQuantity, type: action.type }
+        ),
+        ingredient_groups: ingredient(
+          old ? old.ingredient_groups : [],
+          { ingredient_groups: action.data.ingredient_groups, formatQuantity, type: action.type }
+        ),
+        customServings: action.data.servings
+      };
+      return old ?
+        state.map(recipe => recipe.id === loaded.id ? loaded : recipe) :
+        [...state, loaded];
+    }
     case RecipeConstants.RECIPE_INGREDIENT_SERVINGS_UPDATE:
       return state.map(recipe => {
         if (recipe.slug === action.recipeSlug){
